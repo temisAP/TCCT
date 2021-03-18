@@ -1,6 +1,7 @@
 import numpy as np
 from math import exp
 import matplotlib.pyplot as plt
+import copy
 from cycler import cycler
 monochrome = (cycler('color', ['k']) * cycler('marker', ['', '.']) *
               cycler('linestyle', ['-', '--', ':','-.']))
@@ -16,7 +17,7 @@ monochrome = (cycler('color', ['k']) * cycler('marker', ['', '.']) *
 ## permanentemente a 25 ºC, y que los otros dos bordes están térmicamente aislados. Tómese para el FR-4 k=0,5
 ## W/(m·K) en el plano y la mitad a su través. Se pide:
 
-class elemento(objects):
+class elemento(object):
 
     def __init__(self):
         # Atributos geométricos
@@ -31,13 +32,22 @@ class elemento(objects):
         self.ky = ''
         self.kz = ''
 
-        self.c = ''
+        self.rho_c = ''
 
         self.W = ''
 
-    def made_of(self,objects,A_eff):
+    def made_of(self,objects):
 
-        self.kx = sum(c.kx*c.Ly*c.Lz for c in objects)
+        self.Lx = max(c.Lx for c in objects)
+        self.Ly = max(c.Ly for c in objects)
+        self.Lz = sum(c.Lz for c in objects)
+
+        self.V = self.Lx * self.Ly * self.Lz
+
+        self.A_eff = self.Ly*self.Lz #Área efectiva de paso en la dirección x
+
+        self.k_eff = sum((c.kx*c.Ly*c.Lz) for c in objects)/self.A_eff
+        self.rho_c = sum((c.rho_c*c.Ly*c.Lz*c.Lx) for c in objects)/self.V
 
 
 # FR4
@@ -48,17 +58,11 @@ FR4.Lz = 1.5e-3 #m
 FR4.kx = 0.5 #W/(m·K)
 FR4.ky = 0.5 #W/(m·K)
 FR4.kz = 0.25 #W/(m·K)
+FR4.rho_c = 1850 * 3000 # J/(K·m^3)
+
+FR4.kxy = 0.5 #W/(m·K)
 
 # Cu
-Cu_up = elemento()
-Cu.Lx = FR4.Lx #m
-Cu.Ly = FR4.Ly #m
-Cu.Lz = 50e-6 #m
-Cu.F = 0.1
-Cu.kx = 395.0 * Cu.F #W/(m·K)
-Cu.ky = 395.0 * Cu.F #W/(m·K)
-Cu.kz = 395.0 * Cu.F#W/(m·K)
-
 Cu = elemento()
 Cu.Lx = FR4.Lx #m
 Cu.Ly = FR4.Ly #m
@@ -67,6 +71,14 @@ Cu.F = 0.1
 Cu.kx = 395.0 #W/(m·K)
 Cu.ky = 395.0 #W/(m·K)
 Cu.kz = 395.0 #W/(m·K)
+Cu.rho_c = 385 * 8260 # J/(K·m^3)
+
+Cu.k = 395.0 # W/(m·K)
+
+Cu_up = copy.deepcopy(Cu)
+Cu_up.kx = 395.0 * 0.1 #W/(m·K)
+Cu_up.ky = 395.0 * 0.1 #W/(m·K)
+Cu_up.kz = 395.0 * 0.1 #W/(m·K)
 
 # IC
 IC = elemento()
@@ -80,9 +92,7 @@ IC.pitch = 20e-3 #m
 
 # PCB
 PCB = elemento()
-PCB.Lx = FR4.Lx
-PCB.Ly = FR4.Ly
-PCB.Lz = FR4.Lz + 2*Cu.Lz
+PCB.made_of([FR4,Cu,Cu_up]) #Los IC van aparte porque a veces no están
 
 # Paredes
 T_wall = 25+273.15 #K
@@ -95,10 +105,10 @@ print('*** a ***')
 # Debido a la simetría del problema se puede separar el problema en dos
 W_dis = 3*IC.W
 Q_wall = W_dis/2
-phi = W_dis/(PCB.Ly*PCB.Lx*PCB.Lz)
+phi = W_dis/(PCB.V)
 
-A_eff = PCB.Ly*PCB.Lz
-k_eff = (Cu.k*Cu.F*(Cu.Ly*Cu.Lz)+FR4.kxy*(FR4.Ly*FR4.Lz)+Cu.k*(Cu.Ly*Cu.Lz))/A_eff
+A_eff = PCB.A_eff
+k_eff = PCB.k_eff
 L = PCB.Lx/2
 
 ## Solución analítica
@@ -145,21 +155,41 @@ print('Solución numérica')
 
 # Discretización
 
-L = L       # Espacio de simulación
+L = 2*L       # Espacio de simulación
 T = 1000    # Tiempo de simulación
-N = 50      # Número de elementos espaciales
+N = 40      # Número de elementos espaciales
 M = 500     # Número de elementos temporales (ver criterio)
 Dx = L/N
 Dt = T/M
 xa = np.linspace(0,L,N+1)
 ta = np.linspace(0,T,M+1)
 
-Ta = np.ones((M+1,N+1)) # T(t,x)
+rho_c = PCB.rho_c
 
-for t in ta:
-    for x in xa:
+T = T_wall * np.ones((M+1,N+1)) # T(t,x) inicial y sienta las c.c.
 
+for t in range(0,len(ta)-1):
+    for x in range(1,len(xa)-1): # C.C.
+        T[t+1,x] = T[t,x] + Dt/(rho_c*A_eff)*(k_eff*A_eff*(T[t,x+1]-T[t,x])/Dx**2-k_eff*A_eff*(T[t,x]-T[t,x-1])/Dx**2+phi*A_eff)
 
+Ta = np.zeros((len(xa)))
+Ta[:]=T[-1,:]
+T_max = max(Ta)
+
+print('T_max = ',round(T_max),'K ó',round(T_max-273.15),'C')
+
+# Representación gráfica
+
+fig = plt.figure()
+plt.rc('axes', prop_cycle=monochrome)
+plt.plot(xa*1e3,Ta-273.15)
+plt.xlabel('x[mm]')
+plt.ylabel('T[C]')
+plt.title('Distribución de temperatura')
+plt.legend(['Potencia puntual','Potencia uniforme'])
+plt.grid()
+plt.savefig('a_numérica.pdf')
+plt.close()
 
 
 ## b) Considerando que la tarjeta sólo evacua calor por los bordes, determinar la temperatura máxima que se
