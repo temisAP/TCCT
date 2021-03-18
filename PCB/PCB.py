@@ -44,9 +44,9 @@ class elemento(object):
 
         self.V = self.Lx * self.Ly * self.Lz
 
-        self.A_eff = self.Ly*self.Lz #Área efectiva de paso en la dirección x
+        self.Ax = self.Ly*self.Lz #Área efectiva de paso en la dirección x
 
-        self.k_eff = sum((c.kx*c.Ly*c.Lz) for c in objects)/self.A_eff
+        self.kx = sum((c.kx*c.Ly*c.Lz) for c in objects)/self.Ax
         self.rho_c = sum((c.rho_c*c.Ly*c.Lz*c.Lx) for c in objects)/self.V
 
 
@@ -107,8 +107,8 @@ W_dis = 3*IC.W
 Q_wall = W_dis/2
 phi = W_dis/(PCB.V)
 
-A_eff = PCB.A_eff
-k_eff = PCB.k_eff
+A_eff = PCB.Ax
+k_eff = PCB.kx
 L = PCB.Lx/2
 
 ## Solución analítica
@@ -131,24 +131,16 @@ T_max = a2 + b2*L + c2*L**2
 
 print(' Potencia uniforme: T_max = ',round(T_max),'K ó',round(T_max-273.15),'C')
 
-# Representación gráfica de ambas soluciones
+# Discretización de la solución
 
 N = 50
 xa = np.linspace(0,L,N+1)
 Ta1 = a1 + b1*xa
 Ta2 = a2 + b2*xa + c2*xa**2
+xaa = np.concatenate((xa,xa+L))
+Ta1 = np.concatenate((Ta1,np.flip(Ta1)))
+Ta2 = np.concatenate((Ta2,np.flip(Ta2)))
 
-fig = plt.figure()
-plt.rc('axes', prop_cycle=monochrome)
-plt.plot(xa*1e3,Ta1-273.15)
-plt.plot(xa*1e3,Ta2-273.15)
-plt.xlabel('x[mm]')
-plt.ylabel('T[C]')
-plt.title('Distribución de temperatura')
-plt.legend(['Potencia puntual','Potencia uniforme'])
-plt.grid()
-plt.savefig('a_analitica.pdf')
-plt.close()
 
 ## Solución numérica
 print('Solución numérica')
@@ -156,21 +148,38 @@ print('Solución numérica')
 # Discretización
 
 L = 2*L       # Espacio de simulación
-T = 1000    # Tiempo de simulación
-N = 40      # Número de elementos espaciales
-M = 500     # Número de elementos temporales (ver criterio)
+T = 10000    # Tiempo de simulación
+N = 50      # Número de elementos espaciales
+M = 7000     # Número de elementos temporales (ver criterio)
 Dx = L/N
 Dt = T/M
 xa = np.linspace(0,L,N+1)
 ta = np.linspace(0,T,M+1)
 
 rho_c = PCB.rho_c
+p = 0
+h = 0
 
-T = T_wall * np.ones((M+1,N+1)) # T(t,x) inicial y sienta las c.c.
+# Estabilidad
+a=k_eff/(rho_c)             #Diffusivity [m^2/s]
+Fo=a*Dt/(Dx*Dx)         #Fourier's number
+Bi=h*p*Dx/(k_eff*A_eff/Dx)      #Biot's number
+
+if (1-Fo*(2+Bi)) < 0:
+    print('This is unstable increase number of time steps')
+
+T = T_wall * np.ones((M+1,N+1)) # T(t,x) inicial
 
 for t in range(0,len(ta)-1):
-    for x in range(1,len(xa)-1): # C.C.
-        T[t+1,x] = T[t,x] + Dt/(rho_c*A_eff)*(k_eff*A_eff*(T[t,x+1]-T[t,x])/Dx**2-k_eff*A_eff*(T[t,x]-T[t,x-1])/Dx**2+phi*A_eff)
+    for x in range(1,len(xa)-1):
+        # Euler explícito
+        T[t+1,x] = T[t,x] + Dt/(rho_c*A_eff)*(k_eff*A_eff*(T[t,x+1]-T[t,x])/Dx**2-k_eff*A_eff*(T[t,x]-T[t,x-1])/Dx**2 + phi*A_eff)
+    # Condiciones de contorno
+    T[t,1]=T_wall
+    T[t,1]=T[t,2]-Q_wall*Dx/(2*k_eff*A_eff)
+    T[t,N]=T_wall
+    T[t,N]=T[t,N-1]-Q_wall*Dx/(2*k_eff*A_eff)
+
 
 Ta = np.zeros((len(xa)))
 Ta[:]=T[-1,:]
@@ -182,13 +191,16 @@ print('T_max = ',round(T_max),'K ó',round(T_max-273.15),'C')
 
 fig = plt.figure()
 plt.rc('axes', prop_cycle=monochrome)
+plt.plot(xaa*1e3,Ta1-273.15)
+plt.plot(xaa*1e3,Ta2-273.15)
 plt.plot(xa*1e3,Ta-273.15)
 plt.xlabel('x[mm]')
 plt.ylabel('T[C]')
 plt.title('Distribución de temperatura')
-plt.legend(['Potencia puntual','Potencia uniforme'])
+plt.legend(['Potencia puntual','Potencia uniforme','Solución numérica'])
 plt.grid()
-plt.savefig('a_numérica.pdf')
+plt.show()
+plt.savefig('a.pdf')
 plt.close()
 
 
@@ -353,12 +365,13 @@ plt.close()
 ## el del caso anterior
 
 
-# Representación gráfica de las soluciones
+## Representación gráfica de las soluciones
 
+# Analíticas
 fig = plt.figure()
 plt.rc('axes', prop_cycle=monochrome)
-plt.plot(xa*1e3,Ta1-273.15)
-plt.plot(xa*1e3,Ta2-273.15)
+plt.plot(xaa*1e3,Ta1-273.15)
+plt.plot(xaa*1e3,Ta2-273.15)
 plt.plot(xb*1e3,Tb1-273.15)
 plt.plot(xb*1e3,Tb2-273.15)
 plt.xlabel('x[mm]')
@@ -366,5 +379,17 @@ plt.ylabel('T[C]')
 plt.title('Distribución de temperatura')
 plt.legend(['Potencia puntual','Potencia uniforme','kIC→∞','kIC dado'])
 plt.grid()
-plt.savefig('all.pdf')
+plt.savefig('all_analytic.pdf')
+plt.close()
+
+# Numéricas
+fig = plt.figure()
+plt.rc('axes', prop_cycle=monochrome)
+plt.plot(xa*1e3,Ta-273.15)
+plt.xlabel('x[mm]')
+plt.ylabel('T[C]')
+plt.title('Distribución de temperatura')
+plt.legend(['Potencia uniforme','kIC→∞','kIC dado'])
+plt.grid()
+plt.savefig('all_numeric.pdf')
 plt.close()
