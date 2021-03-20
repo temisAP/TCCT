@@ -112,10 +112,10 @@ PCB.add([IC])
 T_wall = 25+273.15 #K
 
 ### Apartados
-apartado_a = 'yes'
+apartado_a = 'no'
 apartado_b = 'no'
 apartado_c = 'no'
-apartado_d = 'no'
+apartado_d = 'yes'
 apartado_e = 'no'
 ###
 numerico = 'yes'
@@ -173,9 +173,9 @@ if apartado_a == 'yes':
         # Discretización
 
         L = 2*L        # Espacio de simulación
-        T = 5000      # Tiempo de simulación
+        T = 5000       # Tiempo de simulación
         N = 70         # Número de elementos espaciales
-        M = int(1e6)       # Número de elementos temporales (ver criterio)
+        M = int(1e6)   # Número de elementos temporales (ver criterio)
         Dx = L/N
         Dt = T/M
         xan = np.linspace(0,L,N+1)
@@ -489,19 +489,21 @@ if apartado_b == 'yes':
 
         print('Con la kIC dada: T_max = ',round(T_max),'K ó',round(T_max-273.15),'C')
 
-        # Representación gráfica de la solución
+    # Representación gráfica de la solución
 
-        fig = plt.figure()
-        #plt.rc('axes', prop_cycle=monochrome)
-        plt.plot(xb*1e3,Tb1-273.15)
-        plt.plot(xb*1e3,Tb2-273.15)
-        plt.xlabel('x[mm]')
-        plt.ylabel('T[C]')
-        plt.title('Distribución de temperatura')
-        plt.legend(['kIC→∞','kIC dado'])
-        plt.grid()
-        plt.savefig('b_analytic.pdf')
-        plt.close()
+    fig = plt.figure()
+    #plt.rc('axes', prop_cycle=monochrome)
+    plt.plot(xb*1e3,Tb1-273.15)
+    plt.plot(xb*1e3,Tb2-273.15)
+    plt.xlabel('x[mm]')
+    plt.ylabel('T[C]')
+    plt.title('Distribución de temperatura')
+    plt.legend(['kIC→∞','kIC dado'])
+    plt.grid()
+    plt.savefig(figures_dir+'b_analytic.pdf')
+    plt.close()
+
+    if numerico == 'yes':
 
         fig = plt.figure()
         #plt.rc('axes', prop_cycle=monochrome)
@@ -512,7 +514,7 @@ if apartado_b == 'yes':
         plt.title('Distribución de temperatura')
         plt.legend(['kIC→∞','kIC dado'])
         plt.grid()
-        plt.savefig('b_numeric.pdf')
+        plt.savefig(figures_dir+'b_numeric.pdf')
         plt.close()
 
 
@@ -527,7 +529,7 @@ if apartado_b == 'yes':
         plt.title('Distribución de temperatura')
         plt.legend(['kIC→∞ (analítica)','kIC dado (analítica)','kIC→∞ (numérica)','kIC dado (numérica)'])
         plt.grid()
-        plt.savefig('b.pdf')
+        plt.savefig(figures_dir+'b.pdf')
         plt.close()
 
 if apartado_c == 'yes':
@@ -618,7 +620,7 @@ if apartado_c == 'yes':
         for t in range(0,len(tc)-1):
             for x in range(1,len(xcn)-1):
                 # Euler explícito
-                T[t+1,x] = T[t,x] + Dt/(rho_c*A_eff)*(k_eff*A_eff*(T[t,x+1]-T[t,x])/Dx**2-k_eff*A_eff*(T[t,x]-T[t,x-1])/Dx**2 + phi*A_eff +  4*(eps1*p1+eps2*p2)*sigma*T_media^3*(T[t,x] - Tinf))
+                T[t+1,x] = T[t,x] + Dt/(rho_c*A_eff)*(k_eff*A_eff*(T[t,x+1]-T[t,x])/Dx**2-k_eff*A_eff*(T[t,x]-T[t,x-1])/Dx**2 + phi*A_eff +  4*(eps1*p1+eps2*p2)*sigma*T_media**3*(T[t,x] - T_inf))
 
             # Condiciones de contorno
             k_eff = PCB.kx
@@ -644,27 +646,29 @@ if apartado_c == 'yes':
     plt.savefig(figures_dir+'c_analytic.pdf')
     plt.close()
 
-    fig = plt.figure()
-    #plt.rc('axes', prop_cycle=monochrome)
-    plt.plot(xcn*1e3,Tcn-273.15)
-    plt.xlabel('x[mm]')
-    plt.ylabel('T[C]')
-    plt.title('Distribución de temperatura')
-    plt.grid()
-    plt.savefig(figures_dir+'c_numeric.pdf')
-    plt.close()
+    if numerico == 'yes':
 
-    fig = plt.figure()
-    #plt.rc('axes', prop_cycle=monochrome)
-    plt.plot(xc*1e3,Tc-273.15)
-    plt.plot(xcn*1e3,Tcn-273.15)
-    plt.xlabel('x[mm]')
-    plt.ylabel('T[C]')
-    plt.title('Distribución de temperatura')
-    plt.legend(['Solución analítica','Solución numérica'])
-    plt.grid()
-    plt.savefig(figures_dir+'c.pdf')
-    plt.close()
+        fig = plt.figure()
+        #plt.rc('axes', prop_cycle=monochrome)
+        plt.plot(xcn*1e3,Tcn-273.15)
+        plt.xlabel('x[mm]')
+        plt.ylabel('T[C]')
+        plt.title('Distribución de temperatura')
+        plt.grid()
+        plt.savefig(figures_dir+'c_numeric.pdf')
+        plt.close()
+
+        fig = plt.figure()
+        #plt.rc('axes', prop_cycle=monochrome)
+        plt.plot(xc*1e3,Tc-273.15)
+        plt.plot(xcn*1e3,Tcn-273.15)
+        plt.xlabel('x[mm]')
+        plt.ylabel('T[C]')
+        plt.title('Distribución de temperatura')
+        plt.legend(['Solución analítica','Solución numérica'])
+        plt.grid()
+        plt.savefig(figures_dir+'c.pdf')
+        plt.close()
 
 if apartado_d == 'yes':
     print('*** d ***')
@@ -679,6 +683,7 @@ if apartado_d == 'yes':
 
     phi = IC.W/(IC.Lx*PCB.Ly*PCB.Lz)
     A_eff = PCB.Ax
+    k_eff = PCB.kx
 
     ## Solución numérica
     print('Solución numérica')
@@ -718,7 +723,7 @@ if apartado_d == 'yes':
 
         # Propiedades
         def k(pos):
-            x = xbn[pos]
+            x = xdn[pos]
             k1 = PCB.kx
             k2 = PCB.kx2
             from numpy import heaviside as H
@@ -726,7 +731,7 @@ if apartado_d == 'yes':
             return val
 
         def rho_c(pos):
-            x = xbn[pos]
+            x = xdn[pos]
             rho_c1 = PCB.rho_c
             rho_c2 = PCB.rho_c2
             from numpy import heaviside as H
@@ -734,7 +739,7 @@ if apartado_d == 'yes':
             return val
 
         def phii(pos):
-            x = xbn[pos]
+            x = xdn[pos]
             from numpy import heaviside as H
             val = (H(x-L1,0.5)-H(x-L2,0.5)+H(x-L3,0.5)-H(x-L5,0.5)+H(x-L6,0.5)-H(x-L7,0.5))*(phi)
             return val
@@ -746,7 +751,7 @@ if apartado_d == 'yes':
                 kp = (k(x+1)+k(x))/2
                 kn = (k(x)+k(x-1))/2
                 # Euler explícito
-                T[t+1,x] = T[t,x] + Dt/(rho_c(x)*A_eff)*(kp*A_eff*(T[t,x+1]-T[t,x])/Dx**2-kn*A_eff*(T[t,x]-T[t,x-1])/Dx**2 + phii(x)*A_eff - (eps1*p1+eps2*p2)*sigma*(T[t,x]**4 - Tinf**4))
+                T[t+1,x] = T[t,x] + Dt/(rho_c(x)*A_eff)*(kp*A_eff*(T[t,x+1]-T[t,x])/Dx**2-kn*A_eff*(T[t,x]-T[t,x-1])/Dx**2 + phii(x)*A_eff - (eps1*p1+eps2*p2)*sigma*(T[t,x]**4 - T_inf**4))
 
             # Condiciones de contorno
             k_eff = PCB.kx
