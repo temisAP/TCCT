@@ -1,3 +1,4 @@
+import os
 import numpy as np
 from math import exp
 import matplotlib.pyplot as plt
@@ -5,6 +6,10 @@ import copy
 from cycler import cycler
 monochrome = (cycler('color', ['k']) * cycler('marker', ['', '.']) *
               cycler('linestyle', ['-', '--', ':','-.']))
+
+figures_dir = './Figures/'
+if not os.path.exists(figures_dir):
+    os.makedirs(figures_dir)
 
 
 class elemento(object):
@@ -108,12 +113,12 @@ T_wall = 25+273.15 #K
 
 ### Apartados
 apartado_a = 'yes'
-apartado_b = 'yes'
-apartado_c = 'yes'
+apartado_b = 'no'
+apartado_c = 'no'
 apartado_d = 'no'
 apartado_e = 'no'
 ###
-numerico = 'no'
+numerico = 'yes'
 
 if apartado_a == 'yes':
     print('*** a ***')
@@ -167,10 +172,10 @@ if apartado_a == 'yes':
     if numerico == 'yes':
         # Discretización
 
-        L = 2*L         # Espacio de simulación
-        T = 10000        # Tiempo de simulación
-        N = 50         # Número de elementos espaciales
-        M = 7000       # Número de elementos temporales (ver criterio)
+        L = 2*L        # Espacio de simulación
+        T = 5000      # Tiempo de simulación
+        N = 70         # Número de elementos espaciales
+        M = int(1e6)       # Número de elementos temporales (ver criterio)
         Dx = L/N
         Dt = T/M
         xan = np.linspace(0,L,N+1)
@@ -193,7 +198,7 @@ if apartado_a == 'yes':
         T = T_wall * np.ones((M+1,N+1)) # T(t,x) inicial
 
         for t in range(0,len(ta)-1):
-            for x in range(1,len(xan)-1):
+            for x in range(2,len(xan)-2):
                 # Euler explícito
                 T[t+1,x] = T[t,x] + Dt/(rho_c*A_eff)*(k_eff*A_eff*(T[t,x+1]-T[t,x])/Dx**2-k_eff*A_eff*(T[t,x]-T[t,x-1])/Dx**2)
             # Condiciones de contorno
@@ -241,7 +246,7 @@ if apartado_a == 'yes':
         plt.title('Distribución de temperatura')
         plt.legend(['Potencia puntual','Potencia uniforme'])
         plt.grid()
-        plt.savefig('a_analytic.pdf')
+        plt.savefig(figures_dir+"/a_analytic.pdf")
         plt.close()
 
 
@@ -254,7 +259,7 @@ if apartado_a == 'yes':
         plt.title('Distribución de temperatura')
         plt.legend(['Potencia puntual','Potencia uniforme'])
         plt.grid()
-        plt.savefig('a_numeric.pdf')
+        plt.savefig(figures_dir+'a_numeric.pdf')
         plt.close()
 
 
@@ -269,7 +274,7 @@ if apartado_a == 'yes':
         plt.title('Distribución de temperatura')
         plt.legend(['Potencia puntual (analítica)','Potencia uniforme (analítica)','Potencia puntual (numérica)','Potencia uniforme (numérica)'])
         plt.grid()
-        plt.savefig('a.pdf')
+        plt.savefig(figures_dir+'a.pdf')
         plt.close()
 
 if apartado_b == 'yes':
@@ -388,7 +393,7 @@ if apartado_b == 'yes':
         L = PCB.Lx     # Espacio de simulación
         T = 5000       # Tiempo de simulación
         N = 70         # Número de elementos espaciales
-        M = int(1e5)   # Número de elementos temporales (ver criterio)
+        M = int(1e6)   # Número de elementos temporales (ver criterio)
         Dx = L/N
         Dt = T/M
         xbn = np.linspace(0,L,N+1)
@@ -544,6 +549,9 @@ if apartado_c == 'yes':
     k_eff = PCB.kx
     L = PCB.Lx
 
+    ## Solución analítica
+    print('Solución analítica')
+
     # T(x) = c1 * exp(a**0.5*x) + c2 * exp(-a**0.5*x) + T_chi
 
     a = 4*(p1*eps1+p2*eps2)*sigma*T_media**3 / (k_eff*A_eff)
@@ -562,31 +570,330 @@ if apartado_c == 'yes':
 
     T_max = c1 * np.exp(eta*L/2) + c2 * np.exp(-eta*L/2) + T_chi
 
-    print('T_max = ',round(T_max),'K ó',round(T_max-273.15),'C')
+    print(' T_max = ',round(T_max),'K ó',round(T_max-273.15),'C')
+
+
+    ## Solución numérica
+    print('Solución numérica')
+
+    # Discretización
+
+    if numerico == 'yes':
+
+        L1 = PCB.Lx/2 - IC.Lx- IC.pitch- IC.Lx/2
+        L2 = IC.Lx + L1
+        L3 = IC.pitch + L2
+        L4 = IC.Lx/2 + L3
+        L5 = IC.Lx/2 + L4
+        L6 = IC.pitch + L5
+        L7 = IC.Lx + L6
+        L8 = PCB.Lx
+
+        L = PCB.Lx     # Espacio de simulación
+        T = 5000       # Tiempo de simulación
+        N = 70         # Número de elementos espaciales
+        M = int(1e6)   # Número de elementos temporales (ver criterio)
+        Dx = L/N
+        Dt = T/M
+        xcn = np.linspace(0,L,N+1)
+        tc  = np.linspace(0,T,M+1)
+
+        p = 0
+        h = 0
+
+        # Estabilidad
+        a=PCB.kx/(PCB.rho_c)            #Diffusivity [m^2/s]
+        Fo=a*Dt/(Dx*Dx)                 #Fourier's number
+        Bi=h*p*Dx/(k_eff*A_eff/Dx)      #Biot's number
+
+        if (1-Fo*(2+Bi)) < 0:
+            print('This is unstable increase number of time steps')
+
+        # Propiedades
+        k_eff = PCB.kx
+        rho_c = PCB.rho_c
+        phi = 3*IC.W/PCB.V
+
+        T = T_wall * np.ones((M+1,N+1)) # T(t,x) inicial
+        for t in range(0,len(tc)-1):
+            for x in range(1,len(xcn)-1):
+                # Euler explícito
+                T[t+1,x] = T[t,x] + Dt/(rho_c*A_eff)*(k_eff*A_eff*(T[t,x+1]-T[t,x])/Dx**2-k_eff*A_eff*(T[t,x]-T[t,x-1])/Dx**2 + phi*A_eff +  4*(eps1*p1+eps2*p2)*sigma*T_media^3*(T[t,x] - Tinf))
+
+            # Condiciones de contorno
+            k_eff = PCB.kx
+            T[t,1]=T_wall
+            T[t,N]=T_wall
+
+        Tcn = np.zeros((len(xcn)))
+        Tcn[:]=T[-1,:]
+        T_max = max(Tcn)
+
+        print(' T_max = ',round(T_max),'K ó',round(T_max-273.15),'C')
 
     # Representación gráfica de la solución
 
     fig = plt.figure()
-    plt.rc('axes', prop_cycle=monochrome)
+    #plt.rc('axes', prop_cycle=monochrome)
     plt.plot(xc*1e3,Tc-273.15)
     plt.xlabel('x[mm]')
     plt.ylabel('T[C]')
     plt.title('Distribución de temperatura')
+    plt.legend(['Solución analítica','Solución numérica'])
     plt.grid()
-    plt.savefig('c.pdf')
+    plt.savefig(figures_dir+'c_analytic.pdf')
+    plt.close()
+
+    fig = plt.figure()
+    #plt.rc('axes', prop_cycle=monochrome)
+    plt.plot(xcn*1e3,Tcn-273.15)
+    plt.xlabel('x[mm]')
+    plt.ylabel('T[C]')
+    plt.title('Distribución de temperatura')
+    plt.grid()
+    plt.savefig(figures_dir+'c_numeric.pdf')
+    plt.close()
+
+    fig = plt.figure()
+    #plt.rc('axes', prop_cycle=monochrome)
+    plt.plot(xc*1e3,Tc-273.15)
+    plt.plot(xcn*1e3,Tcn-273.15)
+    plt.xlabel('x[mm]')
+    plt.ylabel('T[C]')
+    plt.title('Distribución de temperatura')
+    plt.legend(['Solución analítica','Solución numérica'])
+    plt.grid()
+    plt.savefig(figures_dir+'c.pdf')
     plt.close()
 
 if apartado_d == 'yes':
     print('*** d ***')
     ## d) Resolver el caso anterior pero sin linealizar y con la disipación no uniforme.
+
+    eps1 = 0.7
+    p1 = PCB.Ly
+    eps2 = 0.5
+    p2 = PCB.Ly
+    T_inf = 45+273.15 #K
+    sigma = 5.67e-8  #W/m^2·K^4
+
+    phi = IC.W/(IC.Lx*PCB.Ly*PCB.Lz)
+    A_eff = PCB.Ax
+
+    ## Solución numérica
+    print('Solución numérica')
+
+    # Discretización
+
+    if numerico == 'yes':
+
+        L1 = PCB.Lx/2 - IC.Lx- IC.pitch- IC.Lx/2
+        L2 = IC.Lx + L1
+        L3 = IC.pitch + L2
+        L4 = IC.Lx/2 + L3
+        L5 = IC.Lx/2 + L4
+        L6 = IC.pitch + L5
+        L7 = IC.Lx + L6
+        L8 = PCB.Lx
+
+        L = PCB.Lx     # Espacio de simulación
+        T = 5000       # Tiempo de simulación
+        N = 70         # Número de elementos espaciales
+        M = int(1e6)   # Número de elementos temporales (ver criterio)
+        Dx = L/N
+        Dt = T/M
+        xdn = np.linspace(0,L,N+1)
+        td  = np.linspace(0,T,M+1)
+
+        p = 0
+        h = 0
+
+        # Estabilidad
+        a=PCB.kx/(PCB.rho_c)            #Diffusivity [m^2/s]
+        Fo=a*Dt/(Dx*Dx)                 #Fourier's number
+        Bi=h*p*Dx/(k_eff*A_eff/Dx)      #Biot's number
+
+        if (1-Fo*(2+Bi)) < 0:
+            print('This is unstable increase number of time steps')
+
+        # Propiedades
+        def k(pos):
+            x = xbn[pos]
+            k1 = PCB.kx
+            k2 = PCB.kx2
+            from numpy import heaviside as H
+            val = k1 + (H(x-L1,0.5)-H(x-L2,0.5)+H(x-L3,0.5)-H(x-L5,0.5)+H(x-L6,0.5)-H(x-L7,0.5))*(k2-k1)
+            return val
+
+        def rho_c(pos):
+            x = xbn[pos]
+            rho_c1 = PCB.rho_c
+            rho_c2 = PCB.rho_c2
+            from numpy import heaviside as H
+            val = rho_c1 + (H(x-L1,0.5)-H(x-L2,0.5)+H(x-L3,0.5)-H(x-L5,0.5)+H(x-L6,0.5)-H(x-L7,0.5))*(rho_c2-rho_c1)
+            return val
+
+        def phii(pos):
+            x = xbn[pos]
+            from numpy import heaviside as H
+            val = (H(x-L1,0.5)-H(x-L2,0.5)+H(x-L3,0.5)-H(x-L5,0.5)+H(x-L6,0.5)-H(x-L7,0.5))*(phi)
+            return val
+
+        T = T_wall * np.ones((M+1,N+1)) # T(t,x) inicial
+        for t in range(0,len(td)-1):
+            for x in range(1,len(xdn)-1):
+                # Propiedades
+                kp = (k(x+1)+k(x))/2
+                kn = (k(x)+k(x-1))/2
+                # Euler explícito
+                T[t+1,x] = T[t,x] + Dt/(rho_c(x)*A_eff)*(kp*A_eff*(T[t,x+1]-T[t,x])/Dx**2-kn*A_eff*(T[t,x]-T[t,x-1])/Dx**2 + phii(x)*A_eff - (eps1*p1+eps2*p2)*sigma*(T[t,x]**4 - Tinf**4))
+
+            # Condiciones de contorno
+            k_eff = PCB.kx
+            T[t,1]=T_wall
+            T[t,N]=T_wall
+
+        Tdn = np.zeros((len(xdn)))
+        Tdn[:]=T[-1,:]
+        T_max = max(Tdn)
+
+        print(' T_max = ',round(T_max),'K ó',round(T_max-273.15),'C')
+
+    # Representación gráfica de la solución
+
+    fig = plt.figure()
+    #plt.rc('axes', prop_cycle=monochrome)
+    plt.plot(xdn*1e3,Tdn-273.15)
+    plt.xlabel('x[mm]')
+    plt.ylabel('T[C]')
+    plt.title('Distribución de temperatura')
+    plt.grid()
+    plt.savefig(figures_dir+'d.pdf')
+    plt.close()
+
 if apartado_e == 'yes':
     print('*** e ***')
     ## e) Resolver el problema térmico bidimensional estacionario y comparar el perfil central de temperaturas con
     ## el del caso anterior
 
-## Representación gráfica de las soluciones
+    eps1 = 0.7
+    p1 = PCB.Ly
+    eps2 = 0.5
+    p2 = PCB.Ly
+    T_inf = 45+273.15 #K
+    sigma = 5.67e-8  #W/m^2·K^4
 
-if apartado_a == 'yes' and apartado_b == 'yes' and apartado_c == 'yes' and apartado_c == 'yes' and apartado_c == 'yes':
+    phi = IC.W/(IC.Lx*IC.Ly*PCB.Lz)
+    z_eff = PCB.Lz
+
+    ## Solución numérica
+    print('Solución numérica')
+
+    # Discretización
+
+    if numerico == 'yes':
+
+        L1x = PCB.Lx/2 - IC.Lx- IC.pitch- IC.Lx/2
+        L2x = IC.Lx + L1x
+        L3x = IC.pitch + L2x
+        L4x = IC.Lx/2 + L3x
+        L5x = IC.Lx/2 + L4x
+        L6x = IC.pitch + L5x
+        L7x = IC.Lx + L6x
+        L8x = PCB.Lx
+
+        L1y = (PCB.Ly - IC.Ly)/2
+        L2y = IC.Ly + L1y
+        L3y = PCB.Ly
+
+        Lx = PCB.Lx     # Espacio de simulación
+        Ly = PCB.Ly     # Espacio de simulación
+        T = 5000       # Tiempo de simulación
+        Nx = 70         # Número de elementos espaciales
+        Ny = 70         # Número de elementos espaciales
+        M = int(1e6)   # Número de elementos temporales (ver criterio)
+        Dx = L/N
+        Dt = T/M
+        xen = np.linspace(0,Lx,N+1)
+        yen = np.linspace(0,Ly,N+1)
+        te  = np.linspace(0,T,M+1)
+
+        p = 0
+        h = 0
+
+        # Estabilidad
+        a=PCB.kx/(PCB.rho_c)            #Diffusivity [m^2/s]
+        Fo=a*Dt/(Dx*Dx)                 #Fourier's number
+        Bi=h*p*Dx/(k_eff*A_eff/Dx)      #Biot's number
+
+        if (1-Fo*(2+Bi)) < 0:
+            print('This is unstable increase number of time steps')
+
+        # Propiedades
+        def k(posx,posy):
+            x = xen[posx]
+            y = yen[posy]
+            k1 = PCB.kx #En el plano son iguales
+            k2 = PCB.kx2
+            from numpy import heaviside as H
+            val = k1 + (H(x-L1x,0.5)-H(x-L2x,0.5)+H(x-L3x,0.5)-H(x-L5x,0.5)+H(x-L6x,0.5)-H(x-L7x,0.5))*(k2-k1)+(H(y-L1y,0.5)-H(y-L2y,0.5))*(k2-k1)
+            return val
+
+        def rho_c(posx,posy):
+            x = xen[pos]
+            y = yen[posy]
+            rho_c1 = PCB.rho_c
+            rho_c2 = PCB.rho_c2
+            from numpy import heaviside as H
+            val = rho_c1 + (H(x-L1x,0.5)-H(x-L2x,0.5)+H(x-L3x,0.5)-H(x-L5x,0.5)+H(x-L6x,0.5)-H(x-L7x,0.5))*(rho_c2-rho_c1) +(H(y-L1y,0.5)-H(y-L2y,0.5))*(rho_c2-rho_c1)
+            return val
+            return val
+
+        def phii(posx,posy):
+            x = xen[pos]
+            y = yen[posy]
+            from numpy import heaviside as H
+            val = (H(x-L1x,0.5)-H(x-L2x,0.5)+H(x-L3x,0.5)-H(x-L5x,0.5)+H(x-L6x,0.5)-H(x-L7x,0.5))*(phi)+(H(y-L1y,0.5)-H(y-L2y,0.5))*(phi)
+            return val
+            return val
+
+        T = T_wall * np.ones((M+1,Nx+1,Ny+1)) # T(t,x,y) inicial
+        for t in range(0,len(te)-1):
+            for y in range(1,len(yen)-1):
+                for x in range(1,len(xen)-1):
+                    # Propiedades
+                    kpx = (k(x+1,y)+k(x,y))/2
+                    knx = (k(x,y)+k(x-1,y))/2
+                    kpy = (k(x,y+1)+k(x,y))/2
+                    kny = (k(x)+k(x,y-1))/2
+                    # Euler explícito
+                    T[t+1,x,y] = T[t,x,y] + Dt/(rho_c(x,y)*A_eff)*(
+                    kpx*z_eff*(T[t,x+1,y]-T[t,x,y])/Dx**2-
+                    knx*z_eff*(T[t,x,y]-T[t,x-1,y])/Dx**2+
+                    kpy*z_eff*(T[t,x,y+1]-T[t,x,y])/Dy**2-
+                    kny*z_eff*(T[t,x,y]-T[t,x,y-1])/Dy**2+
+                    phii(x,y)*z_eff - (eps1+eps2)*sigma*(T[t,x,y]**4 - Tinf**4))
+
+            # Condiciones de adiabaticidad
+            T[t,:,0]=T[t,:,1]
+            T[t,:,Ny]=T[t,:,Ny-1]
+
+            # Condiciones de contorno en la pared
+            T[t,1,:]=T_wall
+            T[t,Nx,:]=T_wall
+
+        Ten = np.zeros((len(xen)))
+        Ten[:]=T[-1,:]
+        T_max = max(Ten)
+
+        print(' T_max = ',round(T_max),'K ó',round(T_max-273.15),'C')
+
+    # Representación gráfica de la solución
+
+
+## Representación gráfica de las soluciones unidimensionales
+
+if apartado_a == 'yes' and apartado_b == 'yes' and apartado_c == 'yes' and apartado_d == 'yes':
 
     # Analíticas
     fig = plt.figure()
