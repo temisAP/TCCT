@@ -115,8 +115,8 @@ T_wall = 25+273.15 #K
 apartado_a = 'no'
 apartado_b = 'no'
 apartado_c = 'no'
-apartado_d = 'yes'
-apartado_e = 'no'
+apartado_d = 'no'
+apartado_e = 'yes'
 ###
 numerico = 'yes'
 
@@ -813,14 +813,15 @@ if apartado_e == 'yes':
 
         Lx = PCB.Lx     # Espacio de simulación
         Ly = PCB.Ly     # Espacio de simulación
-        T = 5000       # Tiempo de simulación
-        Nx = 70         # Número de elementos espaciales
+        T = 4000       # Tiempo de simulación
+        Nx = 10         # Número de elementos espaciales
         Ny = 70         # Número de elementos espaciales
         M = int(1e6)   # Número de elementos temporales (ver criterio)
-        Dx = L/N
+        Dx = Lx/Nx
+        Dy = Ly/Ny
         Dt = T/M
-        xen = np.linspace(0,Lx,N+1)
-        yen = np.linspace(0,Ly,N+1)
+        xen = np.linspace(0,Lx,Nx+1)
+        yen = np.linspace(0,Ly,Ny+1)
         te  = np.linspace(0,T,M+1)
 
         p = 0
@@ -829,7 +830,7 @@ if apartado_e == 'yes':
         # Estabilidad
         a=PCB.kx/(PCB.rho_c)            #Diffusivity [m^2/s]
         Fo=a*Dt/(Dx*Dx)                 #Fourier's number
-        Bi=h*p*Dx/(k_eff*A_eff/Dx)      #Biot's number
+        Bi=h*p*Dx/(PCB.kx*PCB.Ax/Dx)      #Biot's number
 
         if (1-Fo*(2+Bi)) < 0:
             print('This is unstable increase number of time steps')
@@ -845,7 +846,7 @@ if apartado_e == 'yes':
             return val
 
         def rho_c(posx,posy):
-            x = xen[pos]
+            x = xen[posx]
             y = yen[posy]
             rho_c1 = PCB.rho_c
             rho_c2 = PCB.rho_c2
@@ -855,7 +856,7 @@ if apartado_e == 'yes':
             return val
 
         def phii(posx,posy):
-            x = xen[pos]
+            x = xen[posx]
             y = yen[posy]
             from numpy import heaviside as H
             val = (H(x-L1x,0.5)-H(x-L2x,0.5)+H(x-L3x,0.5)-H(x-L5x,0.5)+H(x-L6x,0.5)-H(x-L7x,0.5))*(phi)+(H(y-L1y,0.5)-H(y-L2y,0.5))*(phi)
@@ -870,14 +871,15 @@ if apartado_e == 'yes':
                     kpx = (k(x+1,y)+k(x,y))/2
                     knx = (k(x,y)+k(x-1,y))/2
                     kpy = (k(x,y+1)+k(x,y))/2
-                    kny = (k(x)+k(x,y-1))/2
+                    kny = (k(x,y)+k(x,y-1))/2
                     # Euler explícito
-                    T[t+1,x,y] = T[t,x,y] + Dt/(rho_c(x,y)*A_eff)*(
-                    kpx*z_eff*(T[t,x+1,y]-T[t,x,y])/Dx**2-
-                    knx*z_eff*(T[t,x,y]-T[t,x-1,y])/Dx**2+
-                    kpy*z_eff*(T[t,x,y+1]-T[t,x,y])/Dy**2-
-                    kny*z_eff*(T[t,x,y]-T[t,x,y-1])/Dy**2+
-                    phii(x,y)*z_eff - (eps1+eps2)*sigma*(T[t,x,y]**4 - Tinf**4))
+                    T[t+1,x,y] = T[t,x,y] + Dt/(rho_c(x,y)*z_eff)*(\
+                    +kpx*z_eff*(T[t,x+1,y]-T[t,x,y])/Dx**2\
+                    -knx*z_eff*(T[t,x,y]-T[t,x-1,y])/Dx**2\
+                    +kpy*z_eff*(T[t,x,y+1]-T[t,x,y])/Dy**2\
+                    -kny*z_eff*(T[t,x,y]-T[t,x,y-1])/Dy**2\
+                    +phii(x,y)*z_eff \
+                    - (eps1+eps2)*sigma*(T[t,x,y]**4 - T_inf**4))
 
             # Condiciones de adiabaticidad
             T[t,:,0]=T[t,:,1]
