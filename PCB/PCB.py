@@ -889,8 +889,8 @@ if apartado_e == 'yes':
             T[t,1,:]=T_wall
             T[t,Nx,:]=T_wall
 
-        Ten = np.zeros((len(xen)))
-        Ten[:]=T[-1,:]
+        Ten = np.zeros((len(xen),len(yen)))
+        Ten[:,:]=T[-1,:,:]
         T_max = max(Ten)
 
         print(' T_max = ',round(T_max),'K ó',round(T_max-273.15),'C')
