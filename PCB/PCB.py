@@ -813,10 +813,10 @@ if apartado_e == 'yes':
 
         Lx = PCB.Lx     # Espacio de simulación
         Ly = PCB.Ly     # Espacio de simulación
-        T = 4000       # Tiempo de simulación
-        Nx = 10         # Número de elementos espaciales
-        Ny = 70         # Número de elementos espaciales
-        M = int(1e6)   # Número de elementos temporales (ver criterio)
+        T = 3000       # Tiempo de simulación
+        Nx = 5         # Número de elementos espaciales
+        Ny = 50         # Número de elementos espaciales
+        M = int(1e4)   # Número de elementos temporales (ver criterio)
         Dx = Lx/Nx
         Dy = Ly/Ny
         Dt = T/M
