@@ -1,16 +1,12 @@
 import os
 import numpy as np
+import pandas as pd
 from math import exp
-import matplotlib.pyplot as plt
 import copy
-from cycler import cycler
-monochrome = (cycler('color', ['k']) * cycler('marker', ['', '.']) *
-              cycler('linestyle', ['-', '--', ':','-.']))
 
-figures_dir = './Figures/'
-if not os.path.exists(figures_dir):
-    os.makedirs(figures_dir)
-
+results_dir = './Results/'
+if not os.path.exists(results_dir):
+    os.makedirs(results_dir)
 
 class elemento(object):
 
@@ -49,6 +45,8 @@ class elemento(object):
         self.kx2 = sum((c.kx*c.Ly*c.Lz) for c in objects)/self.Ax + self.kx
         self.rho_c2 = sum((c.rho_c*c.Ly*c.Lz*c.Lx) for c in objects)/self.V + self.rho_c
 
+def save_result(result):
+    np.savetxt(results_dir+str(result)+'.csv', result, delimiter=',', fmt='%s')
 
 ### ENUNCIADO ###
 ## Considérese una tarjeta electrónica (PCB) de 140×100×1,5 mm3 de FR-4, con un recubrimiento de 50 µm de
@@ -59,7 +57,6 @@ class elemento(object):
 ## separación entre ellos). Se supondrá que los lados cortos de la PCB tienen contacto térmico perfecto con paredes
 ## permanentemente a 25 ºC, y que los otros dos bordes están térmicamente aislados. Tómese para el FR-4 k=0,5
 ## W/(m·K) en el plano y la mitad a su través. Se pide:
-
 
 # FR4
 FR4 = elemento()
@@ -112,11 +109,11 @@ PCB.add([IC])
 T_wall = 25+273.15 #K
 
 ### Apartados
-apartado_a = 'no'
+apartado_a = 'yes'
 apartado_b = 'no'
 apartado_c = 'no'
 apartado_d = 'no'
-apartado_e = 'yes'
+apartado_e = 'no'
 ###
 numerico = 'yes'
 
@@ -164,6 +161,11 @@ if apartado_a == 'yes':
     xa = np.concatenate((xa,xa+L))
     Ta1 = np.concatenate((Ta1,np.flip(Ta1)))
     Ta2 = np.concatenate((Ta2,np.flip(Ta2)))
+
+    # Guardar resultados
+    save_result('xa',xa)
+    save_result('Ta1',Ta1)
+    save_result('Ta2',Ta2)
 
 
     ## Solución numérica
@@ -235,47 +237,11 @@ if apartado_a == 'yes':
 
         print(' Potencia uniforme: T_max = ',round(T_max),'K ó',round(T_max-273.15),'C')
 
-        # Representación gráfica
+        # Guardar resultados
+        save_result('xan',xan)
+        save_result('Ta1n',Ta1n)
+        save_result('Ta2n',Ta2n)
 
-        fig = plt.figure()
-        #plt.rc('axes', prop_cycle=monochrome)
-        plt.plot(xa*1e3,Ta1-273.15)
-        plt.plot(xa*1e3,Ta2-273.15)
-        plt.xlabel('x[mm]')
-        plt.ylabel('T[C]')
-        plt.title('Distribución de temperatura')
-        plt.legend(['Potencia puntual','Potencia uniforme'])
-        plt.grid()
-        plt.savefig(figures_dir+"/a_analytic.pdf")
-        plt.close()
-
-
-        fig = plt.figure()
-        #plt.rc('axes', prop_cycle=monochrome)
-        plt.plot(xan*1e3,Ta1n-273.15)
-        plt.plot(xan*1e3,Ta2n-273.15)
-        plt.xlabel('x[mm]')
-        plt.ylabel('T[C]')
-        plt.title('Distribución de temperatura')
-        plt.legend(['Potencia puntual','Potencia uniforme'])
-        plt.grid()
-        plt.savefig(figures_dir+'a_numeric.pdf')
-        plt.close()
-
-
-        fig = plt.figure()
-        #plt.rc('axes', prop_cycle=monochrome)
-        plt.plot(xa*1e3,Ta1-273.15)
-        plt.plot(xa*1e3,Ta2-273.15)
-        plt.plot(xan*1e3,Ta1n-273.15)
-        plt.plot(xan*1e3,Ta2n-273.15)
-        plt.xlabel('x[mm]')
-        plt.ylabel('T[C]')
-        plt.title('Distribución de temperatura')
-        plt.legend(['Potencia puntual (analítica)','Potencia uniforme (analítica)','Potencia puntual (numérica)','Potencia uniforme (numérica)'])
-        plt.grid()
-        plt.savefig(figures_dir+'a.pdf')
-        plt.close()
 
 if apartado_b == 'yes':
     print('*** b ***')
@@ -373,6 +339,11 @@ if apartado_b == 'yes':
     T_max = max(Tb2)
 
     print(' Con la kIC dada: T_max = ',round(T_max),'K ó',round(T_max-273.15),'C')
+
+    # Guardar resultados
+    save_result('xb',xb)
+    save_result('Tb1',Tb1)
+    save_result('Tb2',Tb2)
 
     ## Solución numérica
     print('Solución numérica')
@@ -489,48 +460,10 @@ if apartado_b == 'yes':
 
         print('Con la kIC dada: T_max = ',round(T_max),'K ó',round(T_max-273.15),'C')
 
-    # Representación gráfica de la solución
-
-    fig = plt.figure()
-    #plt.rc('axes', prop_cycle=monochrome)
-    plt.plot(xb*1e3,Tb1-273.15)
-    plt.plot(xb*1e3,Tb2-273.15)
-    plt.xlabel('x[mm]')
-    plt.ylabel('T[C]')
-    plt.title('Distribución de temperatura')
-    plt.legend(['kIC→∞','kIC dado'])
-    plt.grid()
-    plt.savefig(figures_dir+'b_analytic.pdf')
-    plt.close()
-
-    if numerico == 'yes':
-
-        fig = plt.figure()
-        #plt.rc('axes', prop_cycle=monochrome)
-        plt.plot(xbn*1e3,Tb1n-273.15)
-        plt.plot(xbn*1e3,Tb2n-273.15)
-        plt.xlabel('x[mm]')
-        plt.ylabel('T[C]')
-        plt.title('Distribución de temperatura')
-        plt.legend(['kIC→∞','kIC dado'])
-        plt.grid()
-        plt.savefig(figures_dir+'b_numeric.pdf')
-        plt.close()
-
-
-        fig = plt.figure()
-        #plt.rc('axes', prop_cycle=monochrome)
-        plt.plot(xb*1e3,Tb1-273.15)
-        plt.plot(xb*1e3,Tb2-273.15)
-        plt.plot(xbn*1e3,Tb1n-273.15)
-        plt.plot(xbn*1e3,Tb2n-273.15)
-        plt.xlabel('x[mm]')
-        plt.ylabel('T[C]')
-        plt.title('Distribución de temperatura')
-        plt.legend(['kIC→∞ (analítica)','kIC dado (analítica)','kIC→∞ (numérica)','kIC dado (numérica)'])
-        plt.grid()
-        plt.savefig(figures_dir+'b.pdf')
-        plt.close()
+        # Guardar resultados
+        save_result('xb',xb)
+        save_result('Tb1',Tb1)
+        save_result('Tb2',Tb2)
 
 if apartado_c == 'yes':
     print('*** c ***')
@@ -574,6 +507,9 @@ if apartado_c == 'yes':
 
     print(' T_max = ',round(T_max),'K ó',round(T_max-273.15),'C')
 
+    # Guardar resultados
+    save_result('xc',xc)
+    save_result('Tc',Tc)
 
     ## Solución numérica
     print('Solución numérica')
@@ -633,42 +569,10 @@ if apartado_c == 'yes':
 
         print(' T_max = ',round(T_max),'K ó',round(T_max-273.15),'C')
 
-    # Representación gráfica de la solución
+        # Guardar resultados
+        save_result(xcn)
+        save_result(Tcn)
 
-    fig = plt.figure()
-    #plt.rc('axes', prop_cycle=monochrome)
-    plt.plot(xc*1e3,Tc-273.15)
-    plt.xlabel('x[mm]')
-    plt.ylabel('T[C]')
-    plt.title('Distribución de temperatura')
-    plt.legend(['Solución analítica','Solución numérica'])
-    plt.grid()
-    plt.savefig(figures_dir+'c_analytic.pdf')
-    plt.close()
-
-    if numerico == 'yes':
-
-        fig = plt.figure()
-        #plt.rc('axes', prop_cycle=monochrome)
-        plt.plot(xcn*1e3,Tcn-273.15)
-        plt.xlabel('x[mm]')
-        plt.ylabel('T[C]')
-        plt.title('Distribución de temperatura')
-        plt.grid()
-        plt.savefig(figures_dir+'c_numeric.pdf')
-        plt.close()
-
-        fig = plt.figure()
-        #plt.rc('axes', prop_cycle=monochrome)
-        plt.plot(xc*1e3,Tc-273.15)
-        plt.plot(xcn*1e3,Tcn-273.15)
-        plt.xlabel('x[mm]')
-        plt.ylabel('T[C]')
-        plt.title('Distribución de temperatura')
-        plt.legend(['Solución analítica','Solución numérica'])
-        plt.grid()
-        plt.savefig(figures_dir+'c.pdf')
-        plt.close()
 
 if apartado_d == 'yes':
     print('*** d ***')
@@ -764,17 +668,10 @@ if apartado_d == 'yes':
 
         print(' T_max = ',round(T_max),'K ó',round(T_max-273.15),'C')
 
-    # Representación gráfica de la solución
+        # Guardar resultados
+        save_result(xdn)
+        save_result(Tdn)
 
-    fig = plt.figure()
-    #plt.rc('axes', prop_cycle=monochrome)
-    plt.plot(xdn*1e3,Tdn-273.15)
-    plt.xlabel('x[mm]')
-    plt.ylabel('T[C]')
-    plt.title('Distribución de temperatura')
-    plt.grid()
-    plt.savefig(figures_dir+'d.pdf')
-    plt.close()
 
 if apartado_e == 'yes':
     print('*** e ***')
@@ -895,38 +792,8 @@ if apartado_e == 'yes':
 
         print(' T_max = ',round(T_max),'K ó',round(T_max-273.15),'C')
 
-    # Representación gráfica de la solución
+        # Guardar resultados
 
-
-## Representación gráfica de las soluciones unidimensionales
-
-if apartado_a == 'yes' and apartado_b == 'yes' and apartado_c == 'yes' and apartado_d == 'yes':
-
-    # Analíticas
-    fig = plt.figure()
-    plt.rc('axes', prop_cycle=monochrome)
-    plt.plot(xa*1e3,Ta1-273.15)
-    plt.plot(xa*1e3,Ta2-273.15)
-    plt.plot(xb*1e3,Tb1-273.15)
-    plt.plot(xb*1e3,Tb2-273.15)
-    plt.xlabel('x[mm]')
-    plt.ylabel('T[C]')
-    plt.title('Distribución de temperatura')
-    plt.legend(['Potencia puntual','Potencia uniforme','kIC→∞','kIC dado'])
-    plt.grid()
-    plt.savefig('all_analytic.pdf')
-    plt.close()
-
-    if numerico == 'yes':
-        # Numéricas
-        fig = plt.figure()
-        plt.rc('axes', prop_cycle=monochrome)
-        plt.plot(xan*1e3,Ta1n-273.15)
-        plt.plot(xan*1e3,Ta2n-273.15)
-        plt.xlabel('x[mm]')
-        plt.ylabel('T[C]')
-        plt.title('Distribución de temperatura')
-        plt.legend(['Potencia uniforme','kIC→∞','kIC dado'])
-        plt.grid()
-        plt.savefig('all_numeric.pdf')
-        plt.close()
+        save_result(xen)
+        save_result(yen)
+        save_result(Ten)
