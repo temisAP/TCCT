@@ -7,6 +7,42 @@ from cycler import cycler
 monochrome = (cycler('color', ['k']) * cycler('marker', ['', '.']) *
               cycler('linestyle', ['-', '--', ':','-.']))
 
+# Para saber qué apartado correr
+data = 'data_plot' #Nombre del archivo
+try:
+    with open(data, 'r') as data:
+        for line in data:
+            if 'apartado_a' in line:
+                p = line.split()
+                apartado_a = p[2]
+            if 'apartado_b' in line:
+                p = line.split()
+                apartado_b = p[2]
+            if 'apartado_c' in line:
+                p = line.split()
+                apartado_c = p[2]
+            if 'apartado_d' in line:
+                p = line.split()
+                apartado_d = p[2]
+            if 'apartado_e' in line:
+                p = line.split()
+                apartado_e = p[2]
+            if 'numerico' in line:
+                p = line.split()
+                numerico = p[2]
+except:
+    ### Apartados
+    apartado_a = 'no'
+    apartado_b = 'no'
+    apartado_c = 'no'
+    apartado_d = 'yes'
+    apartado_e = 'no'
+    ###
+    numerico = 'yes'
+
+    print('No data configuration file found')
+
+
 figures_dir = './Figures/'
 if not os.path.exists(figures_dir):
     os.makedirs(figures_dir)
@@ -17,17 +53,9 @@ def read_result(name):
     my_data = genfromtxt(results_dir+str(name)+'.csv', delimiter=',')
     return my_data
 
-### Apartados
-apartado_a = 'yes'
-apartado_b = 'no'
-apartado_c = 'no'
-apartado_d = 'no'
-apartado_e = 'no'
-###
-numerico = 'no'
-
 ### Apartado a
 if apartado_a == 'yes':
+    print('Proceeding with a')
 
     xa = read_result('xa')
     Ta1 = read_result('Ta1')
@@ -80,8 +108,8 @@ if apartado_a == 'yes':
 
 ### Apartado b
 
-
 if apartado_b == 'yes':
+    print('Proceeding with b')
 
     xb = read_result('xb')
     Tb1 = read_result('Tb1')
@@ -100,6 +128,10 @@ if apartado_b == 'yes':
     plt.close()
 
     if numerico == 'yes':
+
+        xbn = read_result('xbn')
+        Tb1n = read_result('Tb1n')
+        Tb2n = read_result('Tb2n')
 
         fig = plt.figure()
         #plt.rc('axes', prop_cycle=monochrome)
@@ -131,8 +163,9 @@ if apartado_b == 'yes':
 ### Apartado c
 
 if apartado_c == 'yes':
+    print('Proceeding with c')
 
-    xc = read_result('xcn')
+    xc = read_result('xc')
     Tc = read_result('Tc')
 
     fig = plt.figure()
@@ -176,6 +209,7 @@ if apartado_c == 'yes':
 ### Apartado d
 
 if apartado_d == 'yes':
+    print('Proceeding with d')
 
     xdn = read_result('xdn')
     Tdn = read_result('Tdn')
@@ -193,20 +227,31 @@ if apartado_d == 'yes':
 ### Apartado e
 
 if apartado_e == 'yes':
+    print('Proceeding with e')
 
     xen = read_result('xen')
     yen = read_result('yen')
     Ten = read_result('Ten')
 
+    x,y = np.meshgrid(xen,yen)
+    z = Ten.transpose()
+
     fig = plt.figure()
-    #plt.rc('axes', prop_cycle=monochrome)
-    plt.plot(xdn*1e3,Tdn-273.15)
-    plt.xlabel('x[mm]')
-    plt.ylabel('T[C]')
+    ax = fig.add_subplot(111)
     plt.title('Distribución de temperatura')
+    CS3 = plt.contourf(x,y,z, cmap='jet')
+    plt.colorbar()
     plt.grid()
-    plt.savefig(figures_dir+'d.pdf')
+    plt.savefig(figures_dir+'e.pdf')
     plt.close()
+
+    fig = plt.figure()
+    ax = fig.gca(projection='3d')
+    surf = ax.plot_surface(x, y, z, cmap='jet')
+    plt.grid()
+    plt.show()
+    plt.close()
+
 
 ### Representación conjunta
 

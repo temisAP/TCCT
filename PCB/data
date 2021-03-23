@@ -1,0 +1,10 @@
+### Apartados
+    apartado_a = 'no'
+    apartado_b = 'no'
+    apartado_c = 'no'
+    apartado_d = 'no'
+    apartado_e = 'yes'
+###
+    numerico = 'yes'
+###
+    disp = 100

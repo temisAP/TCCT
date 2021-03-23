@@ -4,10 +4,55 @@ import pandas as pd
 from math import exp
 import copy
 
-results_dir = './Results/'
+# Para guardar los resultados en un csv
+results_dir = './Results/' # Ruta
 if not os.path.exists(results_dir):
     os.makedirs(results_dir)
+def save_result(name,result):
+    np.savetxt(results_dir+str(name)+'.csv', result, delimiter=',', fmt='%s')
 
+# Para saber qué apartado correr
+data = 'data' #Nombre del archivo
+if 0==0:
+    with open(data, 'r') as data:
+        for line in data:
+            if 'apartado_a' in line:
+                p = line.split()
+                apartado_a = p[2]
+            if 'apartado_b' in line:
+                p = line.split()
+                apartado_b = p[2]
+            if 'apartado_c' in line:
+                p = line.split()
+                apartado_c = p[2]
+            if 'apartado_d' in line:
+                p = line.split()
+                apartado_d = p[2]
+            if 'apartado_e' in line:
+                p = line.split()
+                apartado_e = p[2]
+            if 'numerico' in line:
+                p = line.split()
+                numerico = p[2]
+            if 'disp' in line:
+                p = line.split()
+                disp = p[2]
+else:
+    ### Apartados
+    apartado_a = 'no'
+    apartado_b = 'no'
+    apartado_c = 'no'
+    apartado_d = 'no'
+    apartado_e = 'no'
+    ###
+    numerico = 'yes'
+    ###
+    disp = 100
+
+    print('No data configuration file found')
+
+
+# Clases
 class elemento(object):
 
     def __init__(self):
@@ -44,9 +89,6 @@ class elemento(object):
 
         self.kx2 = sum((c.kx*c.Ly*c.Lz) for c in objects)/self.Ax + self.kx
         self.rho_c2 = sum((c.rho_c*c.Ly*c.Lz*c.Lx) for c in objects)/self.V + self.rho_c
-
-def save_result(result):
-    np.savetxt(results_dir+str(result)+'.csv', result, delimiter=',', fmt='%s')
 
 ### ENUNCIADO ###
 ## Considérese una tarjeta electrónica (PCB) de 140×100×1,5 mm3 de FR-4, con un recubrimiento de 50 µm de
@@ -107,15 +149,6 @@ PCB.add([IC])
 
 # Paredes
 T_wall = 25+273.15 #K
-
-### Apartados
-apartado_a = 'yes'
-apartado_b = 'no'
-apartado_c = 'no'
-apartado_d = 'no'
-apartado_e = 'no'
-###
-numerico = 'yes'
 
 if apartado_a == 'yes':
     print('*** a ***')
@@ -241,7 +274,6 @@ if apartado_a == 'yes':
         save_result('xan',xan)
         save_result('Ta1n',Ta1n)
         save_result('Ta2n',Ta2n)
-
 
 if apartado_b == 'yes':
     print('*** b ***')
@@ -461,9 +493,9 @@ if apartado_b == 'yes':
         print('Con la kIC dada: T_max = ',round(T_max),'K ó',round(T_max-273.15),'C')
 
         # Guardar resultados
-        save_result('xb',xb)
-        save_result('Tb1',Tb1)
-        save_result('Tb2',Tb2)
+        save_result('xbn',xbn)
+        save_result('Tb1n',Tb1n)
+        save_result('Tb2n',Tb2n)
 
 if apartado_c == 'yes':
     print('*** c ***')
@@ -570,9 +602,8 @@ if apartado_c == 'yes':
         print(' T_max = ',round(T_max),'K ó',round(T_max-273.15),'C')
 
         # Guardar resultados
-        save_result(xcn)
-        save_result(Tcn)
-
+        save_result('xcn',xcn)
+        save_result('Tcn',Tcn)
 
 if apartado_d == 'yes':
     print('*** d ***')
@@ -608,7 +639,7 @@ if apartado_d == 'yes':
         L = PCB.Lx     # Espacio de simulación
         T = 5000       # Tiempo de simulación
         N = 70         # Número de elementos espaciales
-        M = int(1e6)   # Número de elementos temporales (ver criterio)
+        M = int(1e5)   # Número de elementos temporales (ver criterio)
         Dx = L/N
         Dt = T/M
         xdn = np.linspace(0,L,N+1)
@@ -649,7 +680,10 @@ if apartado_d == 'yes':
             return val
 
         T = T_wall * np.ones((M+1,N+1)) # T(t,x) inicial
+        k=0 #Para el display
         for t in range(0,len(td)-1):
+            k=k+1
+            if k%disp == 0: print('Tiempo de simulación: ',td[t], 's \Temperatura máxima',T_inst,' K')
             for x in range(1,len(xdn)-1):
                 # Propiedades
                 kp = (k(x+1)+k(x))/2
@@ -662,6 +696,9 @@ if apartado_d == 'yes':
             T[t,1]=T_wall
             T[t,N]=T_wall
 
+            # Para la temperatura máxima de cada
+            T_inst = a.max(T)
+
         Tdn = np.zeros((len(xdn)))
         Tdn[:]=T[-1,:]
         T_max = max(Tdn)
@@ -669,9 +706,8 @@ if apartado_d == 'yes':
         print(' T_max = ',round(T_max),'K ó',round(T_max-273.15),'C')
 
         # Guardar resultados
-        save_result(xdn)
-        save_result(Tdn)
-
+        save_result('xdn',xdn)
+        save_result('Tdn',Tdn)
 
 if apartado_e == 'yes':
     print('*** e ***')
@@ -710,10 +746,10 @@ if apartado_e == 'yes':
 
         Lx = PCB.Lx     # Espacio de simulación
         Ly = PCB.Ly     # Espacio de simulación
-        T = 3000       # Tiempo de simulación
-        Nx = 5         # Número de elementos espaciales
-        Ny = 50         # Número de elementos espaciales
-        M = int(1e4)   # Número de elementos temporales (ver criterio)
+        T = 500        # Tiempo de simulación
+        Nx = 10        # Número de elementos espaciales
+        Ny = 70         # Número de elementos espaciales
+        M = int(1e4)    # Número de elementos temporales (ver criterio)
         Dx = Lx/Nx
         Dy = Ly/Ny
         Dt = T/M
@@ -761,7 +797,10 @@ if apartado_e == 'yes':
             return val
 
         T = T_wall * np.ones((M+1,Nx+1,Ny+1)) # T(t,x,y) inicial
+        k=0
         for t in range(0,len(te)-1):
+            k = k+1
+            if k%disp == 0: print('Tiempo de simulación: ',te[t],'s \Temperatura máxima',T_inst,' K')
             for y in range(1,len(yen)-1):
                 for x in range(1,len(xen)-1):
                     # Propiedades
@@ -786,14 +825,17 @@ if apartado_e == 'yes':
             T[t,1,:]=T_wall
             T[t,Nx,:]=T_wall
 
+            # Para la temperatura máxima de cada
+            T_inst = a.max(T[t,:,:])
+
         Ten = np.zeros((len(xen),len(yen)))
         Ten[:,:]=T[-1,:,:]
-        T_max = max(Ten)
+        T_max = np.amax(Ten)
 
         print(' T_max = ',round(T_max),'K ó',round(T_max-273.15),'C')
 
         # Guardar resultados
 
-        save_result(xen)
-        save_result(yen)
-        save_result(Ten)
+        save_result('xen',xen)
+        save_result('yen',yen)
+        save_result('Ten',Ten)
