@@ -13,7 +13,7 @@ def save_result(name,result):
 
 # Para saber qué apartado correr
 data = 'data' #Nombre del archivo
-if 0==0:
+try:
     with open(data, 'r') as data:
         for line in data:
             if 'apartado_a' in line:
@@ -36,13 +36,13 @@ if 0==0:
                 numerico = p[2]
             if 'disp' in line:
                 p = line.split()
-                disp = p[2]
-else:
+                disp = float(p[2])
+except:
     ### Apartados
     apartado_a = 'no'
     apartado_b = 'no'
     apartado_c = 'no'
-    apartado_d = 'no'
+    apartado_d = 'yes'
     apartado_e = 'no'
     ###
     numerico = 'yes'
@@ -210,7 +210,7 @@ if apartado_a == 'yes':
         L = 2*L        # Espacio de simulación
         T = 5000       # Tiempo de simulación
         N = 70         # Número de elementos espaciales
-        M = int(1e6)   # Número de elementos temporales (ver criterio)
+        M = int(1e5)   # Número de elementos temporales (ver criterio)
         Dx = L/N
         Dt = T/M
         xan = np.linspace(0,L,N+1)
@@ -230,18 +230,21 @@ if apartado_a == 'yes':
 
         # Potencia puntual
 
-        T = T_wall * np.ones((M+1,N+1)) # T(t,x) inicial
+        T = T_wall * np.ones((M+1,N+1)) # T(t,x) inicials
 
         for t in range(0,len(ta)-1):
-            for x in range(2,len(xan)-2):
-                # Euler explícito
-                T[t+1,x] = T[t,x] + Dt/(rho_c*A_eff)*(k_eff*A_eff*(T[t,x+1]-T[t,x])/Dx**2-k_eff*A_eff*(T[t,x]-T[t,x-1])/Dx**2)
-            # Condiciones de contorno
-            T[t,1]=T_wall
-            T[t,1]=T[t,2]-Q_wall*Dx/(2*k_eff*A_eff)
-            T[t,N]=T_wall
-            T[t,N]=T[t,N-1]-Q_wall*Dx/(2*k_eff*A_eff)
+            if t%disp == 0: print('Tiempo de simulación:',ta[t], 's \Temperatura máxima:',np.amax(T[t,:]),'K')
 
+            # Condiciones de contorno
+            T[t,0]=T_wall
+            T[t,N]=T_wall
+
+            for x in range(1,len(xan)-1):
+                # Potencia puntual
+                if x == int(N/2): phii = W_dis/(Dx*PCB.Ly*PCB.Lz)
+                else: phii=0
+                # Euler explícito
+                T[t+1,x] = T[t,x] + Dt/(rho_c*A_eff)*(k_eff*A_eff*(T[t,x+1]-T[t,x])/Dx**2-k_eff*A_eff*(T[t,x]-T[t,x-1])/Dx**2 + phii*A_eff)
 
         Ta1n = np.zeros((len(xan)))
         Ta1n[:]=T[-1,:]
@@ -254,14 +257,16 @@ if apartado_a == 'yes':
         T = T_wall * np.ones((M+1,N+1)) # T(t,x) inicial
 
         for t in range(0,len(ta)-1):
+            if t%disp == 0: print('Tiempo de simulación:',ta[t], 's \Temperatura máxima:',np.amax(T[t,:]),'K')
+
+            # Condiciones de contorno
+            T[t,0]=T_wall
+            T[t,N]=T_wall
+
             for x in range(1,len(xan)-1):
                 # Euler explícito
                 T[t+1,x] = T[t,x] + Dt/(rho_c*A_eff)*(k_eff*A_eff*(T[t,x+1]-T[t,x])/Dx**2-k_eff*A_eff*(T[t,x]-T[t,x-1])/Dx**2 + phi*A_eff)
-            # Condiciones de contorno
-            T[t,1]=T_wall
-            T[t,1]=T[t,2]-Q_wall*Dx/(2*k_eff*A_eff)
-            T[t,N]=T_wall
-            T[t,N]=T[t,N-1]-Q_wall*Dx/(2*k_eff*A_eff)
+
 
 
         Ta2n = np.zeros((len(xan)))
@@ -372,6 +377,12 @@ if apartado_b == 'yes':
 
     print(' Con la kIC dada: T_max = ',round(T_max),'K ó',round(T_max-273.15),'C')
 
+    # Doblar la solución
+
+    xb = np.concatenate((xb,xb+L))
+    Tb1 = np.concatenate((Tb1,np.flip(Tb1)))
+    Tb2 = np.concatenate((Tb2,np.flip(Tb2)))
+
     # Guardar resultados
     save_result('xb',xb)
     save_result('Tb1',Tb1)
@@ -396,7 +407,7 @@ if apartado_b == 'yes':
         L = PCB.Lx     # Espacio de simulación
         T = 5000       # Tiempo de simulación
         N = 70         # Número de elementos espaciales
-        M = int(1e6)   # Número de elementos temporales (ver criterio)
+        M = int(1e5)   # Número de elementos temporales (ver criterio)
         Dx = L/N
         Dt = T/M
         xbn = np.linspace(0,L,N+1)
@@ -414,7 +425,7 @@ if apartado_b == 'yes':
             print('This is unstable increase number of time steps')
 
         # Propiedades
-        def k(pos):
+        def k_fun(pos):
             x = xbn[pos]
             k1 = PCB.kx
             k2 = 1e10
@@ -422,7 +433,7 @@ if apartado_b == 'yes':
             val = k1 + (H(x-L1,0.5)-H(x-L2,0.5)+H(x-L3,0.5)-H(x-L5,0.5)+H(x-L6,0.5)-H(x-L7,0.5))*(k2-k1)
             return val
 
-        def rho_c(pos):
+        def rho_c_fun(pos):
             x = xbn[pos]
             rho_c1 = PCB.rho_c
             rho_c2 = PCB.rho_c2
@@ -430,29 +441,38 @@ if apartado_b == 'yes':
             val = rho_c1 + (H(x-L1,0.5)-H(x-L2,0.5)+H(x-L3,0.5)-H(x-L5,0.5)+H(x-L6,0.5)-H(x-L7,0.5))*(rho_c2-rho_c1)
             return val
 
-        def phii(pos):
+        def phii_fun(pos):
             x = xbn[pos]
             from numpy import heaviside as H
             val = (H(x-L1,0.5)-H(x-L2,0.5)+H(x-L3,0.5)-H(x-L5,0.5)+H(x-L6,0.5)-H(x-L7,0.5))*(phi)
             return val
 
+        k=np.zeros((len(xbn)))
+        rho_c=np.zeros((len(xbn)))
+        phii=np.zeros((len(xbn)))
+        for x in range(0,len(xbn)):
+                k[x] = k_fun(x)
+                rho_c[x] = rho_c_fun(x)
+                phii[x] = phii_fun(x)
+
         ## Con kIC→∞
 
         T = T_wall * np.ones((M+1,N+1)) # T(t,x) inicial
         for t in range(0,len(tb)-1):
+            if t%disp == 0: print('Tiempo de simulación:',tb[t], 's \Temperatura máxima:',np.amax(T[t,:]),'K')
             for x in range(1,len(xbn)-1):
                 # Propiedades
-                kp = (k(x+1)+k(x))/2
-                kn = (k(x)+k(x-1))/2
+                kp = (k[x+1]+k[x])/2
+                kn = (k[x]+k[x-1])/2
                 # Euler explícito
-                T[t+1,x] = T[t,x] + Dt/(rho_c(x)*A_eff)*(kp*A_eff*(T[t,x+1]-T[t,x])/Dx**2-kn*A_eff*(T[t,x]-T[t,x-1])/Dx**2 + phii(x)*A_eff)
+                T[t+1,x] = T[t,x] + Dt/(rho_c[x]*A_eff)*(kp*A_eff*(T[t,x+1]-T[t,x])/Dx**2-kn*A_eff*(T[t,x]-T[t,x-1])/Dx**2 + phii[x]*A_eff)
 
             # Condiciones de contorno
             k_eff = PCB.kx
-            T[t,1]=T_wall
-            T[t,1]=T[t,2]-Q_wall*Dx/(2*k_eff*A_eff)
-            T[t,N]=T_wall
-            T[t,N]=T[t,N-1]-Q_wall*Dx/(2*k_eff*A_eff)
+            T[t+1,0]=T_wall
+            T[t+1,0]=T[t+1,0]-Q_wall*Dx/(2*k_eff*A_eff)
+            T[t+1,N]=T_wall
+            T[t+1,N]=T[t+1,N-1]-Q_wall*Dx/(2*k_eff*A_eff)
 
         Tb1n = np.zeros((len(xbn)))
         Tb1n[:]=T[-1,:]
@@ -462,7 +482,7 @@ if apartado_b == 'yes':
 
         ## Con kIC dada
 
-        def k(pos):
+        def k_fun(pos):
             x = xbn[pos]
             k1 = PCB.kx
             k2 = PCB.kx2
@@ -470,21 +490,30 @@ if apartado_b == 'yes':
             val = k1 + (H(x-L1,0.5)-H(x-L2,0.5)+H(x-L3,0.5)-H(x-L5,0.5)+H(x-L6,0.5)-H(x-L7,0.5))*(k2-k1)
             return val
 
+        k=np.zeros((len(xbn)))
+        rho_c=np.zeros((len(xbn)))
+        phii=np.zeros((len(xbn)))
+        for x in range(0,len(xbn)):
+                k[x] = k_fun(x)
+                rho_c[x] = rho_c_fun(x)
+                phii[x] = phii_fun(x)
+
         T = T_wall * np.ones((M+1,N+1)) # T(t,x) inicial
         for t in range(0,len(tb)-1):
+            if t%disp == 0: print('Tiempo de simulación:',tb[t], 's \Temperatura máxima:',np.amax(T[t,:]),'K')
             for x in range(1,len(xbn)-1):
                 # Propiedades
-                kp = (k(x+1)+k(x))/2
-                kn = (k(x)+k(x-1))/2
+                kp = (k[x+1]+k[x])/2
+                kn = (k[x]+k[x-1])/2
                 # Euler explícito
-                T[t+1,x] = T[t,x] + Dt/(rho_c(x)*A_eff)*(kp*A_eff*(T[t,x+1]-T[t,x])/Dx**2-kn*A_eff*(T[t,x]-T[t,x-1])/Dx**2 + phii(x)*A_eff)
+                T[t+1,x] = T[t,x] + Dt/(rho_c[x]*A_eff)*(kp*A_eff*(T[t,x+1]-T[t,x])/Dx**2-kn*A_eff*(T[t,x]-T[t,x-1])/Dx**2 + phii[x]*A_eff)
 
             # Condiciones de contorno
             k_eff = PCB.kx
-            T[t,1]=T_wall
-            T[t,1]=T[t,2]-Q_wall*Dx/(2*k_eff*A_eff)
-            T[t,N]=T_wall
-            T[t,N]=T[t,N-1]-Q_wall*Dx/(2*k_eff*A_eff)
+            T[t+1,1]=T_wall
+            T[t+1,1]=T[t+1,2]-Q_wall*Dx/(2*k_eff*A_eff)
+            T[t+1,N]=T_wall
+            T[t+1,N]=T[t+1,N-1]-Q_wall*Dx/(2*k_eff*A_eff)
 
         Tb2n = np.zeros((len(xbn)))
         Tb2n[:]=T[-1,:]
@@ -562,7 +591,7 @@ if apartado_c == 'yes':
         L = PCB.Lx     # Espacio de simulación
         T = 5000       # Tiempo de simulación
         N = 70         # Número de elementos espaciales
-        M = int(1e6)   # Número de elementos temporales (ver criterio)
+        M = int(1e5)   # Número de elementos temporales (ver criterio)
         Dx = L/N
         Dt = T/M
         xcn = np.linspace(0,L,N+1)
@@ -586,14 +615,14 @@ if apartado_c == 'yes':
 
         T = T_wall * np.ones((M+1,N+1)) # T(t,x) inicial
         for t in range(0,len(tc)-1):
+            if t%disp == 0: print('Tiempo de simulación:',tc[t], 's \Temperatura máxima:',np.amax(T[t,:]),'K')
             for x in range(1,len(xcn)-1):
                 # Euler explícito
                 T[t+1,x] = T[t,x] + Dt/(rho_c*A_eff)*(k_eff*A_eff*(T[t,x+1]-T[t,x])/Dx**2-k_eff*A_eff*(T[t,x]-T[t,x-1])/Dx**2 + phi*A_eff +  4*(eps1*p1+eps2*p2)*sigma*T_media**3*(T[t,x] - T_inf))
 
             # Condiciones de contorno
-            k_eff = PCB.kx
-            T[t,1]=T_wall
-            T[t,N]=T_wall
+            T[t+1,0]=T_wall
+            T[t+1,N]=T_wall
 
         Tcn = np.zeros((len(xcn)))
         Tcn[:]=T[-1,:]
@@ -657,7 +686,7 @@ if apartado_d == 'yes':
             print('This is unstable increase number of time steps')
 
         # Propiedades
-        def k(pos):
+        def k_fun(pos):
             x = xdn[pos]
             k1 = PCB.kx
             k2 = PCB.kx2
@@ -665,7 +694,7 @@ if apartado_d == 'yes':
             val = k1 + (H(x-L1,0.5)-H(x-L2,0.5)+H(x-L3,0.5)-H(x-L5,0.5)+H(x-L6,0.5)-H(x-L7,0.5))*(k2-k1)
             return val
 
-        def rho_c(pos):
+        def rho_c_fun(pos):
             x = xdn[pos]
             rho_c1 = PCB.rho_c
             rho_c2 = PCB.rho_c2
@@ -673,31 +702,34 @@ if apartado_d == 'yes':
             val = rho_c1 + (H(x-L1,0.5)-H(x-L2,0.5)+H(x-L3,0.5)-H(x-L5,0.5)+H(x-L6,0.5)-H(x-L7,0.5))*(rho_c2-rho_c1)
             return val
 
-        def phii(pos):
+        def phii_fun(pos):
             x = xdn[pos]
             from numpy import heaviside as H
             val = (H(x-L1,0.5)-H(x-L2,0.5)+H(x-L3,0.5)-H(x-L5,0.5)+H(x-L6,0.5)-H(x-L7,0.5))*(phi)
             return val
 
+        k=np.zeros((len(xdn)))
+        rho_c=np.zeros((len(xdn)))
+        phii=np.zeros((len(xdn)))
+        for x in range(0,len(xdn)):
+                k[x] = k_fun(x)
+                rho_c[x] = rho_c_fun(x)
+                phii[x] = phii_fun(x)
+
         T = T_wall * np.ones((M+1,N+1)) # T(t,x) inicial
-        k=0 #Para el display
+
         for t in range(0,len(td)-1):
-            k=k+1
-            if k%disp == 0: print('Tiempo de simulación: ',td[t], 's \Temperatura máxima',T_inst,' K')
+            if t%disp == 0: print('Tiempo de simulación:',td[t], 's \Temperatura máxima:',np.amax(T[t,:]),'K')
             for x in range(1,len(xdn)-1):
                 # Propiedades
-                kp = (k(x+1)+k(x))/2
-                kn = (k(x)+k(x-1))/2
+                kp = (k[x+1]+k[x])/2
+                kn = (k[x]+k[x-1])/2
                 # Euler explícito
-                T[t+1,x] = T[t,x] + Dt/(rho_c(x)*A_eff)*(kp*A_eff*(T[t,x+1]-T[t,x])/Dx**2-kn*A_eff*(T[t,x]-T[t,x-1])/Dx**2 + phii(x)*A_eff - (eps1*p1+eps2*p2)*sigma*(T[t,x]**4 - T_inf**4))
+                T[t+1,x] = T[t,x] + Dt/(rho_c[x]*A_eff)*(kp*A_eff*(T[t,x+1]-T[t,x])/Dx**2-kn*A_eff*(T[t,x]-T[t,x-1])/Dx**2 + phii[x]*A_eff - (eps1*p1+eps2*p2)*sigma*(T[t,x]**4 - T_inf**4))
 
             # Condiciones de contorno
-            k_eff = PCB.kx
-            T[t,1]=T_wall
-            T[t,N]=T_wall
-
-            # Para la temperatura máxima de cada
-            T_inst = a.max(T)
+            T[t+1,0]=T_wall
+            T[t+1,N]=T_wall
 
         Tdn = np.zeros((len(xdn)))
         Tdn[:]=T[-1,:]
@@ -746,10 +778,10 @@ if apartado_e == 'yes':
 
         Lx = PCB.Lx     # Espacio de simulación
         Ly = PCB.Ly     # Espacio de simulación
-        T = 500        # Tiempo de simulación
-        Nx = 10        # Número de elementos espaciales
-        Ny = 70         # Número de elementos espaciales
-        M = int(1e4)    # Número de elementos temporales (ver criterio)
+        T = 5000        # Tiempo de simulación
+        Nx = 70         # Número de elementos espaciales
+        Ny = 10         # Número de elementos espaciales
+        M = int(1e5)    # Número de elementos temporales (ver criterio)
         Dx = Lx/Nx
         Dy = Ly/Ny
         Dt = T/M
@@ -769,7 +801,7 @@ if apartado_e == 'yes':
             print('This is unstable increase number of time steps')
 
         # Propiedades
-        def k(posx,posy):
+        def k_fun(posx,posy):
             x = xen[posx]
             y = yen[posy]
             k1 = PCB.kx #En el plano son iguales
@@ -778,7 +810,7 @@ if apartado_e == 'yes':
             val = k1 + (H(x-L1x,0.5)-H(x-L2x,0.5)+H(x-L3x,0.5)-H(x-L5x,0.5)+H(x-L6x,0.5)-H(x-L7x,0.5))*(k2-k1)+(H(y-L1y,0.5)-H(y-L2y,0.5))*(k2-k1)
             return val
 
-        def rho_c(posx,posy):
+        def rho_c_fun(posx,posy):
             x = xen[posx]
             y = yen[posy]
             rho_c1 = PCB.rho_c
@@ -788,7 +820,7 @@ if apartado_e == 'yes':
             return val
             return val
 
-        def phii(posx,posy):
+        def phii_fun(posx,posy):
             x = xen[posx]
             y = yen[posy]
             from numpy import heaviside as H
@@ -796,37 +828,43 @@ if apartado_e == 'yes':
             return val
             return val
 
+        k=np.zeros((len(xen),len(yen)))
+        rho_c=np.zeros((len(xen),len(yen)))
+        phii=np.zeros((len(xen),len(yen)))
+        for y in range(0,len(yen)):
+            for x in range(0,len(xen)):
+                k[x,y] = k_fun(x,y)
+                rho_c[x,y] = rho_c_fun(x,y)
+                phii[x,y] = phii_fun(x,y)
+
         T = T_wall * np.ones((M+1,Nx+1,Ny+1)) # T(t,x,y) inicial
-        k=0
-        for t in range(0,len(te)-1):
-            k = k+1
-            if k%disp == 0: print('Tiempo de simulación: ',te[t],'s \Temperatura máxima',T_inst,' K')
-            for y in range(1,len(yen)-1):
-                for x in range(1,len(xen)-1):
+
+        for t in range(0,M):
+            if t%disp == 0: print('Tiempo de simulación:',te[t],'s \Temperatura máxima:',np.amax(T[t,:,:]),'K')
+            for y in range(1,Ny):
+                for x in range(1,Nx):
                     # Propiedades
-                    kpx = (k(x+1,y)+k(x,y))/2
-                    knx = (k(x,y)+k(x-1,y))/2
-                    kpy = (k(x,y+1)+k(x,y))/2
-                    kny = (k(x,y)+k(x,y-1))/2
+                    kpx = (k[x+1,y]+k[x,y])/2
+                    knx = (k[x,y]+k[x-1,y])/2
+                    kpy = (k[x,y+1]+k[x,y])/2
+                    kny = (k[x,y]+k[x,y-1])/2
                     # Euler explícito
-                    T[t+1,x,y] = T[t,x,y] + Dt/(rho_c(x,y)*z_eff)*(\
+                    T[t+1,x,y] = T[t,x,y] + Dt/(rho_c[x,y]*z_eff)*(\
                     +kpx*z_eff*(T[t,x+1,y]-T[t,x,y])/Dx**2\
                     -knx*z_eff*(T[t,x,y]-T[t,x-1,y])/Dx**2\
                     +kpy*z_eff*(T[t,x,y+1]-T[t,x,y])/Dy**2\
                     -kny*z_eff*(T[t,x,y]-T[t,x,y-1])/Dy**2\
-                    +phii(x,y)*z_eff \
+                    +phii[x,y]*z_eff \
                     - (eps1+eps2)*sigma*(T[t,x,y]**4 - T_inf**4))
 
+
             # Condiciones de adiabaticidad
-            T[t,:,0]=T[t,:,1]
-            T[t,:,Ny]=T[t,:,Ny-1]
+            T[t+1,:,0]=T[t+1,:,1]
+            T[t+1,:,Ny]=T[t+1,:,Ny-1]
 
             # Condiciones de contorno en la pared
-            T[t,1,:]=T_wall
-            T[t,Nx,:]=T_wall
-
-            # Para la temperatura máxima de cada
-            T_inst = a.max(T[t,:,:])
+            T[t+1,0,:]=T_wall
+            T[t+1,Nx,:]=T_wall
 
         Ten = np.zeros((len(xen),len(yen)))
         Ten[:,:]=T[-1,:,:]
