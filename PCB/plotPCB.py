@@ -1,7 +1,6 @@
 import os
 import numpy as np
 from numpy import genfromtxt
-import pandas as pd
 import matplotlib.pyplot as plt
 from cycler import cycler
 monochrome = (cycler('color', ['k']) * cycler('marker', ['', '.']) *
@@ -65,8 +64,9 @@ if apartado_a == 'yes':
     #plt.rc('axes', prop_cycle=monochrome)
     plt.plot(xa*1e3,Ta1-273.15)
     plt.plot(xa*1e3,Ta2-273.15)
-    plt.xlabel('x[mm]')
-    plt.ylabel('T[C]')
+    plt.xlabel('x[mm]', horizontalalignment='right', x=1.0)
+    h = plt.ylabel('T[C]', horizontalalignment='right', y=1.0)
+    h.set_rotation(0)
     plt.title('Distribución de temperatura')
     plt.legend(['Potencia puntual','Potencia uniforme'])
     plt.grid()
@@ -243,6 +243,81 @@ if apartado_e == 'yes':
     plt.colorbar()
     plt.grid()
     plt.savefig(figures_dir+'e.pdf')
+    plt.close()
+
+    fig = plt.figure()
+    ax = fig.gca(projection='3d')
+    surf = ax.plot_surface(x, y, z, cmap='jet')
+    plt.grid()
+    plt.show()
+    plt.close()
+
+    ### Conductividad
+
+    xen = read_result('xen')
+    yen = read_result('yen')
+    k = read_result('k')
+
+    x,y = np.meshgrid(xen,yen)
+    z = k.transpose()
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    plt.title('Distribución de temperatura')
+    CS3 = plt.contourf(x,y,z, cmap='jet')
+    plt.colorbar()
+    plt.grid()
+    plt.savefig(figures_dir+'k.pdf')
+    plt.close()
+
+    fig = plt.figure()
+    ax = fig.gca(projection='3d')
+    surf = ax.plot_surface(x, y, z, cmap='jet')
+    plt.grid()
+    plt.show()
+    plt.close()
+
+    ### rho_c
+
+    xen = read_result('xen')
+    yen = read_result('yen')
+    rho_c = read_result('rho_c')
+
+    x,y = np.meshgrid(xen,yen)
+    z = rho_c.transpose()
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    plt.title('Distribución de temperatura')
+    CS3 = plt.contourf(x,y,z, cmap='jet')
+    plt.colorbar()
+    plt.grid()
+    plt.savefig(figures_dir+'rho_c.pdf')
+    plt.close()
+
+    fig = plt.figure()
+    ax = fig.gca(projection='3d')
+    surf = ax.plot_surface(x, y, z, cmap='jet')
+    plt.grid()
+    plt.show()
+    plt.close()
+
+    ### Disipación
+
+    xen = read_result('xen')
+    yen = read_result('yen')
+    phi = read_result('phii')
+
+    x,y = np.meshgrid(xen,yen)
+    z = phi.transpose()
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    plt.title('Distribución de temperatura')
+    CS3 = plt.contourf(x,y,z, cmap='jet')
+    plt.colorbar()
+    plt.grid()
+    plt.savefig(figures_dir+'phi.pdf')
     plt.close()
 
     fig = plt.figure()

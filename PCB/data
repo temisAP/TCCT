@@ -1,9 +1,9 @@
 ### Apartados
     apartado_a = no
-    apartado_b = yes
+    apartado_b = no
     apartado_c = no
     apartado_d = no
-    apartado_e = no
+    apartado_e = yes
 ###
     numerico = yes
 ###

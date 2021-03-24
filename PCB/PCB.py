@@ -1,6 +1,5 @@
 import os
 import numpy as np
-import pandas as pd
 from math import exp
 import copy
 
@@ -750,9 +749,7 @@ if apartado_e == 'yes':
     ## el del caso anterior
 
     eps1 = 0.7
-    p1 = PCB.Ly
     eps2 = 0.5
-    p2 = PCB.Ly
     T_inf = 45+273.15 #K
     sigma = 5.67e-8  #W/m^2·K^4
 
@@ -766,7 +763,7 @@ if apartado_e == 'yes':
 
     if numerico == 'yes':
 
-        L1x = PCB.Lx/2 - IC.Lx- IC.pitch- IC.Lx/2
+        L1x = round(PCB.Lx/2 - IC.Lx- IC.pitch- IC.Lx/2,8)
         L2x = IC.Lx + L1x
         L3x = IC.pitch + L2x
         L4x = IC.Lx/2 + L3x
@@ -775,13 +772,13 @@ if apartado_e == 'yes':
         L7x = IC.Lx + L6x
         L8x = PCB.Lx
 
-        L1y = (PCB.Ly - IC.Ly)/2
+        L1y = round((PCB.Ly - IC.Ly)/2,8)
         L2y = IC.Ly + L1y
         L3y = PCB.Ly
 
         Lx = PCB.Lx     # Espacio de simulación
         Ly = PCB.Ly     # Espacio de simulación
-        T = 5000        # Tiempo de simulación
+        T = 3250        # Tiempo de simulación
         Nx = 70         # Número de elementos espaciales
         Ny = 10         # Número de elementos espaciales
         M = int(1e5)    # Número de elementos temporales (ver criterio)
@@ -810,7 +807,12 @@ if apartado_e == 'yes':
             k1 = PCB.kx #En el plano son iguales
             k2 = PCB.kx2
             from numpy import heaviside as H
-            val = k1 + (H(x-L1x,0.5)-H(x-L2x,0.5)+H(x-L3x,0.5)-H(x-L5x,0.5)+H(x-L6x,0.5)-H(x-L7x,0.5))*(k2-k1)+(H(y-L1y,0.5)-H(y-L2y,0.5))*(k2-k1)
+            if y>=0 and y<L1y:
+                val = k1
+            elif y>=L1y and y<=L2y:
+                val = k1 + (H(x-L1x,0.5)-H(x-L2x,0.5)+H(x-L3x,0.5)-H(x-L5x,0.5)+H(x-L6x,0.5)-H(x-L7x,0.5))*(k2-k1) # Los IC en x
+            elif y>L2y and y<=L3y:
+                val = k1
             return val
 
         def rho_c_fun(posx,posy):
@@ -819,16 +821,24 @@ if apartado_e == 'yes':
             rho_c1 = PCB.rho_c
             rho_c2 = PCB.rho_c2
             from numpy import heaviside as H
-            val = rho_c1 + (H(x-L1x,0.5)-H(x-L2x,0.5)+H(x-L3x,0.5)-H(x-L5x,0.5)+H(x-L6x,0.5)-H(x-L7x,0.5))*(rho_c2-rho_c1) +(H(y-L1y,0.5)-H(y-L2y,0.5))*(rho_c2-rho_c1)
-            return val
+            if y>=0 and y<L1y:
+                val = rho_c1
+            elif y>=L1y and y<=L2y:
+                val = rho_c1 + (H(x-L1x,0.5)-H(x-L2x,0.5)+H(x-L3x,0.5)-H(x-L5x,0.5)+H(x-L6x,0.5)-H(x-L7x,0.5))*(rho_c2-rho_c1) # Los IC en x
+            elif y>L2y and y<=L3y:
+                val = rho_c1
             return val
 
         def phii_fun(posx,posy):
             x = xen[posx]
             y = yen[posy]
             from numpy import heaviside as H
-            val = (H(x-L1x,0.5)-H(x-L2x,0.5)+H(x-L3x,0.5)-H(x-L5x,0.5)+H(x-L6x,0.5)-H(x-L7x,0.5))*(phi)+(H(y-L1y,0.5)-H(y-L2y,0.5))*(phi)
-            return val
+            if y>=0 and y<L1y:
+                val = 0
+            elif y>=L1y and y<=L2y:
+                val = (H(x-L1x,0.5)-H(x-L2x,0.5)+H(x-L3x,0.5)-H(x-L5x,0.5)+H(x-L6x,0.5)-H(x-L7x,0.5))*phi # Los IC en x
+            elif y>L2y and y<=L3y:
+                val = 0
             return val
 
         k=np.zeros((len(xen),len(yen)))
@@ -840,14 +850,16 @@ if apartado_e == 'yes':
                 rho_c[x,y] = rho_c_fun(x,y)
                 phii[x,y] = phii_fun(x,y)
 
+        save_result('k',k)
+        save_result('rho_c',rho_c)
+        save_result('phii',phii)
+        save_result('xen',xen)
+        save_result('yen',yen)
+
         T = T_wall * np.ones((M+1,Nx+1,Ny+1)) # T(t,x,y) inicial
 
         for t in range(0,M):
             if t%disp == 0: print('Tiempo de simulación:',te[t],'s \Temperatura máxima:',np.amax(T[t,:,:]),'K')
-
-            # Condiciones de adiabaticidad
-            T[t,:,0]=T[t,:,1]
-            T[t,:,Ny]=T[t,:,Ny-1]
 
             # Condiciones de contorno en la pared
             T[t,0,:]=T_wall
@@ -867,8 +879,11 @@ if apartado_e == 'yes':
                     +kpy*z_eff*(T[t,x,y+1]-T[t,x,y])/Dy**2\
                     -kny*z_eff*(T[t,x,y]-T[t,x,y-1])/Dy**2\
                     +phii[x,y]*z_eff \
-                    - (eps1+eps2)*sigma*(T[t,x,y]**4 - T_inf**4))
+                    -( ((eps1+eps2)**0.25*sigma**0.25*T[t,x,y])**4 - ((eps1+eps2)**0.25*sigma**0.25*T_inf)**4))
 
+            # Condiciones de adiabaticidad
+            T[t+1,:,0]=T[t+1,:,1]
+            T[t+1,:,Ny]=T[t+1,:,Ny-1]
 
         Ten = np.zeros((len(xen),len(yen)))
         Ten[:,:]=T[-1,:,:]
@@ -878,6 +893,4 @@ if apartado_e == 'yes':
 
         # Guardar resultados
 
-        save_result('xen',xen)
-        save_result('yen',yen)
         save_result('Ten',Ten)
