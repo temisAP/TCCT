@@ -1,6 +1,6 @@
 ### Apartados
-    apartado_a = yes
-    apartado_b = no
+    apartado_a = no
+    apartado_b = yes
     apartado_c = no
     apartado_d = no
     apartado_e = no
