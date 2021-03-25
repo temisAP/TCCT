@@ -1,9 +1,9 @@
 ### Apartados
-    apartado_a = yes
-    apartado_b = yes
-    apartado_c = yes
-    apartado_d = yes
-    apartado_e = no
-    1D-all = yes
+    apartado_a = no
+    apartado_b = no
+    apartado_c = no
+    apartado_d = no
+    apartado_e = yes
+    1D-all = no
 ###
     numerico = yes

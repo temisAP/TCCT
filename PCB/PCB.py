@@ -109,7 +109,6 @@ FR4.ky = 0.5 #W/(m·K)
 FR4.kz = 0.25 #W/(m·K)
 FR4.rho_c = 1850 * 3000 # J/(K·m^3)
 
-FR4.kxy = 0.5 #W/(m·K)
 
 # Cu
 Cu = elemento()
@@ -121,8 +120,6 @@ Cu.kx = 395.0 #W/(m·K)
 Cu.ky = 395.0 #W/(m·K)
 Cu.kz = 395.0 #W/(m·K)
 Cu.rho_c = 385 * 8260 # J/(K·m^3)
-
-Cu.k = 395.0 # W/(m·K)
 
 Cu_up = copy.deepcopy(Cu)
 Cu_up.kx = 395.0 * 0.1 #W/(m·K)
@@ -139,7 +136,7 @@ IC.W = 5 #W
 IC.kx = 50 #W/(m·K)
 IC.ky = 50 #W/(m·K)
 IC.kz = 50 #W/(m·K)
-IC.rho_c = 20/(IC.Lx*IC.Ly*IC.Lz) #J/(K·m^3)
+IC.rho_c = 20 * 1/(IC.Lx*IC.Ly*IC.Lz) #J/(K·m^3)
 IC.pitch = 20e-3 #m
 
 # PCB
@@ -293,7 +290,8 @@ if apartado_b == 'yes':
     Q_wall = W_dis/2
 
     A_eff = PCB.Ax
-    phi = IC.W/(IC.Lx*PCB.Ly*PCB.Lz)
+    V_eff = A_eff * IC.Lx
+    phi = IC.W/V_eff
     L = PCB.Lx/2
 
     # Con ejes en el borde de cada una de las 4 zonas
@@ -406,7 +404,7 @@ if apartado_b == 'yes':
 
         L = PCB.Lx     # Espacio de simulación
         T = 6000       # Tiempo de simulación
-        N = 80         # Número de elementos espaciales
+        N = 70         # Número de elementos espaciales
         M = int(1e5)   # Número de elementos temporales (ver criterio)
         Dx = L/N
         Dt = T/M
@@ -430,7 +428,7 @@ if apartado_b == 'yes':
             k1 = PCB.kx
             k2 = 1e2
             from numpy import heaviside as H
-            val = k1 + (H(x-L1,0.5)-H(x-L2,0.5)+H(x-L3,0.5)-H(x-L5,0.5)+H(x-L6,0.5)-H(x-L7,0.5))*(k2-k1)
+            val = k1 + (H(x-L1,dis)-H(x-L2,dis)+H(x-L3,dis)-H(x-L5,dis)+H(x-L6,dis)-H(x-L7,dis))*(k2-k1)
             return val
 
         def rho_c_fun(pos):
@@ -438,13 +436,13 @@ if apartado_b == 'yes':
             rho_c1 = PCB.rho_c
             rho_c2 = PCB.rho_c2
             from numpy import heaviside as H
-            val = rho_c1 + (H(x-L1,0.5)-H(x-L2,0.5)+H(x-L3,0.5)-H(x-L5,0.5)+H(x-L6,0.5)-H(x-L7,0.5))*(rho_c2-rho_c1)
+            val = rho_c1 + (H(x-L1,dis)-H(x-L2,dis)+H(x-L3,dis)-H(x-L5,dis)+H(x-L6,dis)-H(x-L7,dis))*(rho_c2-rho_c1)
             return val
 
         def phii_fun(pos):
             x = xbn[pos]
             from numpy import heaviside as H
-            val = (H(x-L1,0.5)-H(x-L2,0.5)+H(x-L3,0.5)-H(x-L5,0.5)+H(x-L6,0.5)-H(x-L7,0.5))*(phi)
+            val = (H(x-L1,dis)-H(x-L2,dis)+H(x-L3,dis)-H(x-L5,dis)+H(x-L6,dis)-H(x-L7,dis))*(phi)
             return val
 
         k=np.zeros((len(xbn)))
@@ -486,7 +484,7 @@ if apartado_b == 'yes':
             k1 = PCB.kx
             k2 = PCB.kx2
             from numpy import heaviside as H
-            val = k1 + (H(x-L1,0.5)-H(x-L2,0.5)+H(x-L3,0.5)-H(x-L5,0.5)+H(x-L6,0.5)-H(x-L7,0.5))*(k2-k1)
+            val = k1 + (H(x-L1,dis)-H(x-L2,dis)+H(x-L3,dis)-H(x-L5,dis)+H(x-L6,dis)-H(x-L7,dis))*(k2-k1)
             return val
 
         k=np.zeros((len(xbn)))
@@ -621,7 +619,7 @@ if apartado_c == 'yes':
 
             for x in range(1,len(xcn)-1):
                 # Euler explícito
-                T[t+1,x] = T[t,x] + Dt/(rho_c*A_eff)*(k_eff*A_eff*(T[t,x+1]-T[t,x])/Dx**2-k_eff*A_eff*(T[t,x]-T[t,x-1])/Dx**2 + phi*A_eff +  4*(eps1*p1+eps2*p2)*sigma*T_media**3*(T[t,x] - T_inf))
+                T[t+1,x] = T[t,x] + Dt/(rho_c*A_eff)*(k_eff*A_eff*(T[t,x+1]-T[t,x])/Dx**2-k_eff*A_eff*(T[t,x]-T[t,x-1])/Dx**2 + phi*A_eff - 4*(eps1*p1+eps2*p2)*sigma*T_media**3*(T[t,x] - T_inf))
 
 
         Tcn = np.zeros((len(xcn)))
@@ -690,22 +688,25 @@ if apartado_d == 'yes':
             x = xdn[pos]
             k1 = PCB.kx
             k2 = PCB.kx2
+            dis = 1
             from numpy import heaviside as H
-            val = k1 + (H(x-L1,0.5)-H(x-L2,0.5)+H(x-L3,0.5)-H(x-L5,0.5)+H(x-L6,0.5)-H(x-L7,0.5))*(k2-k1)
+            val = k1 + (H(x-L1,dis)-H(x-L2,dis)+H(x-L3,dis)-H(x-L5,dis)+H(x-L6,dis)-H(x-L7,dis))*(k2-k1)
             return val
 
         def rho_c_fun(pos):
             x = xdn[pos]
             rho_c1 = PCB.rho_c
             rho_c2 = PCB.rho_c2
+            dis = 1
             from numpy import heaviside as H
-            val = rho_c1 + (H(x-L1,0.5)-H(x-L2,0.5)+H(x-L3,0.5)-H(x-L5,0.5)+H(x-L6,0.5)-H(x-L7,0.5))*(rho_c2-rho_c1)
+            val = rho_c1 + (H(x-L1,dis)-H(x-L2,dis)+H(x-L3,dis)-H(x-L5,dis)+H(x-L6,dis)-H(x-L7,dis))*(rho_c2-rho_c1)
             return val
 
         def phii_fun(pos):
             x = xdn[pos]
+            dis = 1
             from numpy import heaviside as H
-            val = (H(x-L1,0.5)-H(x-L2,0.5)+H(x-L3,0.5)-H(x-L5,0.5)+H(x-L6,0.5)-H(x-L7,0.5))*(phi)
+            val = (H(x-L1,dis)-H(x-L2,dis)+H(x-L3,dis)-H(x-L5,dis)+H(x-L6,dis)-H(x-L7,dis))*(phi)
             return val
 
         k=np.zeros((len(xdn)))
@@ -753,8 +754,9 @@ if apartado_e == 'yes':
     T_inf = 45+273.15 #K
     sigma = 5.67e-8  #W/m^2·K^4
 
-    phi = IC.W/(IC.Lx*IC.Ly*PCB.Lz)
     z_eff = PCB.Lz
+    phi = IC.W/(IC.Lx*IC.Ly*z_eff)
+
 
     ## Solución numérica
     print('Solución numérica')
@@ -779,8 +781,8 @@ if apartado_e == 'yes':
         Lx = PCB.Lx     # Espacio de simulación
         Ly = PCB.Ly     # Espacio de simulación
         T = 3250        # Tiempo de simulación
-        Nx = 7         # Número de elementos espaciales
-        Ny = 10         # Número de elementos espaciales
+        Nx = 70         # Número de elementos espaciales
+        Ny = 40         # Número de elementos espaciales
         M = int(1e5)    # Número de elementos temporales (ver criterio)
         Dx = Lx/Nx
         Dy = Ly/Ny
@@ -806,11 +808,12 @@ if apartado_e == 'yes':
             y = yen[posy]
             k1 = PCB.kx #En el plano son iguales
             k2 = PCB.kx2
+            dis = 1
             from numpy import heaviside as H
             if y>=0 and y<L1y:
                 val = k1
             elif y>=L1y and y<=L2y:
-                val = k1 + (H(x-L1x,0.5)-H(x-L2x,0.5)+H(x-L3x,0.5)-H(x-L5x,0.5)+H(x-L6x,0.5)-H(x-L7x,0.5))*(k2-k1) # Los IC en x
+                val = k1 + (H(x-L1x,dis)-H(x-L2x,dis)+H(x-L3x,dis)-H(x-L5x,dis)+H(x-L6x,dis)-H(x-L7x,dis))*(k2-k1) # Los IC en x
             elif y>L2y and y<=L3y:
                 val = k1
             return val
@@ -820,11 +823,12 @@ if apartado_e == 'yes':
             y = yen[posy]
             rho_c1 = PCB.rho_c
             rho_c2 = PCB.rho_c2
+            dis = 1
             from numpy import heaviside as H
             if y>=0 and y<L1y:
                 val = rho_c1
             elif y>=L1y and y<=L2y:
-                val = rho_c1 + (H(x-L1x,0.5)-H(x-L2x,0.5)+H(x-L3x,0.5)-H(x-L5x,0.5)+H(x-L6x,0.5)-H(x-L7x,0.5))*(rho_c2-rho_c1) # Los IC en x
+                val = rho_c1 + (H(x-L1x,dis)-H(x-L2x,dis)+H(x-L3x,dis)-H(x-L5x,dis)+H(x-L6x,dis)-H(x-L7x,dis))*(rho_c2-rho_c1) # Los IC en x
             elif y>L2y and y<=L3y:
                 val = rho_c1
             return val
@@ -832,16 +836,15 @@ if apartado_e == 'yes':
         def phii_fun(posx,posy):
             x = xen[posx]
             y = yen[posy]
+            dis = 1
             from numpy import heaviside as H
             if y>=0 and y<L1y:
                 val = 0
             elif y>=L1y and y<=L2y:
-                val = (H(x-L1x,0.5)-H(x-L2x,0.5)+H(x-L3x,0.5)-H(x-L5x,0.5)+H(x-L6x,0.5)-H(x-L7x,0.5))*phi # Los IC en x
+                val = (H(x-L1x,dis)-H(x-L2x,dis)+H(x-L3x,dis)-H(x-L5x,dis)+H(x-L6x,dis)-H(x-L7x,dis))*phi # Los IC en x
             elif y>L2y and y<=L3y:
                 val = 0
             return val
-
-
 
         k=np.zeros((len(xen),len(yen)))
         rho_c=np.zeros((len(xen),len(yen)))
@@ -851,7 +854,6 @@ if apartado_e == 'yes':
                 k[x,y] = k_fun(x,y)
                 rho_c[x,y] = rho_c_fun(x,y)
                 phii[x,y] = phii_fun(x,y)
-
 
         save_result('k',k)
         save_result('rho_c',rho_c)
@@ -896,5 +898,4 @@ if apartado_e == 'yes':
         print(' T_max = ',round(T_max),'K ó',round(T_max-273.15),'C')
 
         # Guardar resultados
-
         save_result('Ten',Ten)
