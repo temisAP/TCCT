@@ -283,7 +283,7 @@ if apartado_e == 'yes':
 
     fig = plt.figure()
     ax = fig.gca(projection='3d')
-    surf = ax.plot_surface(x, y, z, cmap='jet')
+    surf = ax.plot_surface(x*1e3, y*1e3, z, cmap='jet')
     plt.xlabel('x[mm]')
     plt.ylabel('y[mm]')
     ax.set_zlabel('T[K]')
@@ -311,13 +311,6 @@ if apartado_e == 'yes':
     plt.savefig(figures_dir+'k.pdf')
     plt.close()
 
-    fig = plt.figure()
-    ax = fig.gca(projection='3d')
-    surf = ax.plot_surface(x, y, z, cmap='jet')
-    plt.grid()
-    plt.show()
-    plt.close()
-
     ### rho_c
 
     xen = read_result('xen')
@@ -338,13 +331,6 @@ if apartado_e == 'yes':
     plt.savefig(figures_dir+'rho_c.pdf')
     plt.close()
 
-    fig = plt.figure()
-    ax = fig.gca(projection='3d')
-    surf = ax.plot_surface(x, y, z, cmap='jet')
-    plt.grid()
-    plt.show()
-    plt.close()
-
     ### Disipación
 
     xen = read_result('xen')
@@ -363,13 +349,6 @@ if apartado_e == 'yes':
     plt.ylabel('y[mm]')
     plt.grid()
     plt.savefig(figures_dir+'phi.pdf')
-    plt.close()
-
-    fig = plt.figure()
-    ax = fig.gca(projection='3d')
-    surf = ax.plot_surface(x, y, z, cmap='jet')
-    plt.grid()
-    plt.show()
     plt.close()
 
 
