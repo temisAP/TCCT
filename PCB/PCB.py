@@ -38,11 +38,11 @@ try:
                 disp = float(p[2])
 except:
     ### Apartados
-    apartado_a = 'no'
-    apartado_b = 'no'
-    apartado_c = 'no'
+    apartado_a = 'yes'
+    apartado_b = 'yes'
+    apartado_c = 'yes'
     apartado_d = 'yes'
-    apartado_e = 'no'
+    apartado_e = 'yes'
     ###
     numerico = 'yes'
     ###
@@ -128,6 +128,7 @@ Cu_up = copy.deepcopy(Cu)
 Cu_up.kx = 395.0 * 0.1 #W/(m·K)
 Cu_up.ky = 395.0 * 0.1 #W/(m·K)
 Cu_up.kz = 395.0 * 0.1 #W/(m·K)
+Cu_up.rho_c = Cu.rho_c * 0.1 # J/(K·m^3)
 
 # IC
 IC = elemento()
@@ -300,7 +301,6 @@ if apartado_b == 'yes':
     L2 = IC.Lx
     L3 = IC.pitch
     L4 = IC.Lx/2
-
 
     ## Solución analítica
     print('Solución analítica')
@@ -779,7 +779,7 @@ if apartado_e == 'yes':
         Lx = PCB.Lx     # Espacio de simulación
         Ly = PCB.Ly     # Espacio de simulación
         T = 3250        # Tiempo de simulación
-        Nx = 70         # Número de elementos espaciales
+        Nx = 7         # Número de elementos espaciales
         Ny = 10         # Número de elementos espaciales
         M = int(1e5)    # Número de elementos temporales (ver criterio)
         Dx = Lx/Nx
@@ -841,6 +841,8 @@ if apartado_e == 'yes':
                 val = 0
             return val
 
+
+
         k=np.zeros((len(xen),len(yen)))
         rho_c=np.zeros((len(xen),len(yen)))
         phii=np.zeros((len(xen),len(yen)))
@@ -850,9 +852,11 @@ if apartado_e == 'yes':
                 rho_c[x,y] = rho_c_fun(x,y)
                 phii[x,y] = phii_fun(x,y)
 
+
         save_result('k',k)
         save_result('rho_c',rho_c)
         save_result('phii',phii)
+
         save_result('xen',xen)
         save_result('yen',yen)
 
@@ -865,8 +869,8 @@ if apartado_e == 'yes':
             T[t,0,:]=T_wall
             T[t,Nx,:]=T_wall
 
-            for y in range(1,Ny):
-                for x in range(1,Nx):
+            for y in range(1,len(yen)-1):
+                for x in range(1,len(xen)-1):
                     # Propiedades
                     kpx = (k[x+1,y]+k[x,y])/2
                     knx = (k[x,y]+k[x-1,y])/2

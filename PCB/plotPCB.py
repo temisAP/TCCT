@@ -2,14 +2,11 @@ import os
 import numpy as np
 from numpy import genfromtxt
 import matplotlib.pyplot as plt
-from cycler import cycler
-monochrome = (cycler('color', ['k']) * cycler('marker', ['', '.']) *
-              cycler('linestyle', ['-', '--', ':','-.']))
 
 # Para saber qué apartado correr
 data = 'data_plot' #Nombre del archivo
 try:
-    with open(data, 'r') as data:
+     with open(data, 'r') as data:
         for line in data:
             if 'apartado_a' in line:
                 p = line.split()
@@ -26,16 +23,20 @@ try:
             if 'apartado_e' in line:
                 p = line.split()
                 apartado_e = p[2]
+            if 'all' in line:
+                p = line.split()
+                all = p[2]
             if 'numerico' in line:
                 p = line.split()
                 numerico = p[2]
 except:
     ### Apartados
-    apartado_a = 'no'
-    apartado_b = 'no'
-    apartado_c = 'no'
+    apartado_a = 'yes'
+    apartado_b = 'yes'
+    apartado_c = 'yes'
     apartado_d = 'yes'
-    apartado_e = 'no'
+    apartado_e = 'yes'
+    all = 'yes'
     ###
     numerico = 'yes'
 
@@ -54,18 +55,22 @@ def read_result(name):
 
 ### Apartado a
 if apartado_a == 'yes':
-    print('Proceeding with a')
+    print('*** a ***')
 
     xa = read_result('xa')
     Ta1 = read_result('Ta1')
     Ta2 = read_result('Ta2')
 
+    print('Solución analítica')
+    print(' Potencia puntual : T_max = ',round(np.amax(Ta1)),'K ó',round(np.amax(Ta1)-273.15),'C')
+    print(' Potencia uniforme: T_max = ',round(np.amax(Ta2)),'K ó',round(np.amax(Ta2)-273.15),'C')
+
     fig = plt.figure()
-    #plt.rc('axes', prop_cycle=monochrome)
-    plt.plot(xa*1e3,Ta1-273.15)
-    plt.plot(xa*1e3,Ta2-273.15)
+    #
+    plt.plot(xa*1e3,Ta1)
+    plt.plot(xa*1e3,Ta2)
     plt.xlabel('x[mm]', horizontalalignment='right', x=1.0)
-    h = plt.ylabel('T[C]', horizontalalignment='right', y=1.0)
+    h = plt.ylabel('T[K]', horizontalalignment='right', y=1.0)
     h.set_rotation(0)
     plt.title('Distribución de temperatura')
     plt.legend(['Potencia puntual','Potencia uniforme'])
@@ -79,12 +84,17 @@ if apartado_a == 'yes':
         Ta1n = read_result('Ta1n')
         Ta2n = read_result('Ta2n')
 
+        print('Solución numérica')
+        print(' Potencia puntual : T_max = ',round(np.amax(Ta1n)),'K ó',round(np.amax(Ta1n)-273.15),'C')
+        print(' Potencia uniforme: T_max = ',round(np.amax(Ta2n)),'K ó',round(np.amax(Ta2n)-273.15),'C')
+
         fig = plt.figure()
-        #plt.rc('axes', prop_cycle=monochrome)
-        plt.plot(xan*1e3,Ta1n-273.15)
-        plt.plot(xan*1e3,Ta2n-273.15)
-        plt.xlabel('x[mm]')
-        plt.ylabel('T[C]')
+        #
+        plt.plot(xan*1e3,Ta1n)
+        plt.plot(xan*1e3,Ta2n)
+        plt.xlabel('x[mm]', horizontalalignment='right', x=1.0)
+        h = plt.ylabel('T[K]', horizontalalignment='right', y=1.0)
+        h.set_rotation(0)
         plt.title('Distribución de temperatura')
         plt.legend(['Potencia puntual','Potencia uniforme'])
         plt.grid()
@@ -93,13 +103,14 @@ if apartado_a == 'yes':
 
 
         fig = plt.figure()
-        #plt.rc('axes', prop_cycle=monochrome)
-        plt.plot(xa*1e3,Ta1-273.15)
-        plt.plot(xa*1e3,Ta2-273.15)
-        plt.plot(xan*1e3,Ta1n-273.15)
-        plt.plot(xan*1e3,Ta2n-273.15)
-        plt.xlabel('x[mm]')
-        plt.ylabel('T[C]')
+        #
+        plt.plot(xa*1e3,Ta1)
+        plt.plot(xa*1e3,Ta2)
+        plt.plot(xan*1e3,Ta1n)
+        plt.plot(xan*1e3,Ta2n)
+        plt.xlabel('x[mm]', horizontalalignment='right', x=1.0)
+        h = plt.ylabel('T[K]', horizontalalignment='right', y=1.0)
+        h.set_rotation(0)
         plt.title('Distribución de temperatura')
         plt.legend(['Potencia puntual (analítica)','Potencia uniforme (analítica)','Potencia puntual (numérica)','Potencia uniforme (numérica)'])
         plt.grid()
@@ -109,18 +120,23 @@ if apartado_a == 'yes':
 ### Apartado b
 
 if apartado_b == 'yes':
-    print('Proceeding with b')
+    print('*** b ***')
 
     xb = read_result('xb')
     Tb1 = read_result('Tb1')
     Tb2 = read_result('Tb2')
 
+    print('Solución analítica')
+    print(' Con kIC→∞   : T_max = ',round(np.amax(Tb1)),'K ó',round(np.amax(Tb1)-273.15),'C')
+    print(' Con kIC dada: T_max = ',round(np.amax(Tb2)),'K ó',round(np.amax(Tb2)-273.15),'C')
+
     fig = plt.figure()
-    #plt.rc('axes', prop_cycle=monochrome)
-    plt.plot(xb*1e3,Tb1-273.15)
-    plt.plot(xb*1e3,Tb2-273.15)
-    plt.xlabel('x[mm]')
-    plt.ylabel('T[C]')
+    #
+    plt.plot(xb*1e3,Tb1)
+    plt.plot(xb*1e3,Tb2)
+    plt.xlabel('x[mm]', horizontalalignment='right', x=1.0)
+    h = plt.ylabel('T[K]', horizontalalignment='right', y=1.0)
+    h.set_rotation(0)
     plt.title('Distribución de temperatura')
     plt.legend(['kIC→∞','kIC dado'])
     plt.grid()
@@ -133,27 +149,32 @@ if apartado_b == 'yes':
         Tb1n = read_result('Tb1n')
         Tb2n = read_result('Tb2n')
 
+        print('Solución numérica')
+        print(' Con kIC→∞   : T_max = ',round(np.amax(Tb1n)),'K ó',round(np.amax(Tb1n)-273.15),'C')
+        print(' Con kIC dada: T_max = ',round(np.amax(Tb2n)),'K ó',round(np.amax(Tb2n)-273.15),'C')
+
         fig = plt.figure()
-        #plt.rc('axes', prop_cycle=monochrome)
-        plt.plot(xbn*1e3,Tb1n-273.15)
-        plt.plot(xbn*1e3,Tb2n-273.15)
-        plt.xlabel('x[mm]')
-        plt.ylabel('T[C]')
+        #
+        plt.plot(xbn*1e3,Tb1n)
+        plt.plot(xbn*1e3,Tb2n)
+        plt.xlabel('x[mm]', horizontalalignment='right', x=1.0)
+        h = plt.ylabel('T[K]', horizontalalignment='right', y=1.0)
+        h.set_rotation(0)
         plt.title('Distribución de temperatura')
         plt.legend(['kIC→∞','kIC dado'])
         plt.grid()
         plt.savefig(figures_dir+'b_numeric.pdf')
         plt.close()
 
-
         fig = plt.figure()
-        #plt.rc('axes', prop_cycle=monochrome)
-        plt.plot(xb*1e3,Tb1-273.15)
-        plt.plot(xb*1e3,Tb2-273.15)
-        plt.plot(xbn*1e3,Tb1n-273.15)
-        plt.plot(xbn*1e3,Tb2n-273.15)
-        plt.xlabel('x[mm]')
-        plt.ylabel('T[C]')
+        #
+        plt.plot(xb*1e3,Tb1)
+        plt.plot(xb*1e3,Tb2)
+        plt.plot(xbn*1e3,Tb1n)
+        plt.plot(xbn*1e3,Tb2n)
+        plt.xlabel('x[mm]', horizontalalignment='right', x=1.0)
+        h = plt.ylabel('T[K]', horizontalalignment='right', y=1.0)
+        h.set_rotation(0)
         plt.title('Distribución de temperatura')
         plt.legend(['kIC→∞ (analítica)','kIC dado (analítica)','kIC→∞ (numérica)','kIC dado (numérica)'])
         plt.grid()
@@ -163,18 +184,21 @@ if apartado_b == 'yes':
 ### Apartado c
 
 if apartado_c == 'yes':
-    print('Proceeding with c')
+    print('*** c ***')
 
     xc = read_result('xc')
     Tc = read_result('Tc')
 
+    print('Solución analítica')
+    print(' T_max = ',round(np.amax(Tc)),'K ó',round(np.amax(Tc)-273.15),'C')
+
     fig = plt.figure()
-    #plt.rc('axes', prop_cycle=monochrome)
-    plt.plot(xc*1e3,Tc-273.15)
-    plt.xlabel('x[mm]')
-    plt.ylabel('T[C]')
+    #
+    plt.plot(xc*1e3,Tc)
+    plt.xlabel('x[mm]', horizontalalignment='right', x=1.0)
+    h = plt.ylabel('T[K]', horizontalalignment='right', y=1.0)
+    h.set_rotation(0)
     plt.title('Distribución de temperatura')
-    plt.legend(['Solución analítica','Solución numérica'])
     plt.grid()
     plt.savefig(figures_dir+'c_analytic.pdf')
     plt.close()
@@ -184,22 +208,27 @@ if apartado_c == 'yes':
         xcn = read_result('xcn')
         Tcn = read_result('Tcn')
 
+        print('Solución numérica')
+        print(' T_max = ',round(np.amax(Tcn)),'K ó',round(np.amax(Tcn)-273.15),'C')
+
         fig = plt.figure()
-        #plt.rc('axes', prop_cycle=monochrome)
-        plt.plot(xcn*1e3,Tcn-273.15)
-        plt.xlabel('x[mm]')
-        plt.ylabel('T[C]')
+        #
+        plt.plot(xcn*1e3,Tcn)
+        plt.xlabel('x[mm]', horizontalalignment='right', x=1.0)
+        h = plt.ylabel('T[K]', horizontalalignment='right', y=1.0)
+        h.set_rotation(0)
         plt.title('Distribución de temperatura')
         plt.grid()
         plt.savefig(figures_dir+'c_numeric.pdf')
         plt.close()
 
         fig = plt.figure()
-        #plt.rc('axes', prop_cycle=monochrome)
-        plt.plot(xc*1e3,Tc-273.15)
-        plt.plot(xcn*1e3,Tcn-273.15)
-        plt.xlabel('x[mm]')
-        plt.ylabel('T[C]')
+        #
+        plt.plot(xc*1e3,Tc)
+        plt.plot(xcn*1e3,Tcn)
+        plt.xlabel('x[mm]', horizontalalignment='right', x=1.0)
+        h = plt.ylabel('T[K]', horizontalalignment='right', y=1.0)
+        h.set_rotation(0)
         plt.title('Distribución de temperatura')
         plt.legend(['Solución analítica','Solución numérica'])
         plt.grid()
@@ -209,16 +238,19 @@ if apartado_c == 'yes':
 ### Apartado d
 
 if apartado_d == 'yes':
-    print('Proceeding with d')
+    print('*** d ***')
 
     xdn = read_result('xdn')
     Tdn = read_result('Tdn')
 
+    print(' T_max = ',round(np.amax(Tdn)),'K ó',round(np.amax(Tdn)-273.15),'C')
+
     fig = plt.figure()
-    #plt.rc('axes', prop_cycle=monochrome)
-    plt.plot(xdn*1e3,Tdn-273.15)
-    plt.xlabel('x[mm]')
-    plt.ylabel('T[C]')
+    #
+    plt.plot(xdn*1e3,Tdn)
+    plt.xlabel('x[mm]', horizontalalignment='right', x=1.0)
+    h = plt.ylabel('T[K]', horizontalalignment='right', y=1.0)
+    h.set_rotation(0)
     plt.title('Distribución de temperatura')
     plt.grid()
     plt.savefig(figures_dir+'d.pdf')
@@ -227,11 +259,13 @@ if apartado_d == 'yes':
 ### Apartado e
 
 if apartado_e == 'yes':
-    print('Proceeding with e')
+    print('*** e ***')
 
     xen = read_result('xen')
     yen = read_result('yen')
     Ten = read_result('Ten')
+
+    print(' T_max = ',round(np.amax(Ten)),'K ó',round(np.amax(Ten)-273.15),'C')
 
     x,y = np.meshgrid(xen,yen)
     z = Ten.transpose()
@@ -240,7 +274,7 @@ if apartado_e == 'yes':
     ax = fig.add_subplot(111)
     plt.title('Distribución de temperatura')
     CS3 = plt.contourf(x,y,z, cmap='jet')
-    plt.colorbar()
+    bar = plt.colorbar()
     plt.grid()
     plt.savefig(figures_dir+'e.pdf')
     plt.close()
@@ -263,9 +297,9 @@ if apartado_e == 'yes':
 
     fig = plt.figure()
     ax = fig.add_subplot(111)
-    plt.title('Distribución de temperatura')
+    plt.title('Conductividad')
     CS3 = plt.contourf(x,y,z, cmap='jet')
-    plt.colorbar()
+    bar = plt.colorbar()
     plt.grid()
     plt.savefig(figures_dir+'k.pdf')
     plt.close()
@@ -288,9 +322,9 @@ if apartado_e == 'yes':
 
     fig = plt.figure()
     ax = fig.add_subplot(111)
-    plt.title('Distribución de temperatura')
+    plt.title('Densidad y capacidad térmica específica')
     CS3 = plt.contourf(x,y,z, cmap='jet')
-    plt.colorbar()
+    bar = plt.colorbar(label='rho c [J/(K·m^3)]')
     plt.grid()
     plt.savefig(figures_dir+'rho_c.pdf')
     plt.close()
@@ -313,9 +347,9 @@ if apartado_e == 'yes':
 
     fig = plt.figure()
     ax = fig.add_subplot(111)
-    plt.title('Distribución de temperatura')
+    plt.title('Disipación')
     CS3 = plt.contourf(x,y,z, cmap='jet')
-    plt.colorbar()
+    bar = plt.colorbar()
     plt.grid()
     plt.savefig(figures_dir+'phi.pdf')
     plt.close()
@@ -330,33 +364,75 @@ if apartado_e == 'yes':
 
 ### Representación conjunta
 
-if apartado_a == 'yes' and apartado_b == 'yes' and apartado_c == 'yes' and apartado_d == 'yes':
+if (apartado_a == 'yes' and apartado_b == 'yes' and apartado_c == 'yes' and apartado_d == 'yes'):
 
     # Analíticas
     fig = plt.figure()
-    plt.rc('axes', prop_cycle=monochrome)
-    plt.plot(xa*1e3,Ta1-273.15)
-    plt.plot(xa*1e3,Ta2-273.15)
-    plt.plot(xb*1e3,Tb1-273.15)
-    plt.plot(xb*1e3,Tb2-273.15)
-    plt.xlabel('x[mm]')
-    plt.ylabel('T[C]')
+    #
+    plt.plot(xa*1e3,Ta1)
+    plt.plot(xa*1e3,Ta2)
+    plt.plot(xb*1e3,Tb1)
+    plt.plot(xb*1e3,Tb2)
+    plt.plot(xc*1e3,Tc)
+    plt.xlabel('x[mm]', horizontalalignment='right', x=1.0)
+    h = plt.ylabel('T[K]', horizontalalignment='right', y=1.0)
+    h.set_rotation(0)
     plt.title('Distribución de temperatura')
-    plt.legend(['Potencia puntual','Potencia uniforme','kIC→∞','kIC dado'])
+    plt.legend(['Potencia puntual','Potencia uniforme','kIC→∞','kIC dado','Radiación lineal'])
     plt.grid()
-    plt.savefig('all_analytic.pdf')
+    plt.savefig(figures_dir+'all_analytic.pdf')
     plt.close()
 
     if numerico == 'yes':
         # Numéricas
         fig = plt.figure()
-        plt.rc('axes', prop_cycle=monochrome)
-        plt.plot(xan*1e3,Ta1n-273.15)
-        plt.plot(xan*1e3,Ta2n-273.15)
-        plt.xlabel('x[mm]')
-        plt.ylabel('T[C]')
+        #
+        plt.plot(xan*1e3,Ta1n)
+        plt.plot(xan*1e3,Ta2n)
+        plt.plot(xbn*1e3,Tb1n)
+        plt.plot(xbn*1e3,Tb2n)
+        plt.plot(xcn*1e3,Tcn)
+        plt.plot(xdn*1e3,Tdn)
+        plt.xlabel('x[mm]', horizontalalignment='right', x=1.0)
+        h = plt.ylabel('T[K]', horizontalalignment='right', y=1.0)
+        h.set_rotation(0)
         plt.title('Distribución de temperatura')
-        plt.legend(['Potencia uniforme','kIC→∞','kIC dado'])
+        plt.legend(['Potencia uniforme','kIC→∞','kIC dado','Radiación lineal','Radiación & IC'])
         plt.grid()
-        plt.savefig('all_numeric.pdf')
+        plt.savefig(figures_dir+'all_numeric.pdf')
         plt.close()
+
+if all == 'yes':
+
+    print('*** all ***')
+
+    xa = read_result('xa')
+    Ta1 = read_result('Ta1')
+    Ta2 = read_result('Ta2')
+
+    xb = read_result('xb')
+    Tb1 = read_result('Tb1')
+    Tb2 = read_result('Tb2')
+
+    xc = read_result('xc')
+    Tc = read_result('Tc')
+
+    xdn = read_result('xdn')
+    Tdn = read_result('Tdn')
+
+    fig = plt.figure()
+    #
+    plt.plot(xa*1e3,Ta1)
+    plt.plot(xa*1e3,Ta2)
+    plt.plot(xb*1e3,Tb1)
+    plt.plot(xb*1e3,Tb2)
+    plt.plot(xc*1e3,Tc)
+    plt.plot(xdn*1e3,Tdn)
+    plt.xlabel('x[mm]', horizontalalignment='right', x=1.0)
+    h = plt.ylabel('T[K]', horizontalalignment='right', y=1.0)
+    h.set_rotation(0)
+    plt.title('Distribución de temperatura')
+    plt.legend(['(1) puntual','(1) uniforme','(2) kIC→∞','(2) kIC dado','(3)','(4)'])
+    plt.grid()
+    plt.savefig(figures_dir+'all.pdf')
+    plt.close()
