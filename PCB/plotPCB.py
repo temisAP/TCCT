@@ -75,7 +75,7 @@ if apartado_a == 'yes':
     plt.title('Distribución de temperatura')
     plt.legend(['Potencia puntual','Potencia uniforme'])
     plt.grid()
-    plt.savefig(figures_dir+"/a_analytic.pdf")
+    plt.savefig(figures_dir+'a_analytic.pdf')
     plt.close()
 
     if numerico == 'yes':
