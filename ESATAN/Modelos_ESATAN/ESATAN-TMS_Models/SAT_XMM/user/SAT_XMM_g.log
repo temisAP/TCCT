@@ -1,0 +1,113 @@
+/* ESATAN-TMS version 2020, run date 11:26 Tue 27 Apr 2021 */
+BEGIN_MODEL SAT_XMM WORKBENCH_V1
+
+GEOMETRY Telescope_end;
+Telescope_end = SHELL_SCS_CYLINDER(
+    radius = 225.0,
+    hmax = 3000.0,
+    sense = -1,
+    side1 = "Active",
+    ndelta1_1 = 1,
+    side2 = "Active",
+    ndelta2_1 = 1,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    meshType1 = "regular",
+    nodes1 = 1,
+    meshType2 = "regular",
+    nodes2 = 1,
+    analysis_type = "Lumped Parameter");
+
+Telescope_end = TRANSLATE(
+    object_name = Telescope_end,
+    z_dist = -300.0,
+    clear = TRUE);
+Telescope_end = SHELL_SCS_CYLINDER(
+    radius = 225.0,
+    hmax = 300.0,
+    sense = -1,
+    side1 = "Active",
+    ndelta1_1 = 1,
+    side2 = "Active",
+    ndelta2_1 = 1,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    meshType1 = "regular",
+    nodes1 = 1,
+    meshType2 = "regular",
+    nodes2 = 1,
+    analysis_type = "Lumped Parameter");
+
+Telescope_end = TRANSLATE(
+    object_name = Telescope_end,
+    z_dist = -300.0,
+    clear = TRUE);
+Telescope_end = SHELL_SCS_CYLINDER(
+    radius = 225.0,
+    hmax = 150.0,
+    sense = -1,
+    side1 = "Active",
+    ndelta1_1 = 1,
+    side2 = "Active",
+    ndelta2_1 = 1,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    meshType1 = "regular",
+    nodes1 = 1,
+    meshType2 = "regular",
+    nodes2 = 1,
+    analysis_type = "Lumped Parameter");
+
+Telescope_end = TRANSLATE(
+    object_name = Telescope_end,
+    z_dist = -450.0,
+    clear = TRUE);
+Telescope_end = SHELL_SCS_CYLINDER(
+    radius = 120.0,
+    hmax = 150.0,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    side1 = "Active",
+    ndelta1_1 = 1,
+    side2 = "Active",
+    ndelta2_1 = 1,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    thick = 0.0,
+    meshType1 = "regular",
+    nodes1 = 1,
+    meshType2 = "regular",
+    nodes2 = 1,
+    analysis_type = "Lumped Parameter");
+
+Telescope_end = TRANSLATE(
+    object_name = Telescope_end,
+    z_dist = -450.0,
+    clear = TRUE);
+GEOMETRY Telescope;
+Telescope = SHELL_SCS_CYLINDER(
+    radius = 225.0,
+    hmax = 300.0,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    side1 = "Active",
+    ndelta1_1 = 1,
+    side2 = "Active",
+    ndelta2_1 = 1,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    thick = 0.0,
+    meshType1 = "regular",
+    nodes1 = 1,
+    meshType2 = "regular",
+    nodes2 = 1,
+    analysis_type = "Lumped Parameter");
+
+Telescope = TRANSLATE(
+    object_name = Telescope,
+    z_dist = -300.0,
+    clear = TRUE);
