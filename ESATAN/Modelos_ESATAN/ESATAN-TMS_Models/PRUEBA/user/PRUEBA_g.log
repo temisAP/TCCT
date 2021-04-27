@@ -1,0 +1,75 @@
+/* ESATAN-TMS version 2020, run date 9:58 Tue 13 Apr 2021 */
+BEGIN_MODEL PRUEBA WORKBENCH_V1
+
+GEOMETRY torus;
+torus = SHELL_SCS_TORUS(
+    major_radius = 10.0,
+    minor_radius = 5.0,
+    major_angmin = 30.0,
+    major_angmax = 60.0,
+    minor_angmin = 30.0,
+    minor_angmax = 60.0,
+    sense = -1,
+    side1 = "Active",
+    ndelta1_1 = 1,
+    side2 = "Active",
+    ndelta2_1 = 1,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    meshType1 = "regular",
+    nodes1 = 1,
+    meshType2 = "regular",
+    nodes2 = 1,
+    analysis_type = "Lumped Parameter");
+
+torus = TRANSLATE(
+    object_name = torus,
+    clear = TRUE);
+REMOVE_FACE(face = "torus:face1");
+DELETE_GEOMETRY (geometry = torus, recursive = FALSE, unassign = FALSE);
+GEOMETRY torus;
+torus = SHELL_SCS_CONE(
+    semi_ang = 30.0,
+    hmax = 10.0,
+    hmin = 0.0,
+    sense = -1,
+    side1 = "Active",
+    ndelta1_1 = 1,
+    side2 = "Active",
+    ndelta2_1 = 1,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    meshType1 = "regular",
+    nodes1 = 1,
+    meshType2 = "regular",
+    nodes2 = 1,
+    analysis_type = "Lumped Parameter");
+
+torus = TRANSLATE(
+    object_name = torus,
+    clear = TRUE);
+GEOMETRY cilinder;
+cilinder = SHELL_SCS_CYLINDER(
+    radius = 30.0,
+    hmax = 0.0,
+    hmin = -10.0,
+    sense = -1,
+    side1 = "Active",
+    ndelta1_1 = 1,
+    side2 = "Active",
+    ndelta2_1 = 1,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    meshType1 = "regular",
+    nodes1 = 1,
+    meshType2 = "regular",
+    nodes2 = 1,
+    analysis_type = "Lumped Parameter");
+
+cilinder = TRANSLATE(
+    object_name = cilinder,
+    clear = TRUE);
+/* END_MODEL */
+/* ESATAN-TMS version 2020, run date 10:39 Tue 13 Apr 2021 */
+/* BEGIN_MODEL PRUEBA WORKBENCH_V1 */
+END_MODEL
