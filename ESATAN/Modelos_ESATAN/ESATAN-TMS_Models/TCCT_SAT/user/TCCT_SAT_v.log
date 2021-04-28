@@ -1889,3 +1889,599 @@ DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
         asm_axes = TRUE,
         points = FALSE);
 
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+DELETE vis_items_key;
+STRING vis_items_key[5] = {"Al_7075_T6",
+    "MLI",
+    "ULE_Glass",
+    "Radiator",
+    "GaAs"};
+RADIATIVE_PRE_PROCESS_OVERLAY(
+    source= "BULK"
+);
+CLEAR();
+
+DELETE vis_items_key;
+STRING vis_items_key[5] = {"Al_7075_T6",
+    "GaAs",
+    "MLI",
+    "Radiator",
+    "ULE_Glass"};
+KEY(shade = vis_item_shade,
+    discrete = "vis_items_key[1]",
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.DISCRETE = "vis_items_key[1]";
+TCCT_SAT.SHADE = "vis_item_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Bulk Properties",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+CLEAR();
+
+KEY(shade = vis_item_shade,
+    discrete = "vis_items_key[1]",
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.DISCRETE = "vis_items_key[1]";
+TCCT_SAT.SHADE = "vis_item_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Bulk Properties",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+CLEAR();
+
+KEY(shade = vis_item_shade,
+    discrete = "vis_items_key[1]",
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.DISCRETE = "vis_items_key[1]";
+TCCT_SAT.SHADE = "vis_item_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Bulk Properties",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+CLEAR();
+
+KEY(shade = vis_item_shade,
+    discrete = "vis_items_key[1]",
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.DISCRETE = "vis_items_key[1]";
+TCCT_SAT.SHADE = "vis_item_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Bulk Properties",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+RADIATIVE_PRE_PROCESS_OVERLAY (
+     source = "GROUP",
+     display = "MODEL_ONLY",
+     group = "");
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Single Group: ",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+RADIATIVE_PRE_PROCESS_OVERLAY (
+     source = "GROUP",
+     display = "MODEL_ONLY",
+     group = "");
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Single Group: ",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+RADIATIVE_PRE_PROCESS_OVERLAY (
+     source = "GEOMETRY",
+     display = "MODEL_ONLY");
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+RADIATIVE_PRE_PROCESS_OVERLAY (
+     source = "GROUP",
+     display = "MODEL_ONLY",
+     group = "");
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Single Group: ",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+RADIATIVE_PRE_PROCESS_OVERLAY (
+     source = "GEOMETRY",
+     display = "MODEL_ONLY");
+RADIATIVE_PRE_PROCESS_OVERLAY (
+     source = "GROUP",
+     display = "MODEL_ONLY",
+     group = "");
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Single Group: ",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Single Group: ",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+RADIATIVE_PRE_PROCESS_OVERLAY (
+     source = "GEOMETRY",
+     display = "MODEL_ONLY");
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+THERMAL_PRE_PROCESS_OVERLAY(
+result_type = "CONDUCTIVE_INTERFACE");
+DEFINE_RANGE(
+    range = default_range,
+    min = 0.0,
+    max = 0.0,
+    type = "LINEAR"
+);
+
+DEFINE_RANGE(
+    range = default_range,
+    min = 0.0,
+    max = 0.0,
+    type = "LINEAR"
+);
+
+CLEAR();
+
+KEY(shade = conductive_interface_shade,
+    discrete = "conductiveinterface[1]",
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.DISCRETE = "conductiveinterface[1]";
+TCCT_SAT.SHADE = "conductive_interface_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Conductive Interfaces",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE)
+   /* Warning Error: current function is cms_create */
+   /* Model is unassigned */
+;
+
+THERMAL_PRE_PROCESS_OVERLAY(
+result_type = "CONDUCTIVE_INTERFACE");
+CLEAR();
+
+KEY(shade = conductive_interface_shade,
+    discrete = "conductiveinterface[1]",
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.DISCRETE = "conductiveinterface[1]";
+TCCT_SAT.SHADE = "conductive_interface_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Conductive Interfaces",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE)
+   /* Warning Error: current function is cms_create */
+   /* Model is unassigned */
+;
+
+RADIATIVE_PRE_PROCESS_OVERLAY(source = "GEOMETRY",
+                              display = "MODEL_ONLY");
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+THERMAL_PRE_PROCESS_OVERLAY(
+result_type = "CONDUCTIVE_INTERFACE");
+CLEAR();
+
+KEY(shade = conductive_interface_shade,
+    discrete = "conductiveinterface[1]",
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.DISCRETE = "conductiveinterface[1]";
+TCCT_SAT.SHADE = "conductive_interface_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Conductive Interfaces",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE)
+   /* Warning Error: current function is cms_create */
+   /* Model is unassigned */
+;
+
