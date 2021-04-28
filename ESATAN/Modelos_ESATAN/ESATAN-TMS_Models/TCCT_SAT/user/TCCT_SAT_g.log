@@ -2596,3 +2596,189 @@ TL_mirror = TRANSLATE(
     object_name = TL_mirror,
     z_dist = 1.0,
     clear = TRUE);
+DELETE_GEOMETRY (geometry = Solar_panels_assembly, recursive = FALSE, unassign = TRUE);
+/* END_MODEL */
+/* ESATAN-TMS version 2020, run date 19:41 Wed 28 Apr 2021 */
+/* BEGIN_MODEL TCCT_SAT WORKBENCH_V1 */
+Solar_panels_assembly = ASSEMBLE(
+    ref_comp = BODY,
+    moving_comp = SOLAR_PANELS,
+    orientation = "TRUE_SUN",
+    rot_point = [0.0, 0.0, 7.0],
+    rot_axis = [1.0, 0.0, 0.0],
+    rot_min_ang = 0.0,
+    rot_max_ang = 360.0,
+    point_vect = [0.0, 0.0, 1.0]
+);
+Solar_panels_assembly = ASSEMBLE(
+    ref_comp = BODY,
+    moving_comp = SOLAR_PANELS,
+    orientation = "TRUE_SUN",
+    rot_point = [0.0, 0.0, 7.0],
+    rot_axis = [1.0, 0.0, 0.0],
+    rot_min_ang = 0.0,
+    rot_max_ang = 360.0,
+    point_vect = [0.0, 0.0, 1.0]
+);
+DELETE_GEOMETRY (geometry = Solar_panels_assembly, recursive = FALSE, unassign = TRUE);
+DELETE_GEOMETRY (geometry = Solar_panels_assembly, recursive = FALSE, unassign = FALSE);
+TCCT_SAT = ASSEMBLE(
+    ref_comp = BODY,
+    moving_comp = SOLAR_PANELS,
+    orientation = "TRUE_SUN",
+    rot_point = [0.0, 0.0, 7.0],
+    rot_axis = [1.0, 0.0, 0.0],
+    rot_min_ang = 0.0,
+    rot_max_ang = 360.0,
+    point_vect = [0.0, 0.0, 1.0]
+);
+TCCT_SAT = ASSEMBLE(
+    ref_comp = BODY,
+    moving_comp = SOLAR_PANELS,
+    orientation = "TRUE_SUN",
+    rot_point = [0.0, 0.0, 7.0],
+    rot_axis = [1.0, 0.0, 0.0],
+    rot_min_ang = 0.0,
+    rot_max_ang = 360.0,
+    point_vect = [0.0, 0.0, 1.0]
+);
+
+CONDUCTIVE_INTERFACE ci_1;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_1,
+	primitiveA = BX,
+	primitiveB = BX,
+	start_point = [-1.5, 1.5, 0.0],
+	end_point = [-1.5, -1.5, 0.0],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_2;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_2,
+	primitiveA = BX,
+	primitiveB = BX,
+	start_point = [-1.5, -1.5, 2.0],
+	end_point = [1.5, -1.5, 2.0],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_3;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_3,
+	primitiveA = BX,
+	primitiveB = BX,
+	start_point = [-1.5, -1.5, 0.0],
+	end_point = [1.5, -1.5, 0.0],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_4;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_4,
+	primitiveA = BX,
+	primitiveB = BX,
+	start_point = [1.5, 1.5, 2.0],
+	end_point = [-1.5, 1.5, 2.0],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_5;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_5,
+	primitiveA = BX,
+	primitiveB = BX,
+	start_point = [-1.5, 1.5, 2.0],
+	end_point = [-1.5, -1.5, 2.0],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_6;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_6,
+	primitiveA = BX,
+	primitiveB = BX,
+	start_point = [1.5, 1.5, 0.0],
+	end_point = [-1.5, 1.5, 0.0],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_7;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_7,
+	primitiveA = BX,
+	primitiveB = BX,
+	start_point = [-1.5, -1.5, 0.0],
+	end_point = [-1.5, -1.5, 2.0],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_8;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_8,
+	primitiveA = BX,
+	primitiveB = BX,
+	start_point = [-1.5, 1.5, 0.0],
+	end_point = [-1.5, 1.5, 2.0],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_9;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_9,
+	primitiveA = BX,
+	primitiveB = BX,
+	start_point = [1.5, -1.5, 0.0],
+	end_point = [1.5, -1.5, 2.0],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_10;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_10,
+	primitiveA = BX,
+	primitiveB = BX,
+	start_point = [1.5, -1.5, 2.0],
+	end_point = [1.5, 1.5, 2.0],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_11;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_11,
+	primitiveA = BX,
+	primitiveB = BX,
+	start_point = [1.5, 1.5, 0.0],
+	end_point = [1.5, -1.5, 0.0],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_12;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_12,
+	primitiveA = BX,
+	primitiveB = BX,
+	start_point = [1.5, 1.5, 0.0],
+	end_point = [1.5, 1.5, 2.0],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_13;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_13,
+	primitiveA = TLC2,
+	primitiveB = TLD2,
+	start_point = [1.25, 0.0, 0.0],
+	end_point = [1.25, -3.061616997868383E-16, 0.0],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_14;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_14,
+	primitiveA = TLC1,
+	primitiveB = TLD2,
+	start_point = [0.75, 0.0, 2.0],
+	end_point = [0.75, -1.8369701987210297E-16, 2.0],
+	connect_type = "FUSED");
+
