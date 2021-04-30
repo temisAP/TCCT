@@ -1,0 +1,224 @@
+/* ESATAN-TMS version 2020, run date 16:18 Wed 28 Apr 2021 */
+BEGIN_MODEL TCCT_SAT WORKBENCH_V1 ;
+/* END_MODEL */
+/* ESATAN-TMS version 2020, run date 16:43 Wed 28 Apr 2021 */
+/* BEGIN_MODEL TCCT_SAT WORKBENCH_V1 */ ;
+/* END_MODEL */
+/* ESATAN-TMS version 2020, run date 19:41 Wed 28 Apr 2021 */
+/* BEGIN_MODEL TCCT_SAT WORKBENCH_V1 */ ;
+RADIATIVE_CASE SS;
+DEFINE_RADIATIVE_CASE(
+    radiative_case = SS,
+    title = "Sun-Syncronous_DaskDown",
+    description = "Sun Syncronous DaskDown",
+    geometry = "Whole Model",
+    environment = TRUE,
+    mission_type = "ORBITAL",
+    init_time = 0.0,
+    prop_env = ""
+);
+
+DEFINE_MISSION(
+    radiative_case = SS,
+    orbit_centre = "PLANET",
+    planet_radius = 6371000.0,
+    sun_radius = 6.958E8,
+    sun_distance = 1.50637477738E11,
+    solar_decln = 14.304,
+    sun_alpha = 36.0,
+    orbital_precession = 0.0,
+    gc = 9.798,
+    celestial_body_image = "Earth",
+    omega = 0.0,
+    incln = 96.97,
+    alpha = 0.0,
+    alt_p = 320000.0,
+    alt_a = 320000.0,
+    init_anomaly = 0.0,
+    final_anomaly = 360.0,
+    position_method = "ANGLE",
+    angle_gap = 36.0,
+    eclipse_points = TRUE,
+    eclipse_offset = 0.5,
+    orientation = "POINTING",
+    primary_vector = [0.0, 0.0, 1.0],
+    primary_direction = "ZENITH",
+    second_vector = [0.0, 1.0, 0.0],
+    second_direction = "VELOCITY",
+    primary_gen_vector = [1.0, 0.0, 0.0],
+    second_gen_vector = [0.0, -1.0, 0.0],
+    init_phi = 0.0,
+    init_psi = 0.0,
+    init_omega = 0.0,
+    phi_rot_rate = 0.0,
+    psi_rot_rate = 0.0,
+    omega_rot_rate = 0.0,
+    euler_order = "phi, psi, omega",
+    spinning_craft = FALSE,
+    rotation_rate = 0.0,
+    sun_temperature = 5778.0,
+    planet_temperature_method = "UNIFORM",
+    planet_temperature = 254.3,
+    planet_albedo_method = "UNIFORM",
+    albedo_reflect_coeff = 0.306,
+    planet_infra_red_emissivity = 1.0,
+    solar_const_override = 0.0,
+    sun_size_finite = FALSE,
+    sun_distance_override = 0.0,
+    day_period = 86400.0
+);
+
+
+GC = EVAL(SS.GC);
+R_PLANET = EVAL(SS.ORBIT.PLANET_RADIUS);
+R_SUN = EVAL(SS.ORBIT.SUN_RADIUS);
+IF (EVAL(SS.SUN_DISTANCE_OVERRIDE) == 0.0) THEN
+    SUN_PLANET_DIST = EVAL(SS.ORBIT.SUN_DISTANCE);
+ELSE
+    SUN_PLANET_DIST = EVAL(SS.SUN_DISTANCE_OVERRIDE);
+END_IF
+T_SUN = EVAL(SS.T_SUN);
+SOLAR_DECLINATION = EVAL(SS.ORBIT.SOLAR_DECLN);
+
+PROP_ENV = SS.PROP_ENV;
+
+DEFINE_RADIATIVE_CASE(
+    radiative_case = SS,
+    title = "Sun-Syncronous_DaskDown",
+    description = "Sun Syncronous DaskDown",
+    geometry = "Whole Model",
+    environment = TRUE,
+    mission_type = "ORBITAL",
+    init_time = 0.0,
+    prop_env = ""
+);
+
+DEFINE_MISSION(
+    radiative_case = SS,
+    orbit_centre = "PLANET",
+    planet_radius = 6371000.0,
+    sun_radius = 6.958E8,
+    sun_distance = 1.50637477738E11,
+    solar_decln = 14.304,
+    sun_alpha = 36.0,
+    orbital_precession = 0.0,
+    gc = 9.798,
+    celestial_body_image = "Earth",
+    omega = 0.0,
+    incln = 96.97,
+    alpha = 0.0,
+    alt_p = 320000.0,
+    alt_a = 320000.0,
+    init_anomaly = 0.0,
+    final_anomaly = 360.0,
+    position_method = "ANGLE",
+    angle_gap = 36.0,
+    eclipse_points = TRUE,
+    eclipse_offset = 0.5,
+    orientation = "POINTING",
+    primary_vector = [0.0, 0.0, 1.0],
+    primary_direction = "ZENITH",
+    second_vector = [0.0, 1.0, 0.0],
+    second_direction = "ANTI_TRUE_SUN",
+    primary_gen_vector = [1.0, 0.0, 0.0],
+    second_gen_vector = [0.0, -1.0, 0.0],
+    init_phi = 0.0,
+    init_psi = 0.0,
+    init_omega = 0.0,
+    phi_rot_rate = 0.0,
+    psi_rot_rate = 0.0,
+    omega_rot_rate = 0.0,
+    euler_order = "phi, psi, omega",
+    spinning_craft = FALSE,
+    rotation_rate = 0.0,
+    sun_temperature = 5778.0,
+    planet_temperature_method = "UNIFORM",
+    planet_temperature = 254.3,
+    planet_albedo_method = "UNIFORM",
+    albedo_reflect_coeff = 0.306,
+    planet_infra_red_emissivity = 1.0,
+    solar_const_override = 0.0,
+    sun_size_finite = FALSE,
+    sun_distance_override = 0.0,
+    day_period = 86400.0
+)
+   /* Warning Error: current function is orientating main body */
+   /* Unable to orient secondary pointing vector exactly.
+  Angle of pointing vector to direction is 51.62240042605346, at anomaly 0.
+      Error number: 702 */
+
+   /* Warning Error: current function is orientating main body */
+   /* Unable to orient secondary pointing vector exactly.
+  Angle of pointing vector to direction is 47.53934973058821, at anomaly 36.
+      Error number: 702 */
+
+   /* Warning Error: current function is orientating main body */
+   /* Unable to orient secondary pointing vector exactly.
+  Angle of pointing vector to direction is 24.18938287977634, at anomaly 72.
+      Error number: 702 */
+
+   /* Warning Error: current function is orientating main body */
+   /* Unable to orient secondary pointing vector exactly.
+  Angle of pointing vector to direction is 4.286584261535499, at anomaly 108.
+      Error number: 702 */
+
+   /* Warning Error: current function is orientating main body */
+   /* Unable to orient secondary pointing vector exactly.
+  Angle of pointing vector to direction is 17.59394463856832, at anomaly 124.7607910156251.
+      Error number: 702 */
+
+   /* Warning Error: current function is orientating main body */
+   /* Unable to orient secondary pointing vector exactly.
+  Angle of pointing vector to direction is 17.98416462999403, at anomaly 125.2607910156251.
+      Error number: 702 */
+
+   /* Warning Error: current function is orientating main body */
+   /* Unable to orient secondary pointing vector exactly.
+  Angle of pointing vector to direction is 32.05238048744085, at anomaly 144.
+      Error number: 702 */
+
+   /* Warning Error: current function is orientating main body */
+   /* Unable to orient secondary pointing vector exactly.
+  Angle of pointing vector to direction is 51.62240042605346, at anomaly 180.
+      Error number: 702 */
+
+   /* Warning Error: current function is orientating main body */
+   /* Unable to orient secondary pointing vector exactly.
+  Angle of pointing vector to direction is 47.53934973058821, at anomaly 216.
+      Error number: 702 */
+
+   /* Warning Error: current function is orientating main body */
+   /* Unable to orient secondary pointing vector exactly.
+  Angle of pointing vector to direction is 24.1893828797763, at anomaly 252.
+      Error number: 702 */
+
+   /* Warning Error: current function is orientating main body */
+   /* Unable to orient secondary pointing vector exactly.
+  Angle of pointing vector to direction is 17.98421864556972, at anomaly 260.0635742187492.
+      Error number: 702 */
+
+   /* Warning Error: current function is orientating main body */
+   /* Unable to orient secondary pointing vector exactly.
+  Angle of pointing vector to direction is 17.5939987299544, at anomaly 260.5635742187492.
+      Error number: 702 */
+
+   /* Warning Error: current function is orientating main body */
+   /* Unable to orient secondary pointing vector exactly.
+  Angle of pointing vector to direction is 4.286584261535244, at anomaly 288.
+      Error number: 702 */
+
+   /* Warning Error: current function is orientating main body */
+   /* Unable to orient secondary pointing vector exactly.
+  Angle of pointing vector to direction is 32.05238048744081, at anomaly 324.
+      Error number: 702 */
+
+   /* Warning Error: current function is orientating main body */
+   /* Unable to orient secondary pointing vector exactly.
+  Angle of pointing vector to direction is 51.62240042605346, at anomaly 360.
+      Error number: 702 */
+;
+
+
+/* END_MODEL */
+/* ESATAN-TMS version 2020, run date 15:54 Fri 30 Apr 2021 */
+/* BEGIN_MODEL TCCT_SAT WORKBENCH_V1 */ ;

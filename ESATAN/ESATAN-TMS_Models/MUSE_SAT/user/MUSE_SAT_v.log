@@ -1,0 +1,576 @@
+/* ESATAN-TMS version 2020, run date 9:52 Tue 27 Apr 2021 */
+BEGIN_MODEL MUSE_SAT WORKBENCH_V1 ;
+RADIATIVE_PRE_PROCESS_OVERLAY(source = "GEOMETRY",
+                              display = "MODEL_ONLY");
+CLEAR();
+
+MUSE_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+RESET_VIEW();
+
+CLEAR();
+
+MUSE_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+CLEAR();
+
+MUSE_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+LOAD_EXTERNAL_RESULTS (
+type = "TMD",
+file = "D:\Archivos_de_programa\ESATAN\Modelos_ESATAN\ESATAN-TMS_Models\MUSE_SAT\esatan\acase01\MUSE_SAT_ACASE01.TMD"
+);
+RADIATIVE_PRE_PROCESS_OVERLAY(source = "GEOMETRY",
+                              display = "MODEL_ONLY");
+CLEAR();
+
+MUSE_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+THERMAL_POST_PROCESS_OVERLAY(
+    record_type= "Thermal_Node",
+    start_time = 0.0,
+    end_time = 6050.25,
+    cycle = 1,
+    radiative_case = rad01,
+    analysis_case = acase01,
+    fixed_scale = FALSE,
+    attribute = "Temperature",
+     model_scale = 0.385,
+     draw_periapsis = TRUE,
+     draw_asc_node = TRUE
+);
+DEFINE_RANGE(
+    range = default_range,
+    min = -39.12687948115412,
+    max = 169.68379070892829,
+    type = "LINEAR"
+);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+MUSE_SAT.RANGE = "default_range";
+MUSE_SAT.SHADE = "continuous_shade";
+MUSE_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DRAW_ORBIT(analysis_case = acase01);
+DRAW_PERIAPSIS(orbit = rad01.ORBIT);
+DRAW_ASCENDING_NODE(orbit = rad01.ORBIT);
+vis_orbit_index = 1;
+vis_orbit_index = 1;
+DRAW_PLANET(radiative_case = rad01,
+            time = vis_orbit_times[vis_orbit_index],
+            scale = 1.0,
+            range = default_range,
+            shade = continuous_shade
+);
+DISPLAY(p_and_o = vis_orbit_pos[vis_orbit_index],
+        time = vis_orbit_times[vis_orbit_index],
+        scale = 0.385 * (rad01.ORBIT.ALT_A + R_PLANET),
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+THERMAL_POST_PROCESS_OVERLAY(
+    record_type= "Thermal_Node",
+    start_time = 0.0,
+    end_time = 6050.25,
+    cycle = 1,
+    radiative_case = rad01,
+    analysis_case = acase01,
+    fixed_scale = FALSE,
+    attribute = "Temperature",
+     model_scale = 0.001,
+     draw_periapsis = TRUE,
+     draw_asc_node = TRUE
+);
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+MUSE_SAT.RANGE = "default_range";
+MUSE_SAT.SHADE = "continuous_shade";
+MUSE_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DRAW_ORBIT(analysis_case = acase01);
+DRAW_PERIAPSIS(orbit = rad01.ORBIT);
+DRAW_ASCENDING_NODE(orbit = rad01.ORBIT);
+DRAW_PLANET(radiative_case = rad01,
+            time = vis_orbit_times[vis_orbit_index],
+            scale = 1.0,
+            range = default_range,
+            shade = continuous_shade
+);
+DISPLAY(p_and_o = vis_orbit_pos[vis_orbit_index],
+        time = vis_orbit_times[vis_orbit_index],
+        scale = 0.001 * (rad01.ORBIT.ALT_A + R_PLANET),
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+THERMAL_POST_PROCESS_OVERLAY(
+    record_type= "Thermal_Node",
+    start_time = 0.0,
+    end_time = 6050.25,
+    cycle = 1,
+    radiative_case = rad01,
+    analysis_case = acase01,
+    fixed_scale = FALSE,
+    attribute = "Temperature",
+     model_scale = 0.126,
+     draw_periapsis = TRUE,
+     draw_asc_node = TRUE
+);
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+MUSE_SAT.RANGE = "default_range";
+MUSE_SAT.SHADE = "continuous_shade";
+MUSE_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DRAW_ORBIT(analysis_case = acase01);
+DRAW_PERIAPSIS(orbit = rad01.ORBIT);
+DRAW_ASCENDING_NODE(orbit = rad01.ORBIT);
+DRAW_PLANET(radiative_case = rad01,
+            time = vis_orbit_times[vis_orbit_index],
+            scale = 1.0,
+            range = default_range,
+            shade = continuous_shade
+);
+DISPLAY(p_and_o = vis_orbit_pos[vis_orbit_index],
+        time = vis_orbit_times[vis_orbit_index],
+        scale = 0.126 * (rad01.ORBIT.ALT_A + R_PLANET),
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+THERMAL_POST_PROCESS_OVERLAY(
+    record_type= "Thermal_Node",
+    start_time = 0.0,
+    end_time = 6050.25,
+    cycle = 1,
+    radiative_case = rad01,
+    analysis_case = acase01,
+    fixed_scale = FALSE,
+    attribute = "Temperature",
+     model_scale = 0.01,
+     draw_periapsis = TRUE,
+     draw_asc_node = TRUE
+);
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+MUSE_SAT.RANGE = "default_range";
+MUSE_SAT.SHADE = "continuous_shade";
+MUSE_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DRAW_ORBIT(analysis_case = acase01);
+DRAW_PERIAPSIS(orbit = rad01.ORBIT);
+DRAW_ASCENDING_NODE(orbit = rad01.ORBIT);
+DRAW_PLANET(radiative_case = rad01,
+            time = vis_orbit_times[vis_orbit_index],
+            scale = 1.0,
+            range = default_range,
+            shade = continuous_shade
+);
+DISPLAY(p_and_o = vis_orbit_pos[vis_orbit_index],
+        time = vis_orbit_times[vis_orbit_index],
+        scale = 0.01 * (rad01.ORBIT.ALT_A + R_PLANET),
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+THERMAL_POST_PROCESS_OVERLAY(
+    record_type= "Thermal_Node",
+    start_time = 0.0,
+    end_time = 6050.25,
+    cycle = 1,
+    radiative_case = rad01,
+    analysis_case = acase01,
+    fixed_scale = FALSE,
+    attribute = "Temperature",
+     model_scale = 0.001,
+     draw_periapsis = TRUE,
+     draw_asc_node = TRUE
+);
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+MUSE_SAT.RANGE = "default_range";
+MUSE_SAT.SHADE = "continuous_shade";
+MUSE_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DRAW_ORBIT(analysis_case = acase01);
+DRAW_PERIAPSIS(orbit = rad01.ORBIT);
+DRAW_ASCENDING_NODE(orbit = rad01.ORBIT);
+DRAW_PLANET(radiative_case = rad01,
+            time = vis_orbit_times[vis_orbit_index],
+            scale = 1.0,
+            range = default_range,
+            shade = continuous_shade
+);
+DISPLAY(p_and_o = vis_orbit_pos[vis_orbit_index],
+        time = vis_orbit_times[vis_orbit_index],
+        scale = 0.001 * (rad01.ORBIT.ALT_A + R_PLANET),
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+THERMAL_POST_PROCESS_OVERLAY(
+    record_type= "Thermal_Node",
+    start_time = 0.0,
+    end_time = 6050.25,
+    cycle = 1,
+    radiative_case = rad01,
+    analysis_case = acase01,
+    fixed_scale = FALSE,
+    attribute = "Temperature",
+     model_scale = 0.162,
+     draw_periapsis = TRUE,
+     draw_asc_node = TRUE
+);
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+MUSE_SAT.RANGE = "default_range";
+MUSE_SAT.SHADE = "continuous_shade";
+MUSE_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DRAW_ORBIT(analysis_case = acase01);
+DRAW_PERIAPSIS(orbit = rad01.ORBIT);
+DRAW_ASCENDING_NODE(orbit = rad01.ORBIT);
+DRAW_PLANET(radiative_case = rad01,
+            time = vis_orbit_times[vis_orbit_index],
+            scale = 1.0,
+            range = default_range,
+            shade = continuous_shade
+);
+DISPLAY(p_and_o = vis_orbit_pos[vis_orbit_index],
+        time = vis_orbit_times[vis_orbit_index],
+        scale = 0.162 * (rad01.ORBIT.ALT_A + R_PLANET),
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+THERMAL_POST_PROCESS_OVERLAY(
+    record_type= "Thermal_Node",
+    start_time = 0.0,
+    end_time = 6050.25,
+    cycle = 1,
+    radiative_case = rad01,
+    analysis_case = acase01,
+    fixed_scale = TRUE,
+    attribute = "Temperature",
+     model_scale = 0.162,
+     draw_periapsis = TRUE,
+     draw_asc_node = TRUE
+);
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+MUSE_SAT.RANGE = "default_range";
+MUSE_SAT.SHADE = "continuous_shade";
+MUSE_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DRAW_ORBIT(analysis_case = acase01);
+DRAW_PERIAPSIS(orbit = rad01.ORBIT);
+DRAW_ASCENDING_NODE(orbit = rad01.ORBIT);
+DRAW_PLANET(radiative_case = rad01,
+            time = vis_orbit_times[vis_orbit_index],
+            scale = 1.0,
+            range = default_range,
+            shade = continuous_shade
+);
+DISPLAY(p_and_o = vis_orbit_pos[vis_orbit_index],
+        time = vis_orbit_times[vis_orbit_index],
+        scale = 0.162 * (rad01.ORBIT.ALT_A + R_PLANET),
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+THERMAL_POST_PROCESS_OVERLAY(
+    record_type= "Thermal_Node",
+    analysis_case = acase01,
+    fixed_scale = FALSE,
+    attribute = "Temperature",
+     model_scale = 0.162,
+     draw_periapsis = TRUE,
+     draw_asc_node = TRUE
+);
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+MUSE_SAT.RANGE = "default_range";
+MUSE_SAT.SHADE = "continuous_shade";
+MUSE_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DRAW_ORBIT(analysis_case = acase01);
+DRAW_PERIAPSIS(orbit = rad01.ORBIT);
+DRAW_ASCENDING_NODE(orbit = rad01.ORBIT);
+DRAW_PLANET(radiative_case = rad01,
+            time = vis_orbit_times[1],
+            scale = 1.0,
+            range = default_range,
+            shade = continuous_shade
+);
+FOR (vis_orbit_index = 1;
+    vis_orbit_index <= 11;
+    vis_orbit_index = EVAL(vis_orbit_index + 1))
+DISPLAY(p_and_o = vis_orbit_pos[vis_orbit_index],
+        time = vis_orbit_times[vis_orbit_index],
+        scale = 0.162 * (rad01.ORBIT.ALT_A + R_PLANET),
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+END_FOR
+THERMAL_POST_PROCESS_OVERLAY(
+    record_type= "Thermal_Node",
+    analysis_case = acase01,
+    fixed_scale = FALSE,
+    attribute = "Temperature",
+     model_scale = 0.08,
+     draw_periapsis = TRUE,
+     draw_asc_node = TRUE
+);
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+MUSE_SAT.RANGE = "default_range";
+MUSE_SAT.SHADE = "continuous_shade";
+MUSE_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DRAW_ORBIT(analysis_case = acase01);
+DRAW_PERIAPSIS(orbit = rad01.ORBIT);
+DRAW_ASCENDING_NODE(orbit = rad01.ORBIT);
+vis_orbit_index = 1;
+vis_orbit_index = 1;
+DRAW_PLANET(radiative_case = rad01,
+            time = vis_orbit_times[1],
+            scale = 1.0,
+            range = default_range,
+            shade = continuous_shade
+);
+FOR (vis_orbit_index = 1;
+    vis_orbit_index <= 11;
+    vis_orbit_index = EVAL(vis_orbit_index + 1))
+DISPLAY(p_and_o = vis_orbit_pos[vis_orbit_index],
+        time = vis_orbit_times[vis_orbit_index],
+        scale = 0.08 * (rad01.ORBIT.ALT_A + R_PLANET),
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+END_FOR
+THERMAL_POST_PROCESS_OVERLAY(
+    record_type= "Thermal_Node",
+    analysis_case = acase01,
+    fixed_scale = FALSE,
+    attribute = "Temperature",
+     planet_scale = 0.827,
+     model_scale = 0.08,
+     draw_periapsis = TRUE,
+     draw_asc_node = TRUE
+);
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+MUSE_SAT.RANGE = "default_range";
+MUSE_SAT.SHADE = "continuous_shade";
+MUSE_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DRAW_ORBIT(analysis_case = acase01);
+DRAW_PERIAPSIS(orbit = rad01.ORBIT);
+DRAW_ASCENDING_NODE(orbit = rad01.ORBIT);
+vis_orbit_index = 1;
+vis_orbit_index = 1;
+DRAW_PLANET(radiative_case = rad01,
+            time = vis_orbit_times[1],
+            scale = 0.827,
+            range = default_range,
+            shade = continuous_shade
+);
+FOR (vis_orbit_index = 1;
+    vis_orbit_index <= 11;
+    vis_orbit_index = EVAL(vis_orbit_index + 1))
+DISPLAY(p_and_o = vis_orbit_pos[vis_orbit_index],
+        time = vis_orbit_times[vis_orbit_index],
+        scale = 0.08 * (rad01.ORBIT.ALT_A + R_PLANET),
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+END_FOR
+RADIATIVE_PRE_PROCESS_OVERLAY(source = "GEOMETRY",
+                              display = "MODEL_ONLY");
+CLEAR();
+
+MUSE_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+RESET_VIEW();
+
+CLEAR();
+
+MUSE_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+/* END_MODEL */
+/* ESATAN-TMS version 2020, run date 16:41 Wed 28 Apr 2021 */
+/* BEGIN_MODEL MUSE_SAT WORKBENCH_V1 */ ;
+RADIATIVE_PRE_PROCESS_OVERLAY(source = "GEOMETRY",
+                              display = "MODEL_ONLY");
+CLEAR();
+
+MUSE_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+RESET_VIEW();
+
+END_MODEL
