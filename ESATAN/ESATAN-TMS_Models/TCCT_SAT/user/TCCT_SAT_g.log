@@ -6033,3 +6033,596 @@ COM_support3 = CONDUCTIVE_CONDUCTOR(
     destination_reference = "COM2:face6",
     conductor_override = 1.625);
 
+TLD = SHELL_SCS_DISC(
+    rmax = 0.37,
+    rmin = 0.0,
+    height = 1.0e-03,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    colour1 = "METAL_GREY",
+    colour2 = "METAL_GREY",
+    side1 = "Active",
+    ndelta1_1 = 1,
+    side2 = "Active",
+    ndelta2_1 = 1,
+    label1 = "outter",
+    label2 = "inner",
+    opt1 = Black,
+    opt2 = Black,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = ABS_plastic,
+    thick = 4.0e-03,
+    meshType1 = "regular",
+    nodes1 = 3,
+    meshType2 = "regular",
+    nodes2 = 1,
+    analysis_type = "Lumped Parameter");
+
+TLD = TRANSLATE(
+    object_name = TLD,
+    z_dist = 1.5,
+    clear = TRUE);
+TL_mirror = SHELL_SCS_DISC(
+    rmax = 0.37,
+    rmin = 0.0,
+    height = 1.0e-03,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    colour1 = "GREY",
+    colour2 = "WHITE",
+    side1 = "Active",
+    ndelta1_1 = 1,
+    side2 = "Active",
+    ndelta2_1 = 1,
+    label1 = "Mirror_inner",
+    label2 = "Mirror_outter",
+    opt1 = AL_polished,
+    opt2 = SSM,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = ULE_Glass,
+    thick = 0.08,
+    meshType1 = "regular",
+    nodes1 = 8,
+    meshType2 = "regular",
+    nodes2 = 3,
+    analysis_type = "Lumped Parameter");
+
+TL_mirror = TRANSLATE(
+    object_name = TL_mirror,
+    z_dist = 0.5,
+    clear = TRUE);
+TL_mirror = SHELL_SCS_DISC(
+    rmax = 0.37,
+    rmin = 0.0,
+    height = 1.0e-03,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    colour1 = "GREY",
+    colour2 = "WHITE",
+    side1 = "Active",
+    ndelta1_1 = 1,
+    side2 = "Active",
+    ndelta2_1 = 1,
+    label1 = "Mirror_inner",
+    label2 = "Mirror_outter",
+    opt1 = AL_polished,
+    opt2 = SSM,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = ULE_Glass,
+    thick = 0.08,
+    meshType1 = "regular",
+    nodes1 = 8,
+    meshType2 = "regular",
+    nodes2 = 3,
+    analysis_type = "Lumped Parameter");
+
+TL_mirror = TRANSLATE(
+    object_name = TL_mirror,
+    z_dist = 0.5,
+    clear = TRUE);
+CONDUCTIVE_INTERFACE TL_edge_fused;
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = TL_edge_fused,
+    primitiveA = TLD,
+    primitiveB = TL,
+    start_point = [0.37, 0.0, 0.001],
+    end_point = [0.37, 0.0, 0.001],
+    connect_type = "FUSED");
+
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = TL_edge_fused,
+    primitiveA = TLD,
+    primitiveB = TL,
+    start_point = [0.37, 0.0, 0.001],
+    end_point = [-0.185, -0.32043, 0.001],
+    connect_type = "FUSED");
+
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = TL_edge_fused,
+    primitiveA = TLD,
+    primitiveB = TL,
+    start_point = [-0.185, 0.32043, 0.001],
+    end_point = [-0.185, -0.32043, 0.001],
+    connect_type = "FUSED");
+
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = TL_edge_fused,
+    primitiveA = TLD,
+    primitiveB = TL,
+    start_point = [-0.185, 0.32043, 0.001],
+    end_point = [-0.185, -0.32043, 0.001],
+    connect_type = "FUSED");
+
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = TL_edge_fused,
+    primitiveA = TLD,
+    primitiveB = TL,
+    start_point = [-0.185, 0.32043, 0.001],
+    end_point = [0.37, 0.0, 0.001],
+    connect_type = "FUSED");
+
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = TL_edge_fused,
+    primitiveA = TLD,
+    primitiveB = TL,
+    surfaceA = 1,
+    surfaceB = 1,
+    connect_type = "FUSED");
+
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = TL_edge_fused,
+    primitiveA = TLD,
+    primitiveB = TL,
+    start_point = [0.37, 0.0, 0.001],
+    end_point = [-0.185, 0.32043, 0.001],
+    connect_type = "FUSED");
+
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = TL_edge_fused,
+    primitiveA = TLD,
+    primitiveB = TL,
+    start_point = [0.37, 0.0, 0.001],
+    end_point = [-0.185, 0.32043, 0.001],
+    connect_type = "CONTACT",
+    contact_conductance = 300.0);
+
+CONDUCTIVE_INTERFACE TL_edge1;
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = TL_edge1,
+    primitiveA = TL_mirror,
+    primitiveB = TL_mirror,
+    start_point = [-0.26163, 0.26163, 0.0],
+    end_point = [0.0, 0.37, 0.0],
+    connect_type = "FUSED");
+
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = TL_edge1,
+    primitiveA = TL_mirror,
+    primitiveB = TL_mirror,
+    start_point = [-0.26163, 0.26163, 0.0],
+    end_point = [0.26163, -0.26163, 0.0],
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE TL_edge2;
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = TL_edge2,
+    primitiveA = TL_mirror,
+    primitiveB = TL_mirror,
+    start_point = [0.26163, +0.26163, 0.0],
+    end_point = [-0.26163, +0.26163, 0.0],
+    connect_type = "FUSED");
+
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = TL_edge2,
+    primitiveA = TL,
+    primitiveB = TL_mirror,
+    start_point = [0.26163, +0.26163, 0.0],
+    end_point = [-0.26163, +0.26163, 0.0],
+    connect_type = "FUSED");
+
+DELETE_GEOMETRY (geometry = Telescopio, recursive = FALSE, unassign = FALSE);
+TL = SOLID_CYLINDER_PARAMS(
+    radius = 0.37,
+    hmax = 1.0,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    nbaseVolume = 0,
+    ndeltaVolume1 = 1,
+    bulk = ABS_plastic,
+    meshType1 = "regular",
+    nodes1 = 8,
+    meshType2 = "regular",
+    nodes2 = 3,
+    meshType3 = "regular",
+    nodes3 = 1,
+    analysis_type = "Lumped Parameter");
+
+TL = TRANSLATE(
+    object_name = TL,
+    z_dist = 0.5,
+    clear = TRUE);
+/* END_MODEL */
+/* ESATAN-TMS version 2020, run date 18:16 Sun 2 May 2021 */
+/* BEGIN_MODEL TCCT_SAT WORKBENCH_V1 */
+TL = SHELL_SCS_CYLINDER(
+    radius = 0.37,
+    hmax = 1.0,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    side1 = "Active",
+    ndelta1_1 = 1,
+    side2 = "Active",
+    ndelta2_1 = 1,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = ABS_plastic,
+    meshType1 = "regular",
+    nodes1 = 8,
+    meshType2 = "regular",
+    nodes2 = 3,
+    analysis_type = "Lumped Parameter");
+
+TL = TRANSLATE(
+    object_name = TL,
+    z_dist = 0.5,
+    clear = TRUE);
+GEOMETRY Telescope;
+Telescope = TL + TL_mirror + TLD;
+BODY = BODY + Telescope;
+Telescope = TLD + TL_mirror - TL;
+Telescope = TLD + TL_mirror + TL;
+TL = SHELL_SCS_CYLINDER(
+    radius = 0.37,
+    hmax = 1.0,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    colour1 = "METAL_GREY",
+    side1 = "Active",
+    ndelta1_1 = 1,
+    side2 = "Active",
+    ndelta2_1 = 1,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = ABS_plastic,
+    thick = 0.0,
+    meshType1 = "regular",
+    nodes1 = 8,
+    meshType2 = "regular",
+    nodes2 = 3,
+    analysis_type = "Lumped Parameter");
+
+TL = TRANSLATE(
+    object_name = TL,
+    z_dist = 0.5,
+    clear = TRUE);
+TL = SHELL_SCS_CYLINDER(
+    radius = 0.37,
+    hmax = 1.0,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    colour1 = "METAL_GREY",
+    side1 = "Active",
+    ndelta1_1 = 1,
+    side2 = "Active",
+    ndelta2_1 = 1,
+    label1 = "outter",
+    label2 = "inner",
+    opt1 = Black,
+    opt2 = Black,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = ABS_plastic,
+    thick = 3.0e-3,
+    meshType1 = "regular",
+    nodes1 = 8,
+    meshType2 = "regular",
+    nodes2 = 3,
+    analysis_type = "Lumped Parameter");
+
+TL = TRANSLATE(
+    object_name = TL,
+    z_dist = 0.5,
+    clear = TRUE);
+TL = SHELL_SCS_CYLINDER(
+    radius = 0.37,
+    hmax = 1.0,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    colour1 = "METAL_GREY",
+    side1 = "Active",
+    ndelta1_1 = 1,
+    side2 = "Active",
+    ndelta2_1 = 1,
+    label1 = "outter",
+    label2 = "inner",
+    opt1 = Black,
+    opt2 = Black,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = ABS_plastic,
+    thick = 30.0e-3,
+    meshType1 = "regular",
+    nodes1 = 8,
+    meshType2 = "regular",
+    nodes2 = 3,
+    analysis_type = "Lumped Parameter");
+
+TL = TRANSLATE(
+    object_name = TL,
+    z_dist = 0.5,
+    clear = TRUE);
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = TL_edge1,
+    primitiveA = TL_mirror,
+    primitiveB = TL,
+    start_point = [-0.26163, 0.26163, 0.0],
+    end_point = [0.26163, -0.26163, 0.0],
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE TL_edge3;
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = TL_edge3,
+    primitiveA = TLD,
+    primitiveB = TL,
+    start_point = [-0.185, -0.32043, 0.001],
+    end_point = [0.37, 0.0, 0.001],
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE TL_edge4;
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = TL_edge4,
+    primitiveA = TLD,
+    primitiveB = TL,
+    start_point = [0.37, 0.0, 0.001],
+    end_point = [-0.185, 0.32043, 0.001],
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE TL_edge5;
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = TL_edge5,
+    primitiveA = TLD,
+    primitiveB = TL,
+    start_point = [-0.185, 0.32043, 0.001],
+    end_point = [-0.185, -0.32043, 0.001],
+    connect_type = "FUSED");
+
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = TL_edge5,
+    primitiveA = TLD,
+    primitiveB = TL,
+    start_point = [-0.185, 0.32043, 0.001],
+    end_point = [-0.185, -0.32043, 0.001],
+    connect_type = "FUSED");
+
+DELETE TL_edge_fused;
+CONDUCTOR RDTR_support1;
+RDTR_support1 = CONDUCTIVE_CONDUCTOR(
+    source_reference = "BX:face67",
+    destination_reference = "RDTR:face4",
+    conductor_override = 4.332);
+
+CONDUCTOR RDTR_support2;
+RDTR_support2 = CONDUCTIVE_CONDUCTOR(
+    source_reference = "BX:face69",
+    destination_reference = "RDTR:face4",
+    conductor_override = 4.332);
+
+CONDUCTOR RDTR_support3;
+RDTR_support3 = CONDUCTIVE_CONDUCTOR(
+    source_reference = "BX:face69",
+    destination_reference = "RDTR:face2",
+    conductor_override = 4.332);
+
+CONDUCTOR RDTR_support4;
+RDTR_support4 = CONDUCTIVE_CONDUCTOR(
+    source_reference = "BX:face71",
+    destination_reference = "RDTR:face2",
+    conductor_override = 4.332);
+
+CONDUCTOR RDTR_support5;
+RDTR_support5 = CONDUCTIVE_CONDUCTOR(
+    source_reference = "BX:face65",
+    destination_reference = "RDTR:face2",
+    conductor_override = 4.332);
+
+CONDUCTOR RDTR_support6;
+RDTR_support6 = CONDUCTIVE_CONDUCTOR(
+    source_reference = "BX:face63",
+    destination_reference = "RDTR:face2",
+    conductor_override = 4.332);
+
+CONDUCTOR RDTR_support7;
+RDTR_support7 = CONDUCTIVE_CONDUCTOR(
+    source_reference = "BX:face63",
+    destination_reference = "RDTR:face4",
+    conductor_override = 4.332);
+
+CONDUCTOR RDTR_support8;
+RDTR_support8 = CONDUCTIVE_CONDUCTOR(
+    source_reference = "BX:face61",
+    destination_reference = "RDTR:face4",
+    conductor_override = 4.332);
+
+CONDUCTOR RDTR_support9;
+RDTR_support9 = CONDUCTIVE_CONDUCTOR(
+    source_reference = "BX:face61",
+    destination_reference = "RDTR:face8",
+    conductor_override = 4.332);
+
+DELETE RDTR_support2;
+DELETE RDTR_support3;
+DELETE RDTR_support7;
+DELETE RDTR_support4;
+DELETE RDTR_support8;
+DELETE RDTR_support5;
+DELETE RDTR_support1;
+DELETE RDTR_support6;
+DELETE RDTR_support9;
+RDTR = SHELL_SCS_RECTANGLE(
+    xmax = 0.5,
+    ymax = 2.0,
+    height = 0.0,
+    xmin = -0.5,
+    ymin = 0.0,
+    sense = -1,
+    colour1 = "ORANGE",
+    colour2 = "ORANGE",
+    side1 = "Active",
+    ndelta1_1 = 1,
+    side2 = "Active",
+    ndelta2_1 = 1,
+    label1 = "RDTR_outter",
+    label2 = "RDTR_inner",
+    opt1 = SSM,
+    opt2 = AL_polished,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    composition = "DUAL",
+    bulk1 = Radiator,
+    thick1 = 8.0e-03,
+    bulk2 = Al_7075_T6,
+    thick2 = 1.0e-03,
+    meshType1 = "regular",
+    nodes1 = 2,
+    meshType2 = "regular",
+    nodes2 = 4,
+    analysis_type = "Lumped Parameter");
+
+RDTR = ROTATE(
+    object_name = RDTR,
+    x_ang = -90.0,
+    clear = TRUE);
+RDTR = TRANSLATE(
+    object_name = RDTR,
+    y_dist = 0.751,
+    z_dist = 3.5);
+RDTR = SHELL_SCS_RECTANGLE(
+    xmax = 0.5,
+    ymax = 2.0,
+    height = 0.0,
+    xmin = -0.5,
+    ymin = 0.0,
+    sense = -1,
+    colour1 = "ORANGE",
+    colour2 = "ORANGE",
+    side1 = "Active",
+    ndelta1_1 = 1,
+    side2 = "Active",
+    ndelta2_1 = 1,
+    label1 = "RDTR_outter",
+    label2 = "RDTR_inner",
+    opt1 = SSM,
+    opt2 = AL_polished,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    composition = "DUAL",
+    bulk1 = Radiator,
+    thick1 = 8.0e-03,
+    bulk2 = Al_7075_T6,
+    thick2 = 1.0e-03,
+    meshType1 = "regular",
+    nodes1 = 2,
+    meshType2 = "regular",
+    nodes2 = 4,
+    analysis_type = "Lumped Parameter");
+
+RDTR = ROTATE(
+    object_name = RDTR,
+    x_ang = -90.0,
+    clear = TRUE);
+RDTR = TRANSLATE(
+    object_name = RDTR,
+    y_dist = 0.752,
+    z_dist = 3.5);
+CONTACT_ZONE BX_RDTR_contact;
+BX_RDTR_contact = DEFINE_CONTACT_ZONE(
+source_reference = "BX:surface1",
+destination_reference = "RDTR:surface2",
+contact_conductance = 500.0,
+maximum_gap = 0.01,
+number_sample_points = 10000);
+
+BX_RDTR_contact = DEFINE_CONTACT_ZONE(
+source_reference = "BX:surface1",
+destination_reference = "RDTR:surface2",
+contact_conductance = 500.0,
+maximum_gap = 0.01,
+number_sample_points = 10000);
+
+BX_RDTR_contact = DEFINE_CONTACT_ZONE(
+source_reference = "BX:surface1",
+destination_reference = "RDTR:surface2",
+contact_conductance = 500.0,
+maximum_gap = 0.001,
+number_sample_points = 10000);
+
+RDTR = SHELL_SCS_RECTANGLE(
+    xmax = 0.5,
+    ymax = 2.0,
+    height = 0.0,
+    xmin = -0.5,
+    ymin = 0.0,
+    sense = -1,
+    colour1 = "ORANGE",
+    colour2 = "ORANGE",
+    side1 = "Active",
+    ndelta1_1 = 1,
+    side2 = "Active",
+    ndelta2_1 = 1,
+    label1 = "RDTR_outter",
+    label2 = "RDTR_inner",
+    opt1 = SSM,
+    opt2 = AL_polished,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    composition = "DUAL",
+    bulk1 = Radiator,
+    thick1 = 8.0e-03,
+    bulk2 = Al_7075_T6,
+    thick2 = 1.0e-03,
+    meshType1 = "regular",
+    nodes1 = 2,
+    meshType2 = "regular",
+    nodes2 = 4,
+    analysis_type = "Lumped Parameter");
+
+RDTR = ROTATE(
+    object_name = RDTR,
+    x_ang = -90.0,
+    clear = TRUE);
+RDTR = TRANSLATE(
+    object_name = RDTR,
+    y_dist = 0.751,
+    z_dist = 3.5);
+BX_RDTR_contact = DEFINE_CONTACT_ZONE(
+source_reference = "BX:surface1",
+destination_reference = "RDTR:surface2",
+contact_conductance = 500.0,
+maximum_gap = 1.0e-03,
+number_sample_points = 10000);
+
+BX_RDTR_contact = DEFINE_CONTACT_ZONE(
+source_reference = "BX:surface1",
+destination_reference = "RDTR:surface2",
+contact_conductance = 500.0,
+maximum_gap = 0.1,
+number_sample_points = 10000);
+
+GEOMETRY TL_case;
+TL_case = TLD2 + TLC1 + TLC2;
+BODY = BODY + TL_case;
