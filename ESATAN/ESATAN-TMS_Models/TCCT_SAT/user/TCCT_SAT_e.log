@@ -8,6 +8,381 @@ ANALYSIS_CASE acase01;
 /* END_MODEL */
 /* ESATAN-TMS version 2020, run date 19:41 Wed 28 Apr 2021 */
 /* BEGIN_MODEL TCCT_SAT WORKBENCH_V1 */ ;
-/* END_MODEL */
+/* /* END_MODEL */ */
 /* ESATAN-TMS version 2020, run date 15:55 Fri 30 Apr 2021 */
 /* BEGIN_MODEL TCCT_SAT WORKBENCH_V1 */ ;
+/* ESATAN-TMS version 2020, run date 11:16 Sun 2 May 2021 */
+/* BEGIN_MODEL TCCT_SAT WORKBENCH_V1 */ ;
+RUN_ANALYSIS (
+    analysis_case = acase01)
+   /* Warning Error: current function is RUN_ANALYSIS */
+   /* Unknown value supplied for options parameter. */
+
+   /* Warning Error: current function is procedure parser */
+   /* An error occurred running the thermal analysis */
+;
+
+INTEGER analysis_case_error_flag = 0;
+
+DEFINE_ANALYSIS_CASE (
+    analysis_case = acase01,
+    solver = "ESATAN",
+    working_directory = "D:\Archivos_de_programa\ESATAN\Modelos_ESATAN\ESATAN-TMS_Models\TCCT_SAT\esatan\acase01",
+    analysis_file = "TCCT_SAT_acase01.d",
+    error_code =  analysis_case_error_flag,
+    analysis_case_type = "No Radiative Case");
+
+IF (analysis_case_error_flag == 0) THEN
+    GENERATE_TEMPLATE (
+        analysis_case = acase01,
+        submodel_files = FALSE,
+        maxmin = FALSE,
+        error_code =  analysis_case_error_flag,
+        execution_block = 
+"C
+C Steady State Solution
+C
+      RELXCA=0.01
+      NLOOP=100
+C
+      CALL SOLVFM
+C
+C Transient Solution
+C
+      TIMEND=0.0
+      DTIMEI=TIMEND/100.0
+      OUTINT=TIMEND/10.0
+C
+      CALL SLCRNC
+",
+        output_block = 
+"      CALL PRNDTB(' ', 'L, T, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+",
+        update = TRUE);
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    UNSET_HF_MULTIPLIERS(analysis_case = acase01);
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    GENERATE_ANALYSIS_FILE (
+        analysis_case = acase01,
+        title = "TCCT_SAT_acase01",
+        error_code =  analysis_case_error_flag,
+        results = "GL",
+        environment = 99999,
+        environment_temperature = -270.0,
+        inactive = 99998)
+   /* Warning Error: current function is CALCULATE_CONDUCTORS */
+   /* Conductive interface ci_1 does not define a connected edge between two primitives.
+      Error number: 747 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* No cross conductive interface GL's output for conductive interface ci_1.
+      Error number: 741 */
+
+   /* Warning Error: current function is CALCULATE_CONDUCTORS */
+   /* Conductive interface ci_10 does not define a connected edge between two primitives.
+      Error number: 747 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* No cross conductive interface GL's output for conductive interface ci_10.
+      Error number: 741 */
+
+   /* Warning Error: current function is CALCULATE_CONDUCTORS */
+   /* Conductive interface ci_11 does not define a connected edge between two primitives.
+      Error number: 747 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* No cross conductive interface GL's output for conductive interface ci_11.
+      Error number: 741 */
+
+   /* Warning Error: current function is CALCULATE_CONDUCTORS */
+   /* Conductive interface ci_12 does not define a connected edge between two primitives.
+      Error number: 747 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* No cross conductive interface GL's output for conductive interface ci_12.
+      Error number: 741 */
+
+   /* Warning Error: current function is CALCULATE_CONDUCTORS */
+   /* Conductive interface ci_13 does not define a connected edge between two primitives.
+      Error number: 747 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* No cross conductive interface GL's output for conductive interface ci_13.
+      Error number: 741 */
+
+   /* Warning Error: current function is CALCULATE_CONDUCTORS */
+   /* Conductive interface ci_14 does not define a connected edge between two primitives.
+      Error number: 747 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* No cross conductive interface GL's output for conductive interface ci_14.
+      Error number: 741 */
+
+   /* Warning Error: current function is CALCULATE_CONDUCTORS */
+   /* Conductive interface ci_2 does not define a connected edge between two primitives.
+      Error number: 747 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* No cross conductive interface GL's output for conductive interface ci_2.
+      Error number: 741 */
+
+   /* Warning Error: current function is CALCULATE_CONDUCTORS */
+   /* Conductive interface ci_3 does not define a connected edge between two primitives.
+      Error number: 747 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* No cross conductive interface GL's output for conductive interface ci_3.
+      Error number: 741 */
+
+   /* Warning Error: current function is CALCULATE_CONDUCTORS */
+   /* Conductive interface ci_4 does not define a connected edge between two primitives.
+      Error number: 747 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* No cross conductive interface GL's output for conductive interface ci_4.
+      Error number: 741 */
+
+   /* Warning Error: current function is CALCULATE_CONDUCTORS */
+   /* Conductive interface ci_5 does not define a connected edge between two primitives.
+      Error number: 747 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* No cross conductive interface GL's output for conductive interface ci_5.
+      Error number: 741 */
+
+   /* Warning Error: current function is CALCULATE_CONDUCTORS */
+   /* Conductive interface ci_6 does not define a connected edge between two primitives.
+      Error number: 747 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* No cross conductive interface GL's output for conductive interface ci_6.
+      Error number: 741 */
+
+   /* Warning Error: current function is CALCULATE_CONDUCTORS */
+   /* Conductive interface ci_7 does not define a connected edge between two primitives.
+      Error number: 747 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* No cross conductive interface GL's output for conductive interface ci_7.
+      Error number: 741 */
+
+   /* Warning Error: current function is CALCULATE_CONDUCTORS */
+   /* Conductive interface ci_8 does not define a connected edge between two primitives.
+      Error number: 747 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* No cross conductive interface GL's output for conductive interface ci_8.
+      Error number: 741 */
+
+   /* Warning Error: current function is CALCULATE_CONDUCTORS */
+   /* Conductive interface ci_9 does not define a connected edge between two primitives.
+      Error number: 747 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* No cross conductive interface GL's output for conductive interface ci_9.
+      Error number: 741 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* Invalid conductive interface ci_1 deleted from the model       
+      Error number: 1312 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* Invalid conductive interface ci_10 deleted from the model       
+      Error number: 1312 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* Invalid conductive interface ci_11 deleted from the model       
+      Error number: 1312 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* Invalid conductive interface ci_12 deleted from the model       
+      Error number: 1312 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* Invalid conductive interface ci_13 deleted from the model       
+      Error number: 1312 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* Invalid conductive interface ci_14 deleted from the model       
+      Error number: 1312 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* Invalid conductive interface ci_2 deleted from the model       
+      Error number: 1312 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* Invalid conductive interface ci_3 deleted from the model       
+      Error number: 1312 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* Invalid conductive interface ci_4 deleted from the model       
+      Error number: 1312 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* Invalid conductive interface ci_5 deleted from the model       
+      Error number: 1312 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* Invalid conductive interface ci_6 deleted from the model       
+      Error number: 1312 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* Invalid conductive interface ci_7 deleted from the model       
+      Error number: 1312 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* Invalid conductive interface ci_8 deleted from the model       
+      Error number: 1312 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* Invalid conductive interface ci_9 deleted from the model       
+      Error number: 1312 */
+;
+END_IF
+
+
+DELETE analysis_case_error_flag;
+
+INTEGER analysis_case_error_flag = 0;
+
+DEFINE_ANALYSIS_CASE (
+    analysis_case = acase01,
+    solver = "ESATAN",
+    working_directory = "D:\Archivos_de_programa\ESATAN\Modelos_ESATAN\ESATAN-TMS_Models\TCCT_SAT\esatan\acase01",
+    analysis_file = "TCCT_SAT_acase01.d",
+    error_code =  analysis_case_error_flag,
+    analysis_case_type = "No Radiative Case");
+
+IF (analysis_case_error_flag == 0) THEN
+    GENERATE_TEMPLATE (
+        analysis_case = acase01,
+        submodel_files = FALSE,
+        maxmin = FALSE,
+        error_code =  analysis_case_error_flag,
+        execution_block = 
+"C
+C Steady State Solution
+C
+      RELXCA=0.01
+      NLOOP=100
+C
+      CALL SOLVFM
+C
+C Transient Solution
+C
+      TIMEND=0.0
+      DTIMEI=TIMEND/100.0
+      OUTINT=TIMEND/10.0
+C
+      CALL SLCRNC
+",
+        output_block = 
+"      CALL PRNDTB(' ', 'L, T, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+",
+        update = TRUE);
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    UNSET_HF_MULTIPLIERS(analysis_case = acase01);
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    GENERATE_ANALYSIS_FILE (
+        analysis_case = acase01,
+        title = "TCCT_SAT_acase01",
+        error_code =  analysis_case_error_flag,
+        results = "GL",
+        environment = 99999,
+        environment_temperature = -270.0,
+        inactive = 99998);
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    RUN_ANALYSIS(
+        analysis_case = acase01);
+END_IF
+
+
+DELETE analysis_case_error_flag;
+RUN_ANALYSIS (
+    analysis_case = acase01);
+
+INTEGER analysis_case_error_flag = 0;
+
+DEFINE_ANALYSIS_CASE (
+    analysis_case = acase01,
+    solver = "ESATAN",
+    working_directory = "D:\Archivos_de_programa\ESATAN\Modelos_ESATAN\ESATAN-TMS_Models\TCCT_SAT\esatan\acase01",
+    analysis_file = "TCCT_SAT_acase01.d",
+    error_code =  analysis_case_error_flag,
+    analysis_case_type = "No Radiative Case");
+
+IF (analysis_case_error_flag == 0) THEN
+    GENERATE_TEMPLATE (
+        analysis_case = acase01,
+        submodel_files = FALSE,
+        maxmin = FALSE,
+        error_code =  analysis_case_error_flag,
+        execution_block = 
+"C
+C Steady State Solution
+C
+      RELXCA=0.01
+      NLOOP=100
+C
+      CALL SOLVFM
+C
+C Transient Solution
+C
+      TIMEND=0.0
+      DTIMEI=TIMEND/100.0
+      OUTINT=TIMEND/10.0
+C
+      CALL SLCRNC
+",
+        output_block = 
+"      CALL PRNDTB(' ', 'L, T, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+",
+        update = TRUE);
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    UNSET_HF_MULTIPLIERS(analysis_case = acase01);
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    GENERATE_ANALYSIS_FILE (
+        analysis_case = acase01,
+        title = "TCCT_SAT_acase01",
+        error_code =  analysis_case_error_flag,
+        results = "GL",
+        environment = 99999,
+        environment_temperature = -270.0,
+        inactive = 99998);
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    RUN_ANALYSIS(
+        analysis_case = acase01);
+END_IF
+
+
+DELETE analysis_case_error_flag;

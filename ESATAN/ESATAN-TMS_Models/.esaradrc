@@ -1,0 +1,17 @@
+esarad_user_model_directory = D:\Archivos_de_programa\ESATAN\Modelos_ESATAN\ESATAN-TMS_Models
+esarad_user_files_local = false
+esarad_temp_files = false
+geom_temp_files = false
+vis_complex_cutting = false
+esarad_dialog_close_warning = true
+show_command_history_window = true
+esarad_search_path = NULL
+esarad_site_model_directory = NULL
+esarad_sys_fonts = true
+esarad_font_size = 0
+default_overlay = Colour
+esarad_user_editor_path = NULL
+esarad_point_accuracy = 5
+command_history_max_lines = 1000
+report_window_max_lines = 10000
+mesh_colour = Black

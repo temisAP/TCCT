@@ -1,0 +1,14 @@
+@                          
+@---------------------------------------------------- | MESSAGE  101 |-
+@                          
+@@@@  FATAL ERROR          
+@                          
+@     Problem............: Singular submatrix encountered - run aborted
+@                          A group of nodes are connected to each other 
+@                          but not to a boundary - including node       
+@                          426 of submodel TCCT_SAT_ACASE01
+@                          
+@     Reference..........: (S3slve,   1)
+@                          
+@----------------------------------------------------------------------
+@                          
