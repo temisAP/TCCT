@@ -26,3 +26,8 @@ AL_5056.c = 900
 AL_5056.k = 120
 AL_5056.alpha = 0.2
 AL_5056.epsilon = 0.2
+
+AL_6061 = material()
+AL_6061.rho = 2700
+AL_6061.c = 896
+AL_6061.k = 167

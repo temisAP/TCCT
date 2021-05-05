@@ -3,10 +3,10 @@ class material():
         self.epsilon = ''
         self.alpha   = ''
 
-w = material()
-w.epsilon   = 0.85
-w.alpha     = 0.2
+white = material()
+white.epsilon   = 0.85
+white.alpha     = 0.2
 
-b = material()
-b.epsilon   = 0.9
-b.alpha     = 0.9
+black = material()
+black.epsilon   = 0.9
+black.alpha     = 0.9

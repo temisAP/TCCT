@@ -386,6 +386,131 @@ END_IF
 
 
 DELETE analysis_case_error_flag;
-/* END_MODEL */
+/* /* /* END_MODEL */ */ */
 /* ESATAN-TMS version 2020, run date 18:15 Sun 2 May 2021 */
 /* BEGIN_MODEL TCCT_SAT WORKBENCH_V1 */ ;
+/* ESATAN-TMS version 2020, run date 10:53 Wed 5 May 2021 */
+/* BEGIN_MODEL TCCT_SAT WORKBENCH_V1 */ ;
+/* ESATAN-TMS version 2020, run date 16:59 Wed 5 May 2021 */
+/* BEGIN_MODEL TCCT_SAT WORKBENCH_V1 */ ;
+
+INTEGER analysis_case_error_flag = 0;
+
+DEFINE_ANALYSIS_CASE (
+    analysis_case = acase01,
+    solver = "ESATAN",
+    working_directory = "D:\Archivos_de_programa\ESATAN\Modelos_ESATAN\ESATAN-TMS_Models\TCCT_SAT\esatan\acase01",
+    analysis_file = "TCCT_SAT_acase01.d",
+    error_code =  analysis_case_error_flag,
+    analysis_case_type = "No Radiative Case");
+
+IF (analysis_case_error_flag == 0) THEN
+    GENERATE_TEMPLATE (
+        analysis_case = acase01,
+        submodel_files = FALSE,
+        maxmin = FALSE,
+        error_code =  analysis_case_error_flag,
+        execution_block = 
+"C
+C Steady State Solution
+C
+      RELXCA=0.01
+      NLOOP=100
+C
+      CALL SOLVFM
+C
+C Transient Solution
+C
+      TIMEND=0.0
+      DTIMEI=TIMEND/100.0
+      OUTINT=TIMEND/10.0
+C
+      CALL SLCRNC
+",
+        output_block = 
+"      CALL PRNDTB(' ', 'L, T, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+",
+        update = TRUE);
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    UNSET_HF_MULTIPLIERS(analysis_case = acase01);
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    GENERATE_ANALYSIS_FILE (
+        analysis_case = acase01,
+        title = "TCCT_SAT_acase01",
+        error_code =  analysis_case_error_flag,
+        results = "GL",
+        environment = 99999,
+        environment_temperature = -270.0,
+        inactive = 99998)
+   /* Warning Error: current function is CALCULATE_CONDUCTORS */
+   /* Conductive interface TL_edge1 does not define a connected edge between two primitives.
+      Error number: 747 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* No cross conductive interface GL's output for conductive interface TL_edge1.
+      Error number: 741 */
+
+   /* Warning Error: current function is CALCULATE_CONDUCTORS */
+   /* Conductive interface TL_edge2 does not define a connected edge between two primitives.
+      Error number: 747 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* No cross conductive interface GL's output for conductive interface TL_edge2.
+      Error number: 741 */
+
+   /* Warning Error: current function is CALCULATE_CONDUCTORS */
+   /* Conductive interface TL_edge3 does not define a connected edge between two primitives.
+      Error number: 747 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* No cross conductive interface GL's output for conductive interface TL_edge3.
+      Error number: 741 */
+
+   /* Warning Error: current function is CALCULATE_CONDUCTORS */
+   /* Conductive interface TL_edge4 does not define a connected edge between two primitives.
+      Error number: 747 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* No cross conductive interface GL's output for conductive interface TL_edge4.
+      Error number: 741 */
+
+   /* Warning Error: current function is CALCULATE_CONDUCTORS */
+   /* Conductive interface TL_edge5 does not define a connected edge between two primitives.
+      Error number: 747 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* No cross conductive interface GL's output for conductive interface TL_edge5.
+      Error number: 741 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* Invalid conductive interface TL_edge1 deleted from the model       
+      Error number: 1312 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* Invalid conductive interface TL_edge2 deleted from the model       
+      Error number: 1312 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* Invalid conductive interface TL_edge3 deleted from the model       
+      Error number: 1312 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* Invalid conductive interface TL_edge4 deleted from the model       
+      Error number: 1312 */
+
+   /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
+   /* Invalid conductive interface TL_edge5 deleted from the model       
+      Error number: 1312 */
+;
+END_IF
+
+
+DELETE analysis_case_error_flag;
