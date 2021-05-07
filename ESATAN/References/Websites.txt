@@ -1,0 +1,47 @@
+abs
+	http://www.matweb.com/search/DataSheet.aspx?MatGUID=3a8afcddac864d4b8f58d40570d2e5aa
+	\cite{ABS}
+al7075
+	http://www.matweb.com/search/DataSheet.aspx?MatGUID=4f19a42be94546b686bbf43f79c51b7d
+	\cite{7075}
+becu
+	http://www.matweb.com/search/datasheet.aspx?matguid=9b159fd901454263b8a90c22a66f1988
+	\cite{BeCu}
+gaas
+	\cite{SatBasico}
+	satelite basico
+mli
+	satelite basico
+	\cite{SatBasico}
+Fused Quartz radiator
+	http://www.matweb.com/search/DataSheet.aspx?bassnum=BQUARTZ
+	\cite{Quartz} \cite{Grande} \cite{Reference1982}
+ule
+	http://www.matweb.com/search/datasheet.aspx?matguid=a5f2e3f7e037406b9f8cf715e3b4bc43
+	\cite{ULE}
+
+
+al pol
+	isidoro termoopticos
+	\cite{Martinez}
+black
+	satelite basico
+	\cite{SatBasico}
+detector
+	miris
+	\cite{Han2014}
+glass
+	miris
+	\cite{Han2014}
+kapton
+	satelite basico
+	\cite{SatBasico}
+ssm
+	8mm Quartz Fused + 1mm Deposited Aluminium de las diapositivas
+	\cite{Grande} \cite{Reference1982}
+solar cells
+	satelite basico
+	\cite{SatBasico}
+white
+	satelite basico
+	\cite{SatBasico}
