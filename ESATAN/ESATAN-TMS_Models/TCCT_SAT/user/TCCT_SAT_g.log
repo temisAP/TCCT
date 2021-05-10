@@ -6248,7 +6248,7 @@ TL = TRANSLATE(
     object_name = TL,
     z_dist = 0.5,
     clear = TRUE);
-/* /* END_MODEL */ */
+/* /* /* /* /* END_MODEL */ */ */ */ */
 /* ESATAN-TMS version 2020, run date 18:16 Sun 2 May 2021 */
 /* BEGIN_MODEL TCCT_SAT WORKBENCH_V1 */
 TL = SHELL_SCS_CYLINDER(
@@ -11410,3 +11410,346 @@ TL_tapa = TRANSLATE(
     object_name = TL_tapa,
     z_dist = 1.4,
     clear = TRUE);
+/* ESATAN-TMS version 2020, run date 20:56 Fri 7 May 2021 */
+/* BEGIN_MODEL TCCT_SAT WORKBENCH_V1 */
+DEFINE_OPTICAL(optical = Solar_cells,
+               description = "De la presentación "saté
+   /* Syntax Error at or near symbol "sat" */
+   /* ',' expected */
+
+   /* Syntax Error at or near symbol "sat" */
+   /* ')' expected or bad parameter definition */
+
+   /* Syntax Error at or near symbol "é" */
+   /* ')' expected or bad parameter definition */
+lite b
+   /* Syntax Error at or near symbol "lite" */
+   /* ')' expected or bad parameter definition */
+á
+   /* Syntax Error at or near symbol "b" */
+   /* ')' expected or bad parameter definition */
+
+   /* Syntax Error at or near symbol "á" */
+   /* ')' expected or bad parameter definition */
+sico"
+   /* Syntax Error at or near symbol "sico" */
+   /* ')' expected or bad parameter definition */
+"
+   /* Syntax Error at or near symbol """" */
+   /* ')' expected or bad parameter definition */
+,
+               ir_emiss = 0.84,
+               ir_transm = 0.0,
+               solar_absorb = 0.75,
+               solar_transm = 0.0,
+               ir_spec_refl = 0.0,
+               solar_spec_refl = 0.0);
+
+DEFINE_OPTICAL(optical = White,
+               description = "De la presentación "saté
+   /* Syntax Error at or near symbol "sat" */
+   /* ',' expected */
+
+   /* Syntax Error at or near symbol "sat" */
+   /* ')' expected or bad parameter definition */
+
+   /* Syntax Error at or near symbol "é" */
+   /* ')' expected or bad parameter definition */
+lite b
+   /* Syntax Error at or near symbol "lite" */
+   /* ')' expected or bad parameter definition */
+á
+   /* Syntax Error at or near symbol "b" */
+   /* ')' expected or bad parameter definition */
+
+   /* Syntax Error at or near symbol "á" */
+   /* ')' expected or bad parameter definition */
+sico"
+   /* Syntax Error at or near symbol "sico" */
+   /* ')' expected or bad parameter definition */
+"
+   /* Syntax Error at or near symbol """" */
+   /* ')' expected or bad parameter definition */
+,
+               ir_emiss = 0.85,
+               ir_transm = 0.0,
+               solar_absorb = 0.2,
+               solar_transm = 0.0,
+               ir_spec_refl = 0.0,
+               solar_spec_refl = 0.0);
+
+DEFINE_OPTICAL(optical = Solar_cells,
+               description = "De la presentación: satélite básico",
+               ir_emiss = 0.84,
+               ir_transm = 0.0,
+               solar_absorb = 0.75,
+               solar_transm = 0.0,
+               ir_spec_refl = 0.0,
+               solar_spec_refl = 0.0);
+
+DEFINE_OPTICAL(optical = White,
+               description = "De la presentación: satélite básico",
+               ir_emiss = 0.85,
+               ir_transm = 0.0,
+               solar_absorb = 0.2,
+               solar_transm = 0.0,
+               ir_spec_refl = 0.0,
+               solar_spec_refl = 0.0);
+
+DEFINE_OPTICAL(optical = SSM,
+               description = "8mm Quartz Fused + 1mm Deposited Aluminium de las diapositivas de recubrimientos",
+               ir_emiss = 0.8,
+               ir_transm = 0.0,
+               solar_absorb = 0.08,
+               solar_transm = 0.0,
+               ir_spec_refl = 0.0,
+               solar_spec_refl = 0.0);
+
+DEFINE_OPTICAL(optical = Kapton,
+               description = "De la presentación: satélite básico",
+               ir_emiss = 0.61,
+               ir_transm = 0.0,
+               solar_absorb = 0.36,
+               solar_transm = 0.0,
+               ir_spec_refl = 0.0,
+               solar_spec_refl = 0.0);
+
+DEFINE_OPTICAL(optical = Black,
+               description = "De la presentación: satélite básico",
+               ir_emiss = 0.84,
+               ir_transm = 0.0,
+               solar_absorb = 0.97,
+               solar_transm = 0.0,
+               ir_spec_refl = 0.0,
+               solar_spec_refl = 0.0);
+
+DEFINE_OPTICAL(optical = AL_polished,
+               description = "Del las propiedades termo-ópticas de la web de Isidoro",
+               ir_emiss = 0.1,
+               ir_transm = 0.0,
+               solar_absorb = 0.5,
+               solar_transm = 0.0,
+               ir_spec_refl = 0.0,
+               solar_spec_refl = 0.0);
+
+/* ESATAN-TMS version 2020, run date 11:29 Mon 10 May 2021 */
+/* BEGIN_MODEL TCCT_SAT WORKBENCH_V1 */
+BX_mli = SHELL_SCS_BOX(
+    height = 1.0005+10.0e-3,
+    xmax = 0.7505+10.0e-3,
+    ymax = 0.7505+10.0e-3,
+    xmin = -0.7505-10.0e-3,
+    ymin = -0.7505-10.0e-3,
+    sense = -1,
+    colour1 = "RED",
+    colour2 = "BLUE",
+    side1 = "Active",
+    nbase1 = 2000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 2500,
+    ndelta2_1 = 1,
+    label1 = "BX_outter",
+    label2 = "Inner",
+    opt1 = AL_polished,
+    opt2 = Kapton,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = MLI,
+    thick = 5.0e-04,
+    through_cond = "EFFECTIVE",
+    conductance = 0.0,
+    emittance = 0.03,
+    meshType1 = "regular",
+    nodes1 = 3,
+    meshType2 = "regular",
+    nodes2 = 3,
+    meshType3 = "regular",
+    nodes3 = 2,
+    analysis_type = "Lumped Parameter");
+
+BX_mli = TRANSLATE(
+    object_name = BX_mli,
+    z_dist = 1.5,
+    clear = TRUE);
+TLC_C_mli = SHELL_SCS_CYLINDER(
+    radius = 0.6255 +10.0e-3,
+    hmax = 1.5,
+    hmin = -5.0e-04 +10e-3,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    colour1 = "RED",
+    colour2 = "BLUE",
+    side1 = "Active",
+    nbase1 = 10000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 10500,
+    ndelta2_1 = 1,
+    label1 = "Outter",
+    label2 = "Inner",
+    opt1 = Black,
+    opt2 = Kapton,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = MLI,
+    thick = 5.0e-04,
+    meshType1 = "regular",
+    nodes1 = 4,
+    meshType2 = "regular",
+    nodes2 = 1,
+    analysis_type = "Lumped Parameter");
+
+TLC_C_mli = TRANSLATE(
+    object_name = TLC_C_mli,
+    clear = TRUE);
+TLC_D_mli = SHELL_SCS_DISC(
+    rmax = 0.6255 +10.0e-3,
+    rmin = 0.375 +10.0e-3,
+    height = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    colour1 = "BLUE",
+    colour2 = "RED",
+    side1 = "Active",
+    nbase1 = 12000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 12500,
+    ndelta2_1 = 1,
+    label1 = "Inner",
+    label2 = "Outter",
+    opt1 = Black,
+    opt2 = Black,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = MLI,
+    thick = 5.0e-04,
+    meshType1 = "regular",
+    nodes1 = 4,
+    meshType2 = "regular",
+    nodes2 = 1,
+    analysis_type = "Lumped Parameter");
+
+TLC_D_mli = TRANSLATE(
+    object_name = TLC_D_mli,
+    z_dist = -5.0e-04 -10e-3,
+    clear = TRUE);
+TLC_C_mli = SHELL_SCS_CYLINDER(
+    radius = 0.6355,
+    hmax = 1.5,
+    hmin = 9.5e-03-10e-3,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    colour1 = "RED",
+    colour2 = "BLUE",
+    side1 = "Active",
+    nbase1 = 10000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 10500,
+    ndelta2_1 = 1,
+    label1 = "Outter",
+    label2 = "Inner",
+    opt1 = Black,
+    opt2 = Kapton,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = MLI,
+    thick = 5.0e-04,
+    meshType1 = "regular",
+    nodes1 = 4,
+    meshType2 = "regular",
+    nodes2 = 1,
+    analysis_type = "Lumped Parameter");
+
+TLC_C_mli = TRANSLATE(
+    object_name = TLC_C_mli,
+    clear = TRUE);
+/* ESATAN-TMS version 2020, run date 13:55 Mon 10 May 2021 */
+/* BEGIN_MODEL TCCT_SAT WORKBENCH_V1 */
+TLC_C_mli = SHELL_SCS_CYLINDER(
+    radius = 0.6355,
+    hmax = 1.5,
+    hmin = -5.0e-04-10e-3,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    colour1 = "RED",
+    colour2 = "BLUE",
+    side1 = "Active",
+    nbase1 = 10000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 10500,
+    ndelta2_1 = 1,
+    label1 = "Outter",
+    label2 = "Inner",
+    opt1 = Black,
+    opt2 = Kapton,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = MLI,
+    thick = 5.0e-04,
+    meshType1 = "regular",
+    nodes1 = 4,
+    meshType2 = "regular",
+    nodes2 = 1,
+    analysis_type = "Lumped Parameter");
+
+TLC_C_mli = TRANSLATE(
+    object_name = TLC_C_mli,
+    clear = TRUE);
+RDTR = SHELL_SCS_RECTANGLE(
+    xmax = 0.5,
+    ymax = 2.0,
+    height = 0.0,
+    xmin = -0.5,
+    ymin = 0.0,
+    sense = -1,
+    colour1 = "ORANGE",
+    colour2 = "ORANGE",
+    side1 = "Active",
+    nbase1 = 3000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 3500,
+    ndelta2_1 = 1,
+    label1 = "RDTR_outter",
+    label2 = "RDTR_inner",
+    opt1 = SSM,
+    opt2 = AL_polished,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    composition = "DUAL",
+    bulk1 = Radiator,
+    thick1 = 8.0e-03,
+    bulk2 = Al_7075_T6,
+    thick2 = 10.0e-03,
+    meshType1 = "regular",
+    nodes1 = 2,
+    meshType2 = "regular",
+    nodes2 = 3,
+    analysis_type = "Lumped Parameter");
+
+RDTR = ROTATE(
+    object_name = RDTR,
+    x_ang = -90.0,
+    clear = TRUE);
+RDTR = TRANSLATE(
+    object_name = RDTR,
+    y_dist = 0.76,
+    z_dist = 2.5);
+RENAME(old_name = "ULE_Glass", new_name = "GE_Glass");
+DEFINE_BULK(bulk = GE_Glass,
+               type = "Isotropic",
+               description = "OPMI-GERMANIUM
+
+https://www.knightoptical.com/wp-content/uploads/2020/02/IR-material-germanium.pdf",
+               density = 5330.0,
+               sp_heat = 310.0,
+               cond = 58.61);
+
