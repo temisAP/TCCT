@@ -19,8 +19,8 @@ TLC_D_mli:		12000 12500
 Telescope
 TL_cilindro:		13000 13500
 TL_detector:		14000 14500
-TL_mirror:		15000 15500
-TL_tapa:		16000 16500
+TL_mirror2:		15000 15500
+TL_mirror:		16000 16500
 TL_electronics: 	19000 19500
 
 SOLAR_PANELS

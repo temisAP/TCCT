@@ -9,7 +9,7 @@ mu = 398600;                                                               % [km
 J2 = 1.083e-3;
 rE = 6378;                                                                 % km
 %i = deg2rad(98.5);                                                        % rad
-i = deg2rad(98.6);                                                         % rad
+i = deg2rad(96.97);                                                         % rad
 e = 0;
 
 % Altura: despejando de desviacion RAAN
@@ -34,18 +34,21 @@ tsol = (2*pi-eclipse)/(2*pi);
 
 %% POTENCIA MEDIA
 
-Wtel = 0;                                                                 % [W]
-Wele = 30;                                                                   % [W]
-Want = 3*2;                                                                 % [W]
-Wine = 3*3;                                                                % [W]
-
-W = Wtel + Wele + Want + Wine;                                                   % [W]
+% Wtel = 0;                                                                   % [W]
+% Wele = 30;                                                                  % [W]
+% Want = 3*2;                                                                 % [W]
+% Wine = 3*3;                                                                 % [W]
+% 
+% W = Wtel + Wele + Want + Wine;                                              % [W]
 
 
 %% AREA PANEL
 
+A = 4.8;
 f = 0.75;           
 eta = 0.25;
 G = 1360;                                                                  % [W/m^2]
 
-A = W / ( tsol*G*f*eta )                                                   % [m^2]
+%A = W / ( tsol*G*f*eta )                                                   % [m^2]
+
+W = A * (tsol*G*f*eta)

@@ -6,10 +6,10 @@ C
 C   
       MNAME = 'TCCT_SAT_ACASE01        '                                        
 C   
-      FLG(1) = 374                                                              
-      FLG(2) = 580                                                              
+      FLG(1) = 376                                                              
+      FLG(2) = 575                                                              
       FLG(3) = 0                                                                
-      FLG(4) = 3883                                                             
+      FLG(4) = 3994                                                             
       FLG(5) = 0                                                                
       FLG(6) = 1                                                                
       FLG(7) = 0                                                                
@@ -29,11 +29,11 @@ C
       FLG(21) = 0                                                               
       FLG(22) = 0                                                               
       FLG(23) = 0                                                               
-      FLG(24) = 20118                                                           
+      FLG(24) = 20554                                                           
       FLG(25) = 2                                                               
       FLG(26) = 1                                                               
       FLG(27) = 133                                                             
-      FLG(28) = 1009699                                                         
+      FLG(28) = 1009833                                                         
       FLG(29) = 1                                                               
       FLG(30) = 0                                                               
       FLG(31) = 0                                                               
@@ -44,7 +44,7 @@ C
       FLG(36) = 1                                                               
       FLG(37) = 0                                                               
       FLG(38) = 0                                                               
-      FLG(39) = 7766                                                            
+      FLG(39) = 7988                                                            
       FLG(40) = 0                                                               
       FLG(41) = 0                                                               
       CALL SVMNAM(MNAME)                                                        
