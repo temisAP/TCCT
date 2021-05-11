@@ -21,9 +21,11 @@ TL_cilindro:		13000 13500
 TL_detector:		14000 14500
 TL_mirror:		15000 15500
 TL_tapa:		16000 16500
+TL_electronics: 	19000 19500
 
 SOLAR_PANELS
 SP1:			17000 17500
 SP2:			18000 18500
 
 Espesor de la MLI 5.0e-04
+Separación de la MLI 10e-3

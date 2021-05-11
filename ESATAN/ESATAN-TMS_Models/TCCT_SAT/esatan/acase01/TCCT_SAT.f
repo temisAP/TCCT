@@ -6,12 +6,12 @@ C
 C   
       MNAME = 'TCCT_SAT_ACASE01        '                                        
 C   
-      FLG(1) = 428                                                              
-      FLG(2) = 404                                                              
+      FLG(1) = 380                                                              
+      FLG(2) = 604                                                              
       FLG(3) = 0                                                                
-      FLG(4) = 54                                                               
+      FLG(4) = 3971                                                             
       FLG(5) = 0                                                                
-      FLG(6) = 0                                                                
+      FLG(6) = 1                                                                
       FLG(7) = 0                                                                
       FLG(8) = 0                                                                
       FLG(9) = 0                                                                
@@ -21,7 +21,7 @@ C
       FLG(13) = 49                                                              
       FLG(14) = 25                                                              
       FLG(15) = 16                                                              
-      FLG(16) = 0                                                               
+      FLG(16) = 1                                                               
       FLG(17) = 92                                                              
       FLG(18) = 0                                                               
       FLG(19) = 0                                                               
@@ -29,11 +29,11 @@ C
       FLG(21) = 0                                                               
       FLG(22) = 0                                                               
       FLG(23) = 0                                                               
-      FLG(24) = 4422                                                            
+      FLG(24) = 20602                                                           
       FLG(25) = 2                                                               
       FLG(26) = 1                                                               
       FLG(27) = 133                                                             
-      FLG(28) = 1006450                                                         
+      FLG(28) = 1009895                                                         
       FLG(29) = 1                                                               
       FLG(30) = 0                                                               
       FLG(31) = 0                                                               
@@ -44,7 +44,7 @@ C
       FLG(36) = 1                                                               
       FLG(37) = 0                                                               
       FLG(38) = 0                                                               
-      FLG(39) = 808                                                             
+      FLG(39) = 7942                                                            
       FLG(40) = 0                                                               
       FLG(41) = 0                                                               
       CALL SVMNAM(MNAME)                                                        
@@ -107,12 +107,12 @@ C
       END                                                               
       SUBROUTINE EXECTN                                                 
       INCLUDE 'TCCT_SAT.h'
-      RG(13)=0.01                                                       
+      RG(18)=5453.0577                                                  
+      RG(12)=545.30577                                                  
       IG(4)=100                                                         
-      CALL SOLVFM                                                       
-      RG(18)=0.0                                                        
-      RG(3)=RG(18)/100.0                                                
-      RG(12)=RG(18)/10.0                                                
+      RG(13)=0.01                                                       
+      RG(3)=10.0                                                        
+      CALL SOLCYC('SLCRNC',0.01D0,0.01D0,5453.0577D0,100,' ','NONE')    
       CALL SLCRNC                                                       
       RETURN                                                            
       END                                                               

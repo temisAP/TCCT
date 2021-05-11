@@ -6248,7 +6248,7 @@ TL = TRANSLATE(
     object_name = TL,
     z_dist = 0.5,
     clear = TRUE);
-/* /* /* /* /* END_MODEL */ */ */ */ */
+/* /* /* /* /* /* END_MODEL */ */ */ */ */ */
 /* ESATAN-TMS version 2020, run date 18:16 Sun 2 May 2021 */
 /* BEGIN_MODEL TCCT_SAT WORKBENCH_V1 */
 TL = SHELL_SCS_CYLINDER(
@@ -11753,3 +11753,1565 @@ https://www.knightoptical.com/wp-content/uploads/2020/02/IR-material-germanium.p
                sp_heat = 310.0,
                cond = 58.61);
 
+/* ESATAN-TMS version 2020, run date 17:02 Mon 10 May 2021 */
+/* BEGIN_MODEL TCCT_SAT WORKBENCH_V1 */
+TL_cilindro = SHELL_SCS_CYLINDER(
+    radius = 0.37,
+    hmax = 0.9,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    colour1 = "METAL_GREY",
+    side1 = "Active",
+    nbase1 = 13000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 13500,
+    ndelta2_1 = 1,
+    label1 = "outter",
+    label2 = "inner",
+    opt1 = Black,
+    opt2 = Black,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = ABS_plastic,
+    thick = 0.03,
+    meshType1 = "regular",
+    nodes1 = 3,
+    meshType2 = "regular",
+    nodes2 = 1,
+    analysis_type = "Lumped Parameter");
+
+TL_cilindro = TRANSLATE(
+    object_name = TL_cilindro,
+    z_dist = 0.5,
+    clear = TRUE);
+ADCS = SHELL_SCS_BOX(
+    height = 0.2,
+    xmax = -0.2,
+    ymax = 0.1,
+    xmin = -0.7,
+    ymin = -0.2,
+    sense = -1,
+    colour1 = "PURPLE",
+    colour2 = "PURPLE",
+    side1 = "Active",
+    nbase1 = 5000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 5500,
+    ndelta2_1 = 1,
+    label1 = "ADCS_outter",
+    label2 = "ADCS_inner",
+    opt1 = Black,
+    opt2 = Black,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = ABS_plastic,
+    thick = 4.0e-03,
+    meshType1 = "regular",
+    nodes1 = 1,
+    meshType2 = "regular",
+    nodes2 = 1,
+    meshType3 = "regular",
+    nodes3 = 1,
+    analysis_type = "Lumped Parameter");
+
+ADCS = TRANSLATE(
+    object_name = ADCS,
+    y_dist = 0.5,
+    z_dist = 1.501,
+    clear = TRUE);
+GEOMETRY TL_electronics;
+TL_electronics = SHELL_SCS_BOX(
+    height = 0.3,
+    xmax = -0.2,
+    ymax = 0.1,
+    xmin = -0.7,
+    ymin = -0.2,
+    sense = -1,
+    colour1 = "PURPLE",
+    colour2 = "PURPLE",
+    side1 = "Active",
+    nbase1 = 5000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 5500,
+    ndelta2_1 = 1,
+    label1 = "ADCS_outter",
+    label2 = "ADCS_inner",
+    opt1 = Black,
+    opt2 = Black,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = ABS_plastic,
+    thick = 4.0e-03,
+    meshType1 = "regular",
+    nodes1 = 1,
+    meshType2 = "regular",
+    nodes2 = 1,
+    meshType3 = "regular",
+    nodes3 = 1,
+    analysis_type = "Lumped Parameter");
+
+TL_electronics = TRANSLATE(
+    object_name = TL_electronics,
+    y_dist = -0.5,
+    z_dist = 1.501,
+    clear = TRUE);
+TL_electronics = SHELL_SCS_BOX(
+    height = 0.3,
+    xmax = -0.2,
+    ymax = 0.5,
+    xmin = -0.7,
+    ymin = -0.5,
+    sense = -1,
+    colour1 = "PURPLE",
+    colour2 = "PURPLE",
+    side1 = "Active",
+    nbase1 = 5000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 5500,
+    ndelta2_1 = 1,
+    label1 = "ADCS_outter",
+    label2 = "ADCS_inner",
+    opt1 = Black,
+    opt2 = Black,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = ABS_plastic,
+    thick = 4.0e-03,
+    meshType1 = "regular",
+    nodes1 = 1,
+    meshType2 = "regular",
+    nodes2 = 1,
+    meshType3 = "regular",
+    nodes3 = 1,
+    analysis_type = "Lumped Parameter");
+
+TL_electronics = TRANSLATE(
+    object_name = TL_electronics,
+    y_dist = -0.25,
+    z_dist = 1.501,
+    clear = TRUE);
+TL_electronics = SHELL_SCS_BOX(
+    height = 0.3,
+    xmax = -0.1,
+    ymax = 0.5,
+    xmin = -0.7,
+    ymin = -0.5,
+    sense = -1,
+    colour1 = "PURPLE",
+    colour2 = "PURPLE",
+    side1 = "Active",
+    nbase1 = 5000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 5500,
+    ndelta2_1 = 1,
+    label1 = "ADCS_outter",
+    label2 = "ADCS_inner",
+    opt1 = Black,
+    opt2 = Black,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = ABS_plastic,
+    thick = 4.0e-03,
+    meshType1 = "regular",
+    nodes1 = 1,
+    meshType2 = "regular",
+    nodes2 = 1,
+    meshType3 = "regular",
+    nodes3 = 1,
+    analysis_type = "Lumped Parameter");
+
+TL_electronics = TRANSLATE(
+    object_name = TL_electronics,
+    y_dist = -0.25,
+    z_dist = 1.501,
+    clear = TRUE);
+TL_electronics = SHELL_SCS_BOX(
+    height = 0.3,
+    xmax = -0.1,
+    ymax = 0.5,
+    xmin = -0.7,
+    ymin = -0.5,
+    sense = -1,
+    colour1 = "PURPLE",
+    colour2 = "PURPLE",
+    side1 = "Active",
+    nbase1 = 5000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 5500,
+    ndelta2_1 = 1,
+    label1 = "ADCS_outter",
+    label2 = "ADCS_inner",
+    opt1 = Black,
+    opt2 = Black,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = ABS_plastic,
+    thick = 4.0e-03,
+    meshType1 = "regular",
+    nodes1 = 1,
+    meshType2 = "regular",
+    nodes2 = 2,
+    meshType3 = "regular",
+    nodes3 = 1,
+    analysis_type = "Lumped Parameter");
+
+TL_electronics = TRANSLATE(
+    object_name = TL_electronics,
+    y_dist = -0.25,
+    z_dist = 1.501,
+    clear = TRUE);
+BX_mli = SHELL_SCS_BOX(
+    height = 1.0205,
+    xmax = 0.7605,
+    ymax = 0.7605,
+    xmin = -0.7605,
+    ymin = -0.7605,
+    sense = -1,
+    colour1 = "RED",
+    colour2 = "BLUE",
+    side1 = "Active",
+    nbase1 = 2000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 2500,
+    ndelta2_1 = 1,
+    label1 = "BX_outter",
+    label2 = "Inner",
+    opt1 = AL_polished,
+    opt2 = Kapton,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = MLI,
+    thick = 5.0e-04,
+    through_cond = "EFFECTIVE",
+    conductance = 0.0,
+    emittance = 0.03,
+    meshType1 = "regular",
+    nodes1 = 3,
+    meshType2 = "regular",
+    nodes2 = 3,
+    meshType3 = "regular",
+    nodes3 = 2,
+    analysis_type = "Lumped Parameter");
+
+BX_mli = TRANSLATE(
+    object_name = BX_mli,
+    z_dist = 1.5-10.0e-3,
+    clear = TRUE);
+TLC_C_mli = SHELL_SCS_CYLINDER(
+    radius = 0.6355,
+    hmax = 1.5-10.0e-3,
+    hmin = -0.0105,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    colour1 = "RED",
+    colour2 = "BLUE",
+    side1 = "Active",
+    nbase1 = 10000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 10500,
+    ndelta2_1 = 1,
+    label1 = "Outter",
+    label2 = "Inner",
+    opt1 = Black,
+    opt2 = Kapton,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = MLI,
+    thick = 5.0e-04,
+    meshType1 = "regular",
+    nodes1 = 4,
+    meshType2 = "regular",
+    nodes2 = 1,
+    analysis_type = "Lumped Parameter");
+
+TLC_C_mli = TRANSLATE(
+    object_name = TLC_C_mli,
+    clear = TRUE);
+TLC_C_estruct = SHELL_SCS_CYLINDER(
+    radius = 0.625,
+    hmax = 1.5-10.0e-3,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    colour1 = "YELLOW",
+    colour2 = "YELLOW_GREEN",
+    side1 = "Active",
+    nbase1 = 9000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 9500,
+    ndelta2_1 = 1,
+    label1 = "Outter",
+    label2 = "Inner",
+    opt1 = Black,
+    opt2 = AL_polished,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = Al_7075_T6,
+    thick = 3.0e-03,
+    meshType1 = "regular",
+    nodes1 = 4,
+    meshType2 = "regular",
+    nodes2 = 1,
+    analysis_type = "Lumped Parameter");
+
+TLC_C_estruct = TRANSLATE(
+    object_name = TLC_C_estruct,
+    clear = TRUE);
+CONTACT_ZONE TL_electronics2BX;
+TL_electronics2BX = DEFINE_CONTACT_ZONE(
+source_reference = "BX:surface2",
+destination_reference = "TL_electronics:surface1",
+contact_conductance = 300.0,
+maximum_gap = 0.01,
+number_sample_points = 10000)
+   /* Warning Error: current function is DEFINE_CONTACT_ZONE */
+   /* Warning: Invalid destination_reference parameter.
+      Cannot find primitive TL_electronics in the model.
+      Error number: 1202 */
+;
+
+TL_electronics = SHELL_SCS_BOX(
+    height = 0.3,
+    xmax = -0.1,
+    ymax = 0.5,
+    xmin = -0.7,
+    ymin = -0.5,
+    sense = -1,
+    colour1 = "PURPLE",
+    colour2 = "PURPLE",
+    side1 = "Active",
+    nbase1 = 19000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 19500,
+    ndelta2_1 = 1,
+    label1 = "outter",
+    label2 = "inner",
+    opt1 = Black,
+    opt2 = Black,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = ABS_plastic,
+    thick = 4.0e-03,
+    meshType1 = "regular",
+    nodes1 = 1,
+    meshType2 = "regular",
+    nodes2 = 2,
+    meshType3 = "regular",
+    nodes3 = 1,
+    analysis_type = "Lumped Parameter");
+
+TL_electronics = TRANSLATE(
+    object_name = TL_electronics,
+    y_dist = -0.25,
+    z_dist = 1.501,
+    clear = TRUE);
+TL_electronics2BX = DEFINE_CONTACT_ZONE(
+source_reference = "BX:surface2",
+destination_reference = "TL_electronics:surface1",
+contact_conductance = 300.0,
+maximum_gap = 0.01,
+number_sample_points = 10000)
+   /* Warning Error: current function is DEFINE_CONTACT_ZONE */
+   /* Warning: Invalid destination_reference parameter.
+      Cannot find primitive TL_electronics in the model.
+      Error number: 1202 */
+;
+
+Equipos = Equipos + TL_electronics;
+Telescope = Telescope + TL_electronics;
+TL_electronics2BX = DEFINE_CONTACT_ZONE(
+source_reference = "BX:surface2",
+destination_reference = "TL_electronics:surface1",
+contact_conductance = 300.0,
+maximum_gap = 0.01,
+number_sample_points = 10000);
+
+
+CONDUCTIVE_INTERFACE ci_E1;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_E1,
+	primitiveA = TL_electronics,
+	primitiveB = TL_electronics,
+	start_point = [-0.7, -0.5, 0.30000000000000004],
+	end_point = [-0.09999999999999998, -0.5, 0.30000000000000004],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_E2;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_E2,
+	primitiveA = TL_electronics,
+	primitiveB = TL_electronics,
+	start_point = [-0.7, -0.5, 0.0],
+	end_point = [-0.09999999999999998, -0.5, 0.0],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_E3;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_E3,
+	primitiveA = TL_electronics,
+	primitiveB = TL_electronics,
+	start_point = [-0.09999999999999998, 0.5, 0.30000000000000004],
+	end_point = [-0.7, 0.5, 0.30000000000000004],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_E4;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_E4,
+	primitiveA = TL_electronics,
+	primitiveB = TL_electronics,
+	start_point = [-0.7, 0.5, 0.30000000000000004],
+	end_point = [-0.7, -0.5, 0.30000000000000004],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_E5;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_E5,
+	primitiveA = TL_electronics,
+	primitiveB = TL_electronics,
+	start_point = [-0.09999999999999998, 0.5, 0.0],
+	end_point = [-0.7, 0.5, 0.0],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_E6;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_E6,
+	primitiveA = TL_electronics,
+	primitiveB = TL_electronics,
+	start_point = [-0.7, -0.5, 0.0],
+	end_point = [-0.7, -0.5, 0.30000000000000004],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_E7;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_E7,
+	primitiveA = TL_electronics,
+	primitiveB = TL_electronics,
+	start_point = [-0.7, 0.5, 0.0],
+	end_point = [-0.7, 0.5, 0.30000000000000004],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_E8;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_E8,
+	primitiveA = TL_electronics,
+	primitiveB = TL_electronics,
+	start_point = [-0.7, 0.5, 0.0],
+	end_point = [-0.7, -0.5, 0.0],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_E9;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_E9,
+	primitiveA = TL_electronics,
+	primitiveB = TL_electronics,
+	start_point = [-0.09999999999999998, -0.5, 0.0],
+	end_point = [-0.09999999999999998, -0.5, 0.30000000000000004],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_E10;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_E10,
+	primitiveA = TL_electronics,
+	primitiveB = TL_electronics,
+	start_point = [-0.09999999999999998, -0.5, 0.30000000000000004],
+	end_point = [-0.09999999999999998, 0.5, 0.30000000000000004],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_E11;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_E11,
+	primitiveA = TL_electronics,
+	primitiveB = TL_electronics,
+	start_point = [-0.09999999999999998, 0.5, 0.0],
+	end_point = [-0.09999999999999998, 0.5, 0.30000000000000004],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_E12;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_E12,
+	primitiveA = TL_electronics,
+	primitiveB = TL_electronics,
+	start_point = [-0.09999999999999998, 0.5, 0.0],
+	end_point = [-0.09999999999999998, -0.5, 0.0],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_G1;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_G1,
+	primitiveA = BX_mli,
+	primitiveB = BX_mli,
+	start_point = [-0.7605, -0.7605, 1.0205],
+	end_point = [0.7605, -0.7605, 1.0205],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_G2;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_G2,
+	primitiveA = BX_mli,
+	primitiveB = BX_mli,
+	start_point = [-0.7605, -0.7605, 0.0],
+	end_point = [0.7605, -0.7605, 0.0],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_G3;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_G3,
+	primitiveA = BX_mli,
+	primitiveB = BX_mli,
+	start_point = [0.7605, 0.7605, 1.0205],
+	end_point = [-0.7605, 0.7605, 1.0205],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_G4;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_G4,
+	primitiveA = BX_mli,
+	primitiveB = BX_mli,
+	start_point = [-0.7605, 0.7605, 1.0205],
+	end_point = [-0.7605, -0.7605, 1.0205],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_G5;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_G5,
+	primitiveA = BX_mli,
+	primitiveB = BX_mli,
+	start_point = [0.7605, 0.7605, 0.0],
+	end_point = [-0.7605, 0.7605, 0.0],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_G6;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_G6,
+	primitiveA = BX_mli,
+	primitiveB = BX_mli,
+	start_point = [-0.7605, -0.7605, 0.0],
+	end_point = [-0.7605, -0.7605, 1.0205],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_G7;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_G7,
+	primitiveA = BX_mli,
+	primitiveB = BX_mli,
+	start_point = [-0.7605, 0.7605, 0.0],
+	end_point = [-0.7605, 0.7605, 1.0205],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_G8;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_G8,
+	primitiveA = BX_mli,
+	primitiveB = BX_mli,
+	start_point = [-0.7605, 0.7605, 0.0],
+	end_point = [-0.7605, -0.7605, 0.0],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_G9;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_G9,
+	primitiveA = BX_mli,
+	primitiveB = BX_mli,
+	start_point = [0.7605, -0.7605, 0.0],
+	end_point = [0.7605, -0.7605, 1.0205],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_G10;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_G10,
+	primitiveA = BX_mli,
+	primitiveB = BX_mli,
+	start_point = [0.7605, -0.7605, 1.0205],
+	end_point = [0.7605, 0.7605, 1.0205],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_G11;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_G11,
+	primitiveA = BX_mli,
+	primitiveB = BX_mli,
+	start_point = [0.7605, 0.7605, 0.0],
+	end_point = [0.7605, 0.7605, 1.0205],
+	connect_type = "FUSED");
+
+
+CONDUCTIVE_INTERFACE ci_G12;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_G12,
+	primitiveA = BX_mli,
+	primitiveB = BX_mli,
+	start_point = [0.7605, 0.7605, 0.0],
+	end_point = [0.7605, -0.7605, 0.0],
+	connect_type = "FUSED");
+
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = ci_G6,
+    primitiveA = BX_mli,
+    primitiveB = BX_mli,
+    start_point = [-0.7605, -0.7605, 0.0],
+    end_point = [-0.7605, -0.7605, 1.0205],
+    connect_type = "NOT_CONNECTED");
+
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = ci_G2,
+    primitiveA = BX_mli,
+    primitiveB = BX_mli,
+    start_point = [-0.7605, -0.7605, 0.0],
+    end_point = [0.7605, -0.7605, 0.0],
+    connect_type = "NOT_CONNECTED");
+
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = ci_G12,
+    primitiveA = BX_mli,
+    primitiveB = BX_mli,
+    start_point = [0.7605, 0.7605, 0.0],
+    end_point = [0.7605, -0.7605, 0.0],
+    connect_type = "NOT_CONNECTED");
+
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = ci_G9,
+    primitiveA = BX_mli,
+    primitiveB = BX_mli,
+    start_point = [0.7605, -0.7605, 0.0],
+    end_point = [0.7605, -0.7605, 1.0205],
+    connect_type = "NOT_CONNECTED");
+
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = ci_G1,
+    primitiveA = BX_mli,
+    primitiveB = BX_mli,
+    start_point = [-0.7605, -0.7605, 1.0205],
+    end_point = [0.7605, -0.7605, 1.0205],
+    connect_type = "NOT_CONNECTED");
+
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = ci_G4,
+    primitiveA = BX_mli,
+    primitiveB = BX_mli,
+    start_point = [-0.7605, 0.7605, 1.0205],
+    end_point = [-0.7605, -0.7605, 1.0205],
+    connect_type = "NOT_CONNECTED");
+
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = ci_G3,
+    primitiveA = BX_mli,
+    primitiveB = BX_mli,
+    start_point = [0.7605, 0.7605, 1.0205],
+    end_point = [-0.7605, 0.7605, 1.0205],
+    connect_type = "NOT_CONNECTED");
+
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = ci_G10,
+    primitiveA = BX_mli,
+    primitiveB = BX_mli,
+    start_point = [0.7605, -0.7605, 1.0205],
+    end_point = [0.7605, 0.7605, 1.0205],
+    connect_type = "NOT_CONNECTED");
+
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = ci_G11,
+    primitiveA = BX_mli,
+    primitiveB = BX_mli,
+    start_point = [0.7605, 0.7605, 0.0],
+    end_point = [0.7605, 0.7605, 1.0205],
+    connect_type = "NOT_CONNECTED");
+
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = ci_G7,
+    primitiveA = BX_mli,
+    primitiveB = BX_mli,
+    start_point = [-0.7605, 0.7605, 0.0],
+    end_point = [-0.7605, 0.7605, 1.0205],
+    connect_type = "NOT_CONNECTED");
+
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = ci_G8,
+    primitiveA = BX_mli,
+    primitiveB = BX_mli,
+    start_point = [-0.7605, 0.7605, 0.0],
+    end_point = [-0.7605, -0.7605, 0.0],
+    connect_type = "NOT_CONNECTED");
+
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = ci_G5,
+    primitiveA = BX_mli,
+    primitiveB = BX_mli,
+    start_point = [0.7605, 0.7605, 0.0],
+    end_point = [-0.7605, 0.7605, 0.0],
+    connect_type = "NOT_CONNECTED");
+
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = ci_G5,
+    primitiveA = BX_mli,
+    primitiveB = BX_mli,
+    start_point = [0.7605, 0.7605, 0.0],
+    end_point = [-0.7605, 0.7605, 0.0],
+    connect_type = "NOT_CONNECTED");
+
+
+CONDUCTIVE_INTERFACE ci_H1;
+DEFINE_CONDUCTIVE_INTERFACE(
+	conductive_interface = ci_H1,
+	primitiveA = TLC_C_mli,
+	primitiveB = TLC_D_mli,
+	start_point = [0.6355, 0.0, -0.0105],
+	end_point = [0.6355, -1.5565260817162858E-16, -0.0105],
+	connect_type = "FUSED");
+
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = ci_H1,
+    primitiveA = TLC_C_mli,
+    primitiveB = TLC_D_mli,
+    start_point = [0.6355, 0.0, -0.0105],
+    end_point = [0.6355, 0.0, -0.0105],
+    connect_type = "NOT_CONNECTED");
+
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = ci_H1,
+    primitiveA = TLC_C_mli,
+    primitiveB = TLC_D_mli,
+    start_point = [0.6355, 0.0, -0.0105],
+    end_point = [0.6355, 0.0, -0.0105],
+    connect_type = "NOT_CONNECTED");
+
+CONDUCTOR RDTR2BX_1;
+RDTR2BX_1 = CONDUCTIVE_CONDUCTOR(
+    source_reference = "RDTR:surface2",
+    destination_reference = "BX:face51",
+    conductivity = 400.0,
+    shape_factor = 0.25 / 10.0e-3);
+
+CONDUCTOR RDTR2BX_2;
+RDTR2BX_2 = CONDUCTIVE_CONDUCTOR(
+    source_reference = "RDTR:surface2",
+    destination_reference = "BX:face45",
+    conductivity = 400.0,
+    shape_factor = 0.25 / 10.0e-3);
+
+RDTR2BX_2 = CONDUCTIVE_CONDUCTOR(
+    source_reference = "RDTR:surface2",
+    destination_reference = "BX:face45",
+    conductivity = 400.0,
+    shape_factor = 0.25 / 10.0e-3);
+
+CONDUCTIVE_INTERFACE TRAY2BX;
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = TRAY2BX,
+    primitiveA = BX,
+    primitiveB = TRAY,
+    start_point = [0.75, 0.75, 0.5],
+    end_point = [0.75, 0.75, 0.5],
+    connect_type = "FUSED");
+
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = TRAY2BX,
+    primitiveA = BX,
+    primitiveB = TRAY,
+    surfaceA = 1,
+    surfaceB = 1,
+    connect_type = "FUSED");
+
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = TRAY2BX,
+    primitiveA = BX,
+    primitiveB = TRAY,
+    surfaceA = 1,
+    surfaceB = 1,
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE TRAY2BX1;
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = TRAY2BX1,
+    primitiveA = BX,
+    primitiveB = TRAY,
+    start_point = [0.25, -0.75, 0.5],
+    end_point = [-0.25, -0.75, 0.5],
+    connect_type = "FUSED");
+
+DEFINE_CONDUCTIVE_INTERFACE(
+    conductive_interface = TRAY2BX1,
+    primitiveA = BX,
+    primitiveB = TRAY,
+    start_point = [0.75, -0.75, 0.5],
+    end_point = [-0.75, -0.75, 0.5],
+    connect_type = "FUSED");
+
+TL_detector = SHELL_SCS_RECTANGLE(
+    xmax = 0.15,
+    ymax = 0.15,
+    height = 0.0,
+    xmin = -0.15,
+    ymin = -0.15,
+    sense = -1,
+    colour1 = "GREY",
+    colour2 = "WHITE",
+    side1 = "Active",
+    nbase1 = 14000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 14500,
+    ndelta2_1 = 1,
+    label1 = "Back_face",
+    label2 = "Detector",
+    opt1 = AL_polished,
+    opt2 = Detector,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = ABS_plastic,
+    thick = 10.0e-3,
+    meshType1 = "regular",
+    nodes1 = 1,
+    meshType2 = "regular",
+    nodes2 = 1,
+    analysis_type = "Lumped Parameter");
+
+TL_detector = TRANSLATE(
+    object_name = TL_detector,
+    z_dist = 1.35,
+    clear = TRUE);
+TL_detector = SHELL_SCS_RECTANGLE(
+    xmax = 0.15,
+    ymax = 0.15,
+    height = 0.0,
+    xmin = -0.15,
+    ymin = -0.15,
+    sense = -1,
+    colour1 = "GREY",
+    colour2 = "WHITE",
+    side1 = "Active",
+    nbase1 = 14000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 14500,
+    ndelta2_1 = 1,
+    label1 = "Back_face",
+    label2 = "Detector",
+    opt1 = Black,
+    opt2 = Detector,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = ABS_plastic,
+    thick = 10.0e-3,
+    meshType1 = "regular",
+    nodes1 = 1,
+    meshType2 = "regular",
+    nodes2 = 1,
+    analysis_type = "Lumped Parameter");
+
+TL_detector = TRANSLATE(
+    object_name = TL_detector,
+    z_dist = 1.35,
+    clear = TRUE);
+DELETE TRAY2BX1;
+DELETE TRAY2BX;
+COM_support1 = CONDUCTIVE_CONDUCTOR(
+    source_reference = "COM1:face5",
+    destination_reference = "COM2:face2",
+    conductor_override = 4.0e1);
+
+RDTR2BX_1 = CONDUCTIVE_CONDUCTOR(
+    source_reference = "RDTR:surface2",
+    destination_reference = "BX:face51",
+    conductor_override = 4.0e3);
+
+RDTR2BX_1 = CONDUCTIVE_CONDUCTOR(
+    source_reference = "RDTR:surface2",
+    destination_reference = "BX:face51",
+    conductor_override = 4.0e3);
+
+RDTR2BX_2 = CONDUCTIVE_CONDUCTOR(
+    source_reference = "RDTR:surface2",
+    destination_reference = "BX:face45",
+    conductor_override = 4000.0);
+
+CONDUCTOR SP12BX_1;
+SP12BX_1 = CONDUCTIVE_CONDUCTOR(
+    source_reference = "BX:face7",
+    destination_reference = "SP2:face15",
+    conductor_override = 8.67);
+
+CONDUCTOR SP12BX_2;
+SP12BX_2 = CONDUCTIVE_CONDUCTOR(
+    source_reference = "BX:face11",
+    destination_reference = "SP1:face1",
+    conductor_override = 8.67);
+
+SP12BX_1 = CONDUCTIVE_CONDUCTOR(
+    source_reference = "BX:face11",
+    destination_reference = "SP1:face9",
+    conductor_override = 8.67);
+
+CONDUCTOR SP22BX_1;
+SP22BX_1 = CONDUCTIVE_CONDUCTOR(
+    source_reference = "BX:face7",
+    destination_reference = "SP2:face15",
+    conductor_override = 8.67);
+
+CONDUCTOR SP22BX_2;
+SP22BX_2 = CONDUCTIVE_CONDUCTOR(
+    source_reference = "BX:face7",
+    destination_reference = "SP2:face7",
+    conductor_override = 8.67);
+
+SP22BX_2 = CONDUCTIVE_CONDUCTOR(
+    source_reference = "BX:face7",
+    destination_reference = "SP2:face7",
+    conductor_override = 8.67);
+
+CONDUCTOR TL2RDTR;
+TL2RDTR = CONDUCTIVE_CONDUCTOR(
+    source_reference = "TL_detector:face1",
+    destination_reference = "RDTR:surface2",
+    conductor_override = 5.26);
+
+TL2RDTR = CONDUCTIVE_CONDUCTOR(
+    source_reference = "TL_detector:face1",
+    destination_reference = "RDTR:surface2",
+    conductor_override = 5.26);
+
+CONDUCTOR TRAY2RDTR;
+TRAY2RDTR = CONDUCTIVE_CONDUCTOR(
+    source_reference = "TRAY:face15",
+    destination_reference = "RDTR:surface2",
+    conductor_override = 400.0);
+
+TL_cilindro = SHELL_SCS_CYLINDER(
+    radius = 0.37,
+    hmax = 1.3,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    colour1 = "METAL_GREY",
+    side1 = "Active",
+    nbase1 = 13000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 13500,
+    ndelta2_1 = 1,
+    label1 = "outter",
+    label2 = "inner",
+    opt1 = Black,
+    opt2 = Black,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = ABS_plastic,
+    thick = 0.03,
+    meshType1 = "regular",
+    nodes1 = 3,
+    meshType2 = "regular",
+    nodes2 = 1,
+    analysis_type = "Lumped Parameter");
+
+TL_cilindro = TRANSLATE(
+    object_name = TL_cilindro,
+    z_dist = 0.1,
+    clear = TRUE);
+TL_cilindro = SHELL_SCS_CYLINDER(
+    radius = 0.37,
+    hmax = 1.4,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    colour1 = "METAL_GREY",
+    side1 = "Active",
+    nbase1 = 13000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 13500,
+    ndelta2_1 = 1,
+    label1 = "outter",
+    label2 = "inner",
+    opt1 = Black,
+    opt2 = Black,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = ABS_plastic,
+    thick = 0.03,
+    meshType1 = "regular",
+    nodes1 = 3,
+    meshType2 = "regular",
+    nodes2 = 1,
+    analysis_type = "Lumped Parameter");
+
+TL_cilindro = TRANSLATE(
+    object_name = TL_cilindro,
+    z_dist = 0.1,
+    clear = TRUE);
+TL_cilindro = SHELL_SCS_CYLINDER(
+    radius = 0.37,
+    hmax = 1.4,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    colour1 = "METAL_GREY",
+    side1 = "Active",
+    nbase1 = 13000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 13500,
+    ndelta2_1 = 1,
+    label1 = "outter",
+    label2 = "inner",
+    opt1 = Black,
+    opt2 = Black,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = ABS_plastic,
+    thick = 0.03,
+    meshType1 = "regular",
+    nodes1 = 3,
+    meshType2 = "regular",
+    nodes2 = 1,
+    analysis_type = "Lumped Parameter");
+
+TL_cilindro = TRANSLATE(
+    object_name = TL_cilindro,
+    clear = TRUE);
+TL_cilindro = SHELL_SCS_CYLINDER(
+    radius = 0.37,
+    hmax = 1.4,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    colour1 = "METAL_GREY",
+    side1 = "Active",
+    nbase1 = 13000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 13500,
+    ndelta2_1 = 1,
+    label1 = "outter",
+    label2 = "inner",
+    opt1 = AL_polished,
+    opt2 = Black,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = ABS_plastic,
+    thick = 0.03,
+    meshType1 = "regular",
+    nodes1 = 3,
+    meshType2 = "regular",
+    nodes2 = 1,
+    analysis_type = "Lumped Parameter");
+
+TL_cilindro = TRANSLATE(
+    object_name = TL_cilindro,
+    clear = TRUE);
+TLC_C_estruct = SHELL_SCS_CYLINDER(
+    radius = 0.625,
+    hmax = 1.49,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    colour1 = "YELLOW",
+    colour2 = "YELLOW_GREEN",
+    side1 = "Active",
+    nbase1 = 9000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 9500,
+    ndelta2_1 = 1,
+    label1 = "Outter",
+    label2 = "Inner",
+    opt1 = Black,
+    opt2 = AL_polished,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = Al_7075_T6,
+    thick = 3.0e-03,
+    meshType1 = "regular",
+    nodes1 = 4,
+    meshType2 = "regular",
+    nodes2 = 2,
+    analysis_type = "Lumped Parameter");
+
+TLC_C_estruct = TRANSLATE(
+    object_name = TLC_C_estruct,
+    clear = TRUE);
+TLC_C_estruct = SHELL_SCS_CYLINDER(
+    radius = 0.625,
+    hmax = 1.49,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    colour1 = "YELLOW",
+    colour2 = "YELLOW_GREEN",
+    side1 = "Active",
+    nbase1 = 9000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 9500,
+    ndelta2_1 = 1,
+    label1 = "Outter",
+    label2 = "Inner",
+    opt1 = Black,
+    opt2 = AL_polished,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = Al_7075_T6,
+    thick = 3.0e-03,
+    meshType1 = "regular",
+    nodes1 = 4,
+    meshType2 = "regular",
+    nodes2 = 1,
+    analysis_type = "Lumped Parameter");
+
+TLC_C_estruct = TRANSLATE(
+    object_name = TLC_C_estruct,
+    clear = TRUE);
+TL_cilindro = SHELL_SCS_CYLINDER(
+    radius = 0.37,
+    hmax = 1.4,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    colour1 = "METAL_GREY",
+    side1 = "Active",
+    nbase1 = 13000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 13500,
+    ndelta2_1 = 1,
+    label1 = "outter",
+    label2 = "inner",
+    opt1 = AL_polished,
+    opt2 = Black,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = ABS_plastic,
+    thick = 0.03,
+    meshType1 = "regular",
+    nodes1 = 3,
+    meshType2 = "regular",
+    nodes2 = 2,
+    analysis_type = "Lumped Parameter");
+
+TL_cilindro = TRANSLATE(
+    object_name = TL_cilindro,
+    clear = TRUE);
+TL_cilindro = SHELL_SCS_CYLINDER(
+    radius = 0.37,
+    hmax = 1.4,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    colour1 = "METAL_GREY",
+    side1 = "Active",
+    nbase1 = 13000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 13500,
+    ndelta2_1 = 1,
+    label1 = "outter",
+    label2 = "inner",
+    opt1 = AL_polished,
+    opt2 = Black,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = ABS_plastic,
+    thick = 0.03,
+    meshType1 = "regular",
+    nodes1 = 3,
+    meshType2 = "regular",
+    nodes2 = 3,
+    analysis_type = "Lumped Parameter");
+
+TL_cilindro = TRANSLATE(
+    object_name = TL_cilindro,
+    clear = TRUE);
+TL_cilindro = SHELL_SCS_CYLINDER(
+    radius = 0.37,
+    hmax = 1.4,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    colour1 = "METAL_GREY",
+    side1 = "Active",
+    nbase1 = 13000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 13500,
+    ndelta2_1 = 1,
+    label1 = "outter",
+    label2 = "inner",
+    opt1 = AL_polished,
+    opt2 = Black,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = ABS_plastic,
+    thick = 0.03,
+    meshType1 = "regular",
+    nodes1 = 3,
+    meshType2 = "regular",
+    nodes2 = 3,
+    analysis_type = "Lumped Parameter");
+
+TL_cilindro = TRANSLATE(
+    object_name = TL_cilindro,
+    clear = TRUE);
+TL_cilindro = SHELL_SCS_CYLINDER(
+    radius = 0.37,
+    hmax = 1.4,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    colour1 = "METAL_GREY",
+    side1 = "Active",
+    nbase1 = 13000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 13500,
+    ndelta2_1 = 1,
+    label1 = "outter",
+    label2 = "inner",
+    opt1 = AL_polished,
+    opt2 = Black,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = ABS_plastic,
+    thick = 0.03,
+    meshType1 = "regular",
+    nodes1 = 3,
+    meshType2 = "regular",
+    nodes2 = 1,
+    analysis_type = "Lumped Parameter");
+
+TL_cilindro = TRANSLATE(
+    object_name = TL_cilindro,
+    clear = TRUE);
+TLC_C_mli = SHELL_SCS_CYLINDER(
+    radius = 0.6355,
+    hmax = 1.49,
+    hmin = -0.0105,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    colour1 = "RED",
+    colour2 = "BLUE",
+    side1 = "Active",
+    nbase1 = 10000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 10500,
+    ndelta2_1 = 1,
+    label1 = "Outter",
+    label2 = "Inner",
+    opt1 = Black,
+    opt2 = Kapton,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = MLI,
+    thick = 5.0e-04,
+    meshType1 = "regular",
+    nodes1 = 4,
+    meshType2 = "regular",
+    nodes2 = 2,
+    analysis_type = "Lumped Parameter");
+
+TLC_C_mli = TRANSLATE(
+    object_name = TLC_C_mli,
+    clear = TRUE);
+TL_cilindro = SHELL_SCS_CYLINDER(
+    radius = 0.37,
+    hmax = 1.4,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    colour1 = "METAL_GREY",
+    side1 = "Active",
+    nbase1 = 13000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 13500,
+    ndelta2_1 = 1,
+    label1 = "outter",
+    label2 = "inner",
+    opt1 = AL_polished,
+    opt2 = Black,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = ABS_plastic,
+    thick = 0.03,
+    meshType1 = "regular",
+    nodes1 = 3,
+    meshType2 = "regular",
+    nodes2 = 2,
+    analysis_type = "Lumped Parameter");
+
+TL_cilindro = TRANSLATE(
+    object_name = TL_cilindro,
+    clear = TRUE);
+TLC_C_estruct = SHELL_SCS_CYLINDER(
+    radius = 0.625,
+    hmax = 1.49,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    colour1 = "YELLOW",
+    colour2 = "YELLOW_GREEN",
+    side1 = "Active",
+    nbase1 = 9000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 9500,
+    ndelta2_1 = 1,
+    label1 = "Outter",
+    label2 = "Inner",
+    opt1 = Black,
+    opt2 = AL_polished,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = Al_7075_T6,
+    thick = 3.0e-03,
+    meshType1 = "regular",
+    nodes1 = 4,
+    meshType2 = "regular",
+    nodes2 = 2,
+    analysis_type = "Lumped Parameter");
+
+TLC_C_estruct = TRANSLATE(
+    object_name = TLC_C_estruct,
+    clear = TRUE);
+TL_cilindro = SHELL_SCS_CYLINDER(
+    radius = 0.37,
+    hmax = 1.4,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    colour1 = "METAL_GREY",
+    side1 = "Active",
+    nbase1 = 13000,
+    ndelta1_1 = 1,
+    ndelta1_2 = 1,
+    side2 = "Active",
+    nbase2 = 13500,
+    ndelta2_1 = 1,
+    ndelta2_2 = 1,
+    label1 = "outter",
+    label2 = "inner",
+    opt1 = AL_polished,
+    opt2 = Black,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = ABS_plastic,
+    thick = 0.03,
+    meshType1 = "regular",
+    nodes1 = 3,
+    meshType2 = "regular",
+    nodes2 = 2,
+    analysis_type = "Lumped Parameter");
+
+TL_cilindro = TRANSLATE(
+    object_name = TL_cilindro,
+    clear = TRUE);
+TLC_C_mli = SHELL_SCS_CYLINDER(
+    radius = 0.6355,
+    hmax = 1.49,
+    hmin = -0.0105,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    colour1 = "RED",
+    colour2 = "BLUE",
+    side1 = "Active",
+    nbase1 = 10000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 10500,
+    ndelta2_1 = 1,
+    label1 = "Outter",
+    label2 = "Inner",
+    opt1 = White,
+    opt2 = Kapton,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = MLI,
+    thick = 5.0e-04,
+    meshType1 = "regular",
+    nodes1 = 4,
+    meshType2 = "regular",
+    nodes2 = 2,
+    analysis_type = "Lumped Parameter");
+
+TLC_C_mli = TRANSLATE(
+    object_name = TLC_C_mli,
+    clear = TRUE);
+TLC_D_mli = SHELL_SCS_DISC(
+    rmax = 0.6355,
+    rmin = 0.385,
+    height = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    colour1 = "BLUE",
+    colour2 = "RED",
+    side1 = "Active",
+    nbase1 = 12000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 12500,
+    ndelta2_1 = 1,
+    label1 = "Inner",
+    label2 = "Outter",
+    opt1 = White,
+    opt2 = Black,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = MLI,
+    thick = 5.0e-04,
+    meshType1 = "regular",
+    nodes1 = 4,
+    meshType2 = "regular",
+    nodes2 = 1,
+    analysis_type = "Lumped Parameter");
+
+TLC_D_mli = TRANSLATE(
+    object_name = TLC_D_mli,
+    z_dist = -0.0105,
+    clear = TRUE);
+TLC_C_estruct = SHELL_SCS_CYLINDER(
+    radius = 0.625,
+    hmax = 1.49,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    colour1 = "YELLOW",
+    colour2 = "YELLOW_GREEN",
+    side1 = "Active",
+    nbase1 = 9000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 9500,
+    ndelta2_1 = 1,
+    label1 = "Outter",
+    label2 = "Inner",
+    opt1 = Black,
+    opt2 = Black,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = Al_7075_T6,
+    thick = 3.0e-03,
+    meshType1 = "regular",
+    nodes1 = 4,
+    meshType2 = "regular",
+    nodes2 = 2,
+    analysis_type = "Lumped Parameter");
+
+TLC_C_estruct = TRANSLATE(
+    object_name = TLC_C_estruct,
+    clear = TRUE);
+TLC_D_estruct = SHELL_SCS_DISC(
+    rmax = 0.625,
+    rmin = 0.375,
+    height = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    colour1 = "YELLOW_GREEN",
+    colour2 = "YELLOW",
+    side1 = "Active",
+    nbase1 = 11000,
+    ndelta1_1 = 1,
+    side2 = "Active",
+    nbase2 = 11500,
+    ndelta2_1 = 1,
+    label1 = "Inner",
+    label2 = "TLD2_outter",
+    opt1 = Black,
+    opt2 = Black,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = Al_7075_T6,
+    thick = 2.0e-03,
+    meshType1 = "regular",
+    nodes1 = 4,
+    meshType2 = "regular",
+    nodes2 = 1,
+    analysis_type = "Lumped Parameter");
+
+TLC_D_estruct = TRANSLATE(
+    object_name = TLC_D_estruct,
+    clear = TRUE);
+TL_cilindro = SHELL_SCS_CYLINDER(
+    radius = 0.37,
+    hmax = 1.4,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    colour1 = "METAL_GREY",
+    side1 = "Active",
+    nbase1 = 13000,
+    ndelta1_1 = 1,
+    ndelta1_2 = 1,
+    side2 = "Active",
+    nbase2 = 13500,
+    ndelta2_1 = 1,
+    ndelta2_2 = 1,
+    label1 = "outter",
+    label2 = "inner",
+    opt1 = Black,
+    opt2 = AL_polished,
+    criticality1 = "NORMAL",
+    criticality2 = "NORMAL",
+    bulk = ABS_plastic,
+    thick = 0.03,
+    meshType1 = "regular",
+    nodes1 = 3,
+    meshType2 = "regular",
+    nodes2 = 2,
+    analysis_type = "Lumped Parameter");
+
+TL_cilindro = TRANSLATE(
+    object_name = TL_cilindro,
+    clear = TRUE);
