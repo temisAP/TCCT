@@ -648,7 +648,7 @@ DEFINE_MISSION(
 ;
 
 
-/* /* /* /* /* /* /* /* /* /* END_MODEL */ */ */ */ */ */ */ */ */ */
+/* /* /* /* /* /* /* /* /* /* /* END_MODEL */ */ */ */ */ */ */ */ */ */ */
 /* ESATAN-TMS version 2020, run date 18:15 Sun 2 May 2021 */
 /* BEGIN_MODEL TCCT_SAT WORKBENCH_V1 */ ;
 /* ESATAN-TMS version 2020, run date 10:53 Wed 5 May 2021 */
@@ -2727,6 +2727,175 @@ FOR (orbit_index = 1;
    /* Warning Error: current function is Radiative results */
    /* Radiative case SS: Model geometry has changed, existing results deleted */
 ;
+
+END_FOR
+DELETE radiative_case_error_flag;
+
+DEFINE_ACCURACY (
+	radiative_case = SS,
+	control_method = "FIXED_RAYS",
+	ray_total_cutoff = 5.0e-03,
+	coupling_min_rays_normal = 10000,
+	coupling_min_rays_critical = 100000,
+	coupling_min_rays_non_critical = 1000,
+	hf_min_rays_normal = 10000,
+	hf_min_rays_critical = 100000,
+	hf_min_rays_non_critical = 1000,
+	seed = 1000,
+	extinct = 1.0e-03);
+
+GC = EVAL(SS.GC);
+R_PLANET = EVAL(SS.ORBIT.PLANET_RADIUS);
+R_SUN = EVAL(SS.ORBIT.SUN_RADIUS);
+IF (EVAL(SS.SUN_DISTANCE_OVERRIDE) == 0.0) THEN
+    SUN_PLANET_DIST = EVAL(SS.ORBIT.SUN_DISTANCE);
+ELSE
+    SUN_PLANET_DIST = EVAL(SS.SUN_DISTANCE_OVERRIDE);
+END_IF
+T_SUN = EVAL(SS.T_SUN);
+SOLAR_DECLINATION = EVAL(SS.ORBIT.SOLAR_DECLN);
+
+PROP_ENV = SS.PROP_ENV;
+
+INTEGER radiative_case_error_flag = 0;
+FOR (orbit_index = 1;
+    orbit_index <= SS.NUM_ORBIT_POSITIONS;
+    orbit_index = EVAL(orbit_index + 1))
+
+    CALCULATE (
+        radiative_case = SS,
+        calc_types = "REF, SAF, PAF, ALBEDO_PAF",
+        pos_index = orbit_index,
+        eclipse_check = TRUE,
+        error_code = radiative_case_error_flag);
+
+END_FOR
+DELETE radiative_case_error_flag;
+
+/* ESATAN-TMS version 2020, run date 15:17 Wed 12 May 2021 */
+/* BEGIN_MODEL TCCT_SAT WORKBENCH_V1 */ ;
+DEFINE_ACCURACY (
+	radiative_case = SS,
+	control_method = "FIXED_RAYS",
+	ray_total_cutoff = 5.0e-03,
+	coupling_min_rays_normal = 10000,
+	coupling_min_rays_critical = 100000,
+	coupling_min_rays_non_critical = 1000,
+	hf_min_rays_normal = 10000,
+	hf_min_rays_critical = 100000,
+	hf_min_rays_non_critical = 1000,
+	seed = 1000,
+	extinct = 1.0e-03);
+
+GC = EVAL(SS.GC);
+R_PLANET = EVAL(SS.ORBIT.PLANET_RADIUS);
+R_SUN = EVAL(SS.ORBIT.SUN_RADIUS);
+IF (EVAL(SS.SUN_DISTANCE_OVERRIDE) == 0.0) THEN
+    SUN_PLANET_DIST = EVAL(SS.ORBIT.SUN_DISTANCE);
+ELSE
+    SUN_PLANET_DIST = EVAL(SS.SUN_DISTANCE_OVERRIDE);
+END_IF
+T_SUN = EVAL(SS.T_SUN);
+SOLAR_DECLINATION = EVAL(SS.ORBIT.SOLAR_DECLN);
+
+PROP_ENV = SS.PROP_ENV;
+
+INTEGER radiative_case_error_flag = 0;
+FOR (orbit_index = 1;
+    orbit_index <= SS.NUM_ORBIT_POSITIONS;
+    orbit_index = EVAL(orbit_index + 1))
+
+    CALCULATE (
+        radiative_case = SS,
+        calc_types = "REF, SAF, PAF, ALBEDO_PAF",
+        pos_index = orbit_index,
+        eclipse_check = TRUE,
+        error_code = radiative_case_error_flag);
+
+END_FOR
+DELETE radiative_case_error_flag;
+
+DEFINE_ACCURACY (
+	radiative_case = SS,
+	control_method = "FIXED_RAYS",
+	ray_total_cutoff = 5.0e-03,
+	coupling_min_rays_normal = 10000,
+	coupling_min_rays_critical = 100000,
+	coupling_min_rays_non_critical = 1000,
+	hf_min_rays_normal = 10000,
+	hf_min_rays_critical = 100000,
+	hf_min_rays_non_critical = 1000,
+	seed = 1000,
+	extinct = 1.0e-03);
+
+GC = EVAL(SS.GC);
+R_PLANET = EVAL(SS.ORBIT.PLANET_RADIUS);
+R_SUN = EVAL(SS.ORBIT.SUN_RADIUS);
+IF (EVAL(SS.SUN_DISTANCE_OVERRIDE) == 0.0) THEN
+    SUN_PLANET_DIST = EVAL(SS.ORBIT.SUN_DISTANCE);
+ELSE
+    SUN_PLANET_DIST = EVAL(SS.SUN_DISTANCE_OVERRIDE);
+END_IF
+T_SUN = EVAL(SS.T_SUN);
+SOLAR_DECLINATION = EVAL(SS.ORBIT.SOLAR_DECLN);
+
+PROP_ENV = SS.PROP_ENV;
+
+INTEGER radiative_case_error_flag = 0;
+FOR (orbit_index = 1;
+    orbit_index <= SS.NUM_ORBIT_POSITIONS;
+    orbit_index = EVAL(orbit_index + 1))
+
+    CALCULATE (
+        radiative_case = SS,
+        calc_types = "REF, SAF, PAF, ALBEDO_PAF",
+        pos_index = orbit_index,
+        eclipse_check = TRUE,
+        error_code = radiative_case_error_flag)
+   /* Warning Error: current function is Radiative results */
+   /* Radiative case SS: Model geometry has changed, existing results deleted */
+;
+
+END_FOR
+DELETE radiative_case_error_flag;
+
+DEFINE_ACCURACY (
+	radiative_case = SS,
+	control_method = "FIXED_RAYS",
+	ray_total_cutoff = 5.0e-03,
+	coupling_min_rays_normal = 10000,
+	coupling_min_rays_critical = 100000,
+	coupling_min_rays_non_critical = 1000,
+	hf_min_rays_normal = 10000,
+	hf_min_rays_critical = 100000,
+	hf_min_rays_non_critical = 1000,
+	seed = 1000,
+	extinct = 1.0e-03);
+
+GC = EVAL(SS.GC);
+R_PLANET = EVAL(SS.ORBIT.PLANET_RADIUS);
+R_SUN = EVAL(SS.ORBIT.SUN_RADIUS);
+IF (EVAL(SS.SUN_DISTANCE_OVERRIDE) == 0.0) THEN
+    SUN_PLANET_DIST = EVAL(SS.ORBIT.SUN_DISTANCE);
+ELSE
+    SUN_PLANET_DIST = EVAL(SS.SUN_DISTANCE_OVERRIDE);
+END_IF
+T_SUN = EVAL(SS.T_SUN);
+SOLAR_DECLINATION = EVAL(SS.ORBIT.SOLAR_DECLN);
+
+PROP_ENV = SS.PROP_ENV;
+
+INTEGER radiative_case_error_flag = 0;
+FOR (orbit_index = 1;
+    orbit_index <= SS.NUM_ORBIT_POSITIONS;
+    orbit_index = EVAL(orbit_index + 1))
+
+    CALCULATE (
+        radiative_case = SS,
+        calc_types = "REF, SAF, PAF, ALBEDO_PAF",
+        pos_index = orbit_index,
+        eclipse_check = TRUE,
+        error_code = radiative_case_error_flag);
 
 END_FOR
 DELETE radiative_case_error_flag;
