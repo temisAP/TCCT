@@ -2,12 +2,16 @@ Central
 BX:		1000 1500
 BX_mli:		5000 2500
 RDTR:		3000 3500
+RDTR2: 		20000 20500
 TRAY:		4000 4500
 
 Equipos
 ADCS:			5000 5500
+ADCS_cooler:		1
 CAJA_ELECTRONICA:	6000 6500
+CAJA_cooler:		2
 COM1:			7000 7500
+COM_cooler:		3
 COM2:			8000 8500
 
 TL_case
@@ -22,6 +26,7 @@ TL_detector:		14000 14500
 TL_mirror2:		15000 15500
 TL_mirror:		16000 16500
 TL_electronics: 	19000 19500
+TL_electronics_cooler:	4
 
 SOLAR_PANELS
 SP1:			17000 17500
