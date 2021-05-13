@@ -386,7 +386,7 @@ END_IF
 
 
 DELETE analysis_case_error_flag;
-/* /* /* /* /* /* /* /* /* /* /* END_MODEL */ */ */ */ */ */ */ */ */ */ */
+/* /* /* /* /* /* /* /* /* /* /* /* /* END_MODEL */ */ */ */ */ */ */ */ */ */ */ */ */
 /* ESATAN-TMS version 2020, run date 18:15 Sun 2 May 2021 */
 /* BEGIN_MODEL TCCT_SAT WORKBENCH_V1 */ ;
 /* ESATAN-TMS version 2020, run date 10:53 Wed 5 May 2021 */
@@ -2845,6 +2845,1234 @@ IF (analysis_case_error_flag == 0) THEN
    /* Warning Error: current function is CALCULATE_LP_CONDUCTORS */
    /* Invalid conductive interface ci_E9 deleted from the model       
       Error number: 1312 */
+;
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    RUN_ANALYSIS(
+        analysis_case = acase01);
+END_IF
+
+
+DELETE analysis_case_error_flag;
+/* ESATAN-TMS version 2020, run date 20:14 Wed 12 May 2021 */
+/* BEGIN_MODEL TCCT_SAT WORKBENCH_V1 */ ;
+/* ESATAN-TMS version 2020, run date 0:10 Thu 13 May 2021 */
+/* BEGIN_MODEL TCCT_SAT WORKBENCH_V1 */ ;
+
+INTEGER analysis_case_error_flag = 0;
+
+DEFINE_ANALYSIS_CASE (
+    analysis_case = acase01,
+    solver = "ESATAN",
+    working_directory = "D:\Archivos_de_programa\ESATAN\Modelos_ESATAN\ESATAN-TMS_Models\TCCT_SAT\esatan\acase01",
+    analysis_file = "TCCT_SAT_acase01.d",
+    error_code =  analysis_case_error_flag,
+    analysis_case_type = "Single Radiative Case",
+    radiative_case = SS);
+
+IF (analysis_case_error_flag == 0) THEN
+    GENERATE_TEMPLATE (
+        analysis_case = acase01,
+        submodel_files = FALSE,
+        maxmin = FALSE,
+        error_code =  analysis_case_error_flag,
+        execution_block = 
+"
+C
+      TIMEND=5453.0577
+      OUTINT=545.30577
+      NLOOP=100000
+      RELXCA=0.01
+      DTIMEI=10.0
+      CALL SOLCYC('SLCRNC',0.01D0,0.01D0,5453.0577D0,10000,' ','NONE')
+C
+      CALL SLCRNC
+C",
+        output_block = 
+"      CALL PRNDTB(' ', 'L, T, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+",
+        update = TRUE);
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    UNSET_HF_MULTIPLIERS(analysis_case = acase01);
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    GENERATE_ANALYSIS_FILE (
+        save_only = TRUE,
+        analysis_case = acase01,
+        title = "TCCT_SAT_acase01",
+        error_code =  analysis_case_error_flag,
+        results = "GL,TRANS_HF,TRANS_REF",
+        ref_averaged = TRUE,
+        ref_cyclic = TRUE,
+        hf_type = "S,A,P",
+        hf_averaged = TRUE,
+        hf_cyclic = TRUE,
+        environment = 99999,
+        environment_temperature = -270.0,
+        inactive = 99998);
+END_IF
+
+
+DELETE analysis_case_error_flag;
+
+INTEGER analysis_case_error_flag = 0;
+
+DEFINE_ANALYSIS_CASE (
+    analysis_case = acase01,
+    solver = "ESATAN",
+    working_directory = "D:\Archivos_de_programa\ESATAN\Modelos_ESATAN\ESATAN-TMS_Models\TCCT_SAT\esatan\acase01",
+    analysis_file = "TCCT_SAT_acase01.d",
+    error_code =  analysis_case_error_flag,
+    analysis_case_type = "Single Radiative Case",
+    radiative_case = SS);
+
+IF (analysis_case_error_flag == 0) THEN
+    GENERATE_TEMPLATE (
+        analysis_case = acase01,
+        submodel_files = FALSE,
+        maxmin = FALSE,
+        error_code =  analysis_case_error_flag,
+        execution_block = 
+"
+C
+      TIMEND=5453.0577
+      OUTINT=545.30577
+      NLOOP=100000
+      RELXCA=0.01
+      DTIMEI=10.0
+      CALL SOLCYC('SLCRNC',0.01D0,0.01D0,5453.0577D0,10000,' ','NONE')
+C
+      CALL SLCRNC
+C",
+        output_block = 
+"      CALL PRNDTB(' ', 'L, T, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+",
+        update = TRUE);
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    UNSET_HF_MULTIPLIERS(analysis_case = acase01);
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    GENERATE_ANALYSIS_FILE (
+        analysis_case = acase01,
+        title = "TCCT_SAT_acase01",
+        error_code =  analysis_case_error_flag,
+        results = "GL,TRANS_HF,TRANS_REF",
+        ref_averaged = TRUE,
+        ref_cyclic = TRUE,
+        hf_type = "S,A,P",
+        hf_averaged = TRUE,
+        hf_cyclic = TRUE,
+        environment = 99999,
+        environment_temperature = -270.0,
+        inactive = 99998);
+END_IF
+
+
+DELETE analysis_case_error_flag;
+RUN_ANALYSIS (
+    analysis_case = acase01);
+
+INTEGER analysis_case_error_flag = 0;
+
+DEFINE_ANALYSIS_CASE (
+    analysis_case = acase01,
+    solver = "ESATAN",
+    working_directory = "D:\Archivos_de_programa\ESATAN\Modelos_ESATAN\ESATAN-TMS_Models\TCCT_SAT\esatan\acase01",
+    analysis_file = "TCCT_SAT_acase01.d",
+    error_code =  analysis_case_error_flag,
+    analysis_case_type = "Single Radiative Case",
+    radiative_case = SS);
+
+IF (analysis_case_error_flag == 0) THEN
+    GENERATE_TEMPLATE (
+        analysis_case = acase01,
+        submodel_files = FALSE,
+        maxmin = FALSE,
+        error_code =  analysis_case_error_flag,
+        execution_block = 
+"
+C
+      TIMEND=5453.0577
+      OUTINT=545.30577
+      NLOOP=200
+      RELXCA=0.01
+      DTIMEI=10.0
+      CALL SOLCYC('SLCRNC',0.01D0,0.01D0,5453.0577D0,200,' ','NONE')
+C
+      CALL SLCRNC
+C",
+        output_block = 
+"      CALL PRNDTB(' ', 'L, T, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+",
+        update = TRUE);
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    SET_BOUNDARY_CONDITION(
+        analysis_case = acase01,
+        boundary_condition = BC_TL,
+        applies = FALSE);
+
+    SET_BOUNDARY_CONDITION(
+        analysis_case = acase01,
+        boundary_condition = BC_ADCS,
+        applies = FALSE);
+
+    SET_BOUNDARY_CONDITION(
+        analysis_case = acase01,
+        boundary_condition = BC_OBC,
+        applies = FALSE);
+
+    SET_BOUNDARY_CONDITION(
+        analysis_case = acase01,
+        boundary_condition = BC_COM,
+        applies = FALSE);
+
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    UNSET_HF_MULTIPLIERS(analysis_case = acase01);
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = SP22BX_2,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = SP22BX_1,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = TL2RDTR_1,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = TL2RDTR_2,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = TL2RDTR_3,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = TL2RDTR_4,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = COM_support1,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = Mirro22TL_cone1,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = Mirro22TL_cone2,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = TL2BX,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = Detector2TL_cone_2,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = Detector2TL_cone_1,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = Mirro22TL_cone3,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = SP12BX_2,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = Detector2TL_cone_3,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = SP12BX_1,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = TL_detector2RDTR,
+        applies = TRUE);
+
+    SET_CONTACT_ZONE(
+        analysis_case = acase01,
+        contact_zone = ADCS2BX,
+        applies = TRUE);
+
+    SET_CONTACT_ZONE(
+        analysis_case = acase01,
+        contact_zone = TL_electronics2BX,
+        applies = TRUE);
+
+    SET_CONTACT_ZONE(
+        analysis_case = acase01,
+        contact_zone = Caja2BX,
+        applies = TRUE);
+
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    GENERATE_ANALYSIS_FILE (
+        analysis_case = acase01,
+        title = "TCCT_SAT_acase01",
+        error_code =  analysis_case_error_flag,
+        results = "GL,TRANS_HF,TRANS_REF",
+        ref_averaged = TRUE,
+        ref_cyclic = TRUE,
+        hf_type = "S,A,P",
+        hf_averaged = TRUE,
+        hf_cyclic = TRUE,
+        environment = 99999,
+        environment_temperature = -270.0,
+        inactive = 99998);
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    RUN_ANALYSIS(
+        analysis_case = acase01);
+END_IF
+
+
+DELETE analysis_case_error_flag;
+RUN_ANALYSIS (
+    analysis_case = acase01);
+
+INTEGER analysis_case_error_flag = 0;
+
+DEFINE_ANALYSIS_CASE (
+    analysis_case = acase01,
+    solver = "ESATAN",
+    working_directory = "D:\Archivos_de_programa\ESATAN\Modelos_ESATAN\ESATAN-TMS_Models\TCCT_SAT\esatan\acase01",
+    analysis_file = "TCCT_SAT_acase01.d",
+    error_code =  analysis_case_error_flag,
+    analysis_case_type = "Single Radiative Case",
+    radiative_case = SS);
+
+IF (analysis_case_error_flag == 0) THEN
+    GENERATE_TEMPLATE (
+        analysis_case = acase01,
+        submodel_files = FALSE,
+        maxmin = FALSE,
+        error_code =  analysis_case_error_flag,
+        execution_block = 
+"
+C
+      TIMEND=5453.0577
+      OUTINT=545.30577
+      NLOOP=200
+      RELXCA=0.01
+      DTIMEI=10.0
+      CALL SOLCYC('SLCRNC',0.01D0,0.01D0,5453.0577D0,200,' ','NONE')
+C
+      CALL SLCRNC
+C",
+        output_block = 
+"      CALL PRNDTB(' ', 'L, T, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+",
+        update = TRUE);
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    SET_BOUNDARY_CONDITION(
+        analysis_case = acase01,
+        boundary_condition = BC_TL,
+        applies = FALSE);
+
+    SET_BOUNDARY_CONDITION(
+        analysis_case = acase01,
+        boundary_condition = BC_ADCS,
+        applies = FALSE);
+
+    SET_BOUNDARY_CONDITION(
+        analysis_case = acase01,
+        boundary_condition = BC_OBC,
+        applies = FALSE);
+
+    SET_BOUNDARY_CONDITION(
+        analysis_case = acase01,
+        boundary_condition = BC_COM,
+        applies = FALSE);
+
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    UNSET_HF_MULTIPLIERS(analysis_case = acase01);
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = SP22BX_2,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = SP22BX_1,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = TL2RDTR_1,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = TL2RDTR_2,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = TL2RDTR_3,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = TL2RDTR_4,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = COM_support1,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = Mirro22TL_cone1,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = Mirro22TL_cone2,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = TL2BX,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = Detector2TL_cone_2,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = Detector2TL_cone_1,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = Mirro22TL_cone3,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = SP12BX_2,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = Detector2TL_cone_3,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = SP12BX_1,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = TL_detector2RDTR,
+        applies = TRUE);
+
+    SET_CONTACT_ZONE(
+        analysis_case = acase01,
+        contact_zone = ADCS2BX,
+        applies = TRUE);
+
+    SET_CONTACT_ZONE(
+        analysis_case = acase01,
+        contact_zone = TL_electronics2BX,
+        applies = TRUE);
+
+    SET_CONTACT_ZONE(
+        analysis_case = acase01,
+        contact_zone = Caja2BX,
+        applies = TRUE);
+
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    GENERATE_ANALYSIS_FILE (
+        analysis_case = acase01,
+        title = "TCCT_SAT_acase01",
+        error_code =  analysis_case_error_flag,
+        results = "GL,TRANS_HF,TRANS_REF",
+        ref_averaged = TRUE,
+        ref_cyclic = TRUE,
+        hf_type = "S,A,P",
+        hf_averaged = TRUE,
+        hf_cyclic = TRUE,
+        environment = 99999,
+        environment_temperature = -270.0,
+        inactive = 99998);
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    RUN_ANALYSIS(
+        analysis_case = acase01);
+END_IF
+
+
+DELETE analysis_case_error_flag;
+RUN_ANALYSIS (
+    analysis_case = acase01);
+RUN_ANALYSIS (
+    analysis_case = acase01);
+
+INTEGER analysis_case_error_flag = 0;
+
+DEFINE_ANALYSIS_CASE (
+    analysis_case = acase01,
+    solver = "ESATAN",
+    working_directory = "D:\Archivos_de_programa\ESATAN\Modelos_ESATAN\ESATAN-TMS_Models\TCCT_SAT\esatan\acase01",
+    analysis_file = "TCCT_SAT_acase01.d",
+    error_code =  analysis_case_error_flag,
+    analysis_case_type = "Single Radiative Case",
+    radiative_case = SS);
+
+IF (analysis_case_error_flag == 0) THEN
+    GENERATE_TEMPLATE (
+        analysis_case = acase01,
+        submodel_files = FALSE,
+        maxmin = FALSE,
+        error_code =  analysis_case_error_flag,
+        execution_block = 
+"
+C
+      TIMEND=5453.0577
+      OUTINT=545.30577
+      NLOOP=200
+      RELXCA=0.015
+      DTIMEI=10.0
+      CALL SOLCYC('SLCRNC',0.015D0,0.01D0,5453.0577D0,200,' ','NONE')
+C
+      CALL SLCRNC
+C",
+        output_block = 
+"      CALL PRNDTB(' ', 'L, T, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+",
+        update = TRUE);
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    SET_BOUNDARY_CONDITION(
+        analysis_case = acase01,
+        boundary_condition = BC_TL,
+        applies = FALSE);
+
+    SET_BOUNDARY_CONDITION(
+        analysis_case = acase01,
+        boundary_condition = BC_ADCS,
+        applies = FALSE);
+
+    SET_BOUNDARY_CONDITION(
+        analysis_case = acase01,
+        boundary_condition = BC_OBC,
+        applies = FALSE);
+
+    SET_BOUNDARY_CONDITION(
+        analysis_case = acase01,
+        boundary_condition = BC_COM,
+        applies = FALSE);
+
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    UNSET_HF_MULTIPLIERS(analysis_case = acase01);
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = SP22BX_2,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = SP22BX_1,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = TL2RDTR_1,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = TL2RDTR_2,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = TL2RDTR_3,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = TL2RDTR_4,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = COM_support1,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = Mirro22TL_cone1,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = Mirro22TL_cone2,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = TL2BX,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = Detector2TL_cone_2,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = Detector2TL_cone_1,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = Mirro22TL_cone3,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = SP12BX_2,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = Detector2TL_cone_3,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = SP12BX_1,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = TL_detector2RDTR,
+        applies = TRUE);
+
+    SET_CONTACT_ZONE(
+        analysis_case = acase01,
+        contact_zone = ADCS2BX,
+        applies = TRUE);
+
+    SET_CONTACT_ZONE(
+        analysis_case = acase01,
+        contact_zone = TL_electronics2BX,
+        applies = TRUE);
+
+    SET_CONTACT_ZONE(
+        analysis_case = acase01,
+        contact_zone = Caja2BX,
+        applies = TRUE);
+
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    GENERATE_ANALYSIS_FILE (
+        analysis_case = acase01,
+        title = "TCCT_SAT_acase01",
+        error_code =  analysis_case_error_flag,
+        results = "GL,TRANS_HF,TRANS_REF",
+        ref_averaged = TRUE,
+        ref_cyclic = TRUE,
+        hf_type = "S,A,P",
+        hf_averaged = TRUE,
+        hf_cyclic = TRUE,
+        environment = 99999,
+        environment_temperature = -270.0,
+        inactive = 99998);
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    RUN_ANALYSIS(
+        analysis_case = acase01);
+END_IF
+
+
+DELETE analysis_case_error_flag;
+RUN_ANALYSIS (
+    analysis_case = acase01);
+RUN_ANALYSIS (
+    analysis_case = acase01);
+RUN_ANALYSIS (
+    analysis_case = acase01);
+RUN_ANALYSIS (
+    analysis_case = acase01);
+
+INTEGER analysis_case_error_flag = 0;
+
+DEFINE_ANALYSIS_CASE (
+    analysis_case = acase01,
+    solver = "ESATAN",
+    working_directory = "D:\Archivos_de_programa\ESATAN\Modelos_ESATAN\ESATAN-TMS_Models\TCCT_SAT\esatan\acase01",
+    analysis_file = "TCCT_SAT_acase01.d",
+    error_code =  analysis_case_error_flag,
+    analysis_case_type = "Single Radiative Case",
+    radiative_case = SS);
+
+IF (analysis_case_error_flag == 0) THEN
+    GENERATE_TEMPLATE (
+        analysis_case = acase01,
+        submodel_files = FALSE,
+        maxmin = FALSE,
+        error_code =  analysis_case_error_flag,
+        execution_block = 
+"
+C
+      TIMEND=5453.0577
+      OUTINT=545.30577
+      NLOOP=200
+      RELXCA=0.015
+      DTIMEI=10.0
+      CALL SOLCYC('SLCRNC',0.015D0,0.01D0,5453.0577D0,200,' ','NONE')
+C
+      CALL SLCRNC
+C",
+        output_block = 
+"      CALL PRNDTB(' ', 'L, T, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+",
+        update = TRUE);
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    SET_BOUNDARY_CONDITION(
+        analysis_case = acase01,
+        boundary_condition = BC_TL,
+        applies = FALSE);
+
+    SET_BOUNDARY_CONDITION(
+        analysis_case = acase01,
+        boundary_condition = BC_ADCS,
+        applies = FALSE);
+
+    SET_BOUNDARY_CONDITION(
+        analysis_case = acase01,
+        boundary_condition = BC_OBC,
+        applies = FALSE);
+
+    SET_BOUNDARY_CONDITION(
+        analysis_case = acase01,
+        boundary_condition = BC_COM,
+        applies = FALSE);
+
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    UNSET_HF_MULTIPLIERS(analysis_case = acase01);
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = SP22BX_2,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = SP22BX_1,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = TL2RDTR_1,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = TL2RDTR_2,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = TL2RDTR_3,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = TL2RDTR_4,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = COM_support1,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = Mirro22TL_cone1,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = Mirro22TL_cone2,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = TL2BX,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = Detector2TL_cone_2,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = Detector2TL_cone_1,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = Mirro22TL_cone3,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = SP12BX_2,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = Detector2TL_cone_3,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = SP12BX_1,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = TL_detector2RDTR,
+        applies = TRUE);
+
+    SET_CONTACT_ZONE(
+        analysis_case = acase01,
+        contact_zone = ADCS2BX,
+        applies = TRUE);
+
+    SET_CONTACT_ZONE(
+        analysis_case = acase01,
+        contact_zone = TL_electronics2BX,
+        applies = TRUE);
+
+    SET_CONTACT_ZONE(
+        analysis_case = acase01,
+        contact_zone = Caja2BX,
+        applies = TRUE);
+
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    GENERATE_ANALYSIS_FILE (
+        analysis_case = acase01,
+        title = "TCCT_SAT_acase01",
+        error_code =  analysis_case_error_flag,
+        results = "GL,TRANS_HF,TRANS_REF",
+        ref_averaged = TRUE,
+        ref_cyclic = TRUE,
+        hf_type = "S,A,P",
+        hf_averaged = TRUE,
+        hf_cyclic = TRUE,
+        environment = 99999,
+        environment_temperature = -270.0,
+        inactive = 99998)
+   /* Warning Error: current function is Calculate Conductors */
+   /* Thermal node 13001 is non-contiguous.
+      All faces/volumes of the same thermal node must be connected in order to perform conductor calculations.
+      Error number: 830 */
+
+   /* Warning Error: current function is Calculate Conductors */
+   /* Thermal node 13002 is non-contiguous.
+      All faces/volumes of the same thermal node must be connected in order to perform conductor calculations.
+      Error number: 830 */
+
+   /* Warning Error: current function is Calculate Conductors */
+   /* Thermal node 13501 is non-contiguous.
+      All faces/volumes of the same thermal node must be connected in order to perform conductor calculations.
+      Error number: 830 */
+
+   /* Warning Error: current function is Calculate Conductors */
+   /* Thermal node 13502 is non-contiguous.
+      All faces/volumes of the same thermal node must be connected in order to perform conductor calculations.
+      Error number: 830 */
+;
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    RUN_ANALYSIS(
+        analysis_case = acase01);
+END_IF
+
+
+DELETE analysis_case_error_flag;
+
+INTEGER analysis_case_error_flag = 0;
+
+DEFINE_ANALYSIS_CASE (
+    analysis_case = acase01,
+    solver = "ESATAN",
+    working_directory = "D:\Archivos_de_programa\ESATAN\Modelos_ESATAN\ESATAN-TMS_Models\TCCT_SAT\esatan\acase01",
+    analysis_file = "TCCT_SAT_acase01.d",
+    error_code =  analysis_case_error_flag,
+    analysis_case_type = "Single Radiative Case",
+    radiative_case = SS);
+
+IF (analysis_case_error_flag == 0) THEN
+    GENERATE_TEMPLATE (
+        analysis_case = acase01,
+        submodel_files = FALSE,
+        maxmin = FALSE,
+        error_code =  analysis_case_error_flag,
+        execution_block = 
+"
+C
+      TIMEND=5453.0577
+      OUTINT=545.30577
+      NLOOP=200
+      RELXCA=0.011
+      DTIMEI=8.0
+      CALL SOLCYC('SLCRNC',0.011D0,0.01D0,5453.0577D0,200,' ','NONE')
+C
+      CALL SLCRNC
+C",
+        output_block = 
+"      CALL PRNDTB(' ', 'L, T, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+",
+        update = TRUE);
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    SET_BOUNDARY_CONDITION(
+        analysis_case = acase01,
+        boundary_condition = BC_TL,
+        applies = FALSE);
+
+    SET_BOUNDARY_CONDITION(
+        analysis_case = acase01,
+        boundary_condition = BC_ADCS,
+        applies = FALSE);
+
+    SET_BOUNDARY_CONDITION(
+        analysis_case = acase01,
+        boundary_condition = BC_OBC,
+        applies = FALSE);
+
+    SET_BOUNDARY_CONDITION(
+        analysis_case = acase01,
+        boundary_condition = BC_COM,
+        applies = FALSE);
+
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    UNSET_HF_MULTIPLIERS(analysis_case = acase01);
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = SP22BX_2,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = SP22BX_1,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = TL2RDTR_1,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = TL2RDTR_2,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = TL2RDTR_3,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = TL2RDTR_4,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = COM_support1,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = Mirro22TL_cone1,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = Mirro22TL_cone2,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = TL2BX,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = Detector2TL_cone_2,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = Detector2TL_cone_1,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = Mirro22TL_cone3,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = SP12BX_2,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = Detector2TL_cone_3,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = SP12BX_1,
+        applies = TRUE);
+
+    SET_USER_DEFINED_CONDUCTOR(
+        analysis_case = acase01,
+        conductor = TL_detector2RDTR,
+        applies = TRUE);
+
+    SET_CONTACT_ZONE(
+        analysis_case = acase01,
+        contact_zone = ADCS2BX,
+        applies = TRUE);
+
+    SET_CONTACT_ZONE(
+        analysis_case = acase01,
+        contact_zone = TL_electronics2BX,
+        applies = TRUE);
+
+    SET_CONTACT_ZONE(
+        analysis_case = acase01,
+        contact_zone = Caja2BX,
+        applies = TRUE);
+
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    GENERATE_ANALYSIS_FILE (
+        save_only = TRUE,
+        analysis_case = acase01,
+        title = "TCCT_SAT_acase01",
+        error_code =  analysis_case_error_flag,
+        results = "GL,TRANS_HF,TRANS_REF",
+        ref_averaged = TRUE,
+        ref_cyclic = TRUE,
+        hf_type = "S,A,P",
+        hf_averaged = TRUE,
+        hf_cyclic = TRUE,
+        environment = 99999,
+        environment_temperature = -270.0,
+        inactive = 99998);
+END_IF
+
+
+DELETE analysis_case_error_flag;
+
+INTEGER analysis_case_error_flag = 0;
+
+DEFINE_ANALYSIS_CASE (
+    analysis_case = acase01,
+    solver = "ESATAN",
+    working_directory = "D:\Archivos_de_programa\ESATAN\Modelos_ESATAN\ESATAN-TMS_Models\TCCT_SAT\esatan\acase01",
+    analysis_file = "TCCT_SAT_acase01.d",
+    error_code =  analysis_case_error_flag,
+    analysis_case_type = "Single Radiative Case",
+    radiative_case = SS);
+
+IF (analysis_case_error_flag == 0) THEN
+    GENERATE_TEMPLATE (
+        analysis_case = acase01,
+        submodel_files = FALSE,
+        maxmin = FALSE,
+        error_code =  analysis_case_error_flag,
+        execution_block = 
+"
+C
+      TIMEND=5453.0577
+      OUTINT=545.30577
+      NLOOP=200
+      RELXCA=0.011
+      DTIMEI=8.0
+      CALL SOLCYC('SLCRNC',0.011D0,0.01D0,5453.0577D0,200,' ','NONE')
+C
+      CALL SLCRNC
+C",
+        output_block = 
+"      CALL PRNDTB(' ', 'L, T, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+",
+        update = TRUE);
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    UNSET_HF_MULTIPLIERS(analysis_case = acase01);
+END_IF
+
+
+IF (analysis_case_error_flag == 0) THEN
+    GENERATE_ANALYSIS_FILE (
+        analysis_case = acase01,
+        title = "TCCT_SAT_acase01",
+        error_code =  analysis_case_error_flag,
+        results = "GL,TRANS_HF,TRANS_REF",
+        ref_averaged = TRUE,
+        ref_cyclic = TRUE,
+        hf_type = "S,A,P",
+        hf_averaged = TRUE,
+        hf_cyclic = TRUE,
+        environment = 99999,
+        environment_temperature = -270.0,
+        inactive = 99998)
+   /* Warning Error: current function is Calculate Conductors */
+   /* Thermal node 13001 is non-contiguous.
+      All faces/volumes of the same thermal node must be connected in order to perform conductor calculations.
+      Error number: 830 */
+
+   /* Warning Error: current function is Calculate Conductors */
+   /* Thermal node 13002 is non-contiguous.
+      All faces/volumes of the same thermal node must be connected in order to perform conductor calculations.
+      Error number: 830 */
+
+   /* Warning Error: current function is Calculate Conductors */
+   /* Thermal node 13501 is non-contiguous.
+      All faces/volumes of the same thermal node must be connected in order to perform conductor calculations.
+      Error number: 830 */
+
+   /* Warning Error: current function is Calculate Conductors */
+   /* Thermal node 13502 is non-contiguous.
+      All faces/volumes of the same thermal node must be connected in order to perform conductor calculations.
+      Error number: 830 */
 ;
 END_IF
 

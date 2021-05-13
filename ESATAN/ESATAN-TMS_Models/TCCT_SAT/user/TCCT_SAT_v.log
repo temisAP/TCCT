@@ -7224,7 +7224,7 @@ DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
         asm_axes = TRUE,
         points = FALSE);
 
-/* /* /* /* /* /* /* /* /* /* /* END_MODEL */ */ */ */ */ */ */ */ */ */ */
+/* /* /* /* /* /* /* /* /* /* /* /* /* END_MODEL */ */ */ */ */ */ */ */ */ */ */ */ */
 /* ESATAN-TMS version 2020, run date 18:15 Sun 2 May 2021 */
 /* BEGIN_MODEL TCCT_SAT WORKBENCH_V1 */ ;
 RADIATIVE_PRE_PROCESS_OVERLAY(source = "GEOMETRY",
@@ -37543,6 +37543,1763 @@ DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
         asm_axes = TRUE,
         points = FALSE,
         assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+/* ESATAN-TMS version 2020, run date 20:14 Wed 12 May 2021 */
+/* BEGIN_MODEL TCCT_SAT WORKBENCH_V1 */ ;
+RADIATIVE_PRE_PROCESS_OVERLAY(source = "GEOMETRY",
+                              display = "MODEL_ONLY");
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+RESET_VIEW();
+
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+/* ESATAN-TMS version 2020, run date 0:10 Thu 13 May 2021 */
+/* BEGIN_MODEL TCCT_SAT WORKBENCH_V1 */ ;
+RADIATIVE_PRE_PROCESS_OVERLAY(source = "GEOMETRY",
+                              display = "MODEL_ONLY");
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+RESET_VIEW();
+
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+LOAD_EXTERNAL_RESULTS (
+type = "TMD",
+file = "D:\Archivos_de_programa\ESATAN\Modelos_ESATAN\ESATAN-TMS_Models\TCCT_SAT\esatan\acase01\TCCT_SAT_ACASE01.TMD"
+);
+RADIATIVE_PRE_PROCESS_OVERLAY(source = "GEOMETRY",
+                              display = "MODEL_ONLY");
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+THERMAL_POST_PROCESS_OVERLAY(
+    record_type = "Thermal_Node",
+    time_step = 0.0,
+    fixed_scale = TRUE,
+    attribute = "Temperature",
+    radiative_case = SS
+)
+   /* Warning Error: current function is orientating main body */
+   /* Unable to orient secondary pointing vector exactly.
+  Angle of pointing vector to direction is 45.00000000000001, at anomaly 0.
+      Error number: 702 */
+;
+DEFINE_RANGE(
+    range = default_range,
+    min = -75.13207835663323,
+    max = 107.43690066740272,
+    type = "LINEAR"
+);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+LOAD_EXTERNAL_RESULTS (
+type = "TMD",
+file = "D:\Archivos_de_programa\ESATAN\Modelos_ESATAN\ESATAN-TMS_Models\TCCT_SAT\esatan\acase01\TCCT_SAT_ACASE01.TMD"
+);
+RADIATIVE_PRE_PROCESS_OVERLAY(source = "GEOMETRY",
+                              display = "MODEL_ONLY");
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+THERMAL_POST_PROCESS_OVERLAY(
+    record_type = "Thermal_Node",
+    time_step = 0.0,
+    fixed_scale = TRUE,
+    attribute = "Temperature",
+    radiative_case = SS
+)
+   /* Warning Error: current function is orientating main body */
+   /* Unable to orient secondary pointing vector exactly.
+  Angle of pointing vector to direction is 45.00000000000001, at anomaly 0.
+      Error number: 702 */
+;
+DEFINE_RANGE(
+    range = default_range,
+    min = -75.26431705791657,
+    max = 107.37512485686713,
+    type = "LINEAR"
+);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+DEFINE_RANGE(
+    range = default_range,
+    min = -75.12182353753849,
+    max = 107.44063162157403,
+    type = "LINEAR"
+);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+DEFINE_RANGE(
+    range = default_range,
+    min = -75.10242554108639,
+    max = 107.44276670394665,
+    type = "LINEAR"
+);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+LOAD_EXTERNAL_RESULTS (
+type = "TMD",
+file = "D:\Archivos_de_programa\ESATAN\Modelos_ESATAN\ESATAN-TMS_Models\TCCT_SAT\esatan\acase01\TCCT_SAT_ACASE01.TMD"
+);
+RADIATIVE_PRE_PROCESS_OVERLAY(source = "GEOMETRY",
+                              display = "MODEL_ONLY");
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+THERMAL_POST_PROCESS_OVERLAY(
+    record_type = "Thermal_Node",
+    time_step = 0.0,
+    fixed_scale = TRUE,
+    attribute = "Temperature",
+    radiative_case = SS
+)
+   /* Warning Error: current function is orientating main body */
+   /* Unable to orient secondary pointing vector exactly.
+  Angle of pointing vector to direction is 45.00000000000001, at anomaly 0.
+      Error number: 702 */
+;
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+RADIATIVE_PRE_PROCESS_OVERLAY(
+    source = "GEOMETRY",
+    display = "ORBITAL",
+    radiative_case = SS,
+    model_scale = 0.1,
+    draw_model = TRUE,
+    planet_scale = 1.0,
+    draw_planet = TRUE);
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "",
+         x = 0.02,
+         y = 0.95);
+DRAW_ORBIT(orbit = SS.ORBIT);
+DRAW_PLANET(radiative_case = SS,
+            time = SS.ORBIT_TIMES[1],
+            scale = 1.0,
+            range = default_range,
+            shade = continuous_shade
+);
+FOR (vis_orbit_index = 1;
+    vis_orbit_index <= SS.NUM_ORBIT_POSITIONS;
+    vis_orbit_index = EVAL(vis_orbit_index + 1))
+DISPLAY(p_and_o = SS.ORBIT_POSITIONS[vis_orbit_index],
+        time = SS.ORBIT_TIMES[vis_orbit_index],
+        scale = 0.1 * (SS.ORBIT.ALT_A + R_PLANET),
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        radiative_case = SS,
+        orbit_position = vis_orbit_index,
+        spin_position = 0);
+
+END_FOR
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "",
+         x = 0.02,
+         y = 0.95);
+DRAW_ORBIT(orbit = SS.ORBIT);
+vis_orbit_index = 1;
+vis_orbit_index = 1;
+DRAW_PLANET(radiative_case = SS,
+            time = SS.ORBIT_TIMES[1],
+            scale = 1.0,
+            range = default_range,
+            shade = continuous_shade
+);
+FOR (vis_orbit_index = 1;
+    vis_orbit_index <= SS.NUM_ORBIT_POSITIONS;
+    vis_orbit_index = EVAL(vis_orbit_index + 1))
+DISPLAY(p_and_o = SS.ORBIT_POSITIONS[vis_orbit_index],
+        time = SS.ORBIT_TIMES[vis_orbit_index],
+        scale = 0.1 * (SS.ORBIT.ALT_A + R_PLANET),
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        radiative_case = SS,
+        orbit_position = vis_orbit_index,
+        spin_position = 0);
+
+END_FOR
+LOAD_EXTERNAL_RESULTS (
+type = "TMD",
+file = "D:\Archivos_de_programa\ESATAN\Modelos_ESATAN\ESATAN-TMS_Models\TCCT_SAT\esatan\acase01\TCCT_SAT_ACASE01.TMD"
+);
+RADIATIVE_PRE_PROCESS_OVERLAY(source = "GEOMETRY",
+                              display = "MODEL_ONLY");
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+RESET_VIEW();
+
+THERMAL_POST_PROCESS_OVERLAY(
+    record_type = "Thermal_Node",
+    time_step = 0.0,
+    fixed_scale = TRUE,
+    attribute = "Temperature",
+    radiative_case = SS
+)
+   /* Warning Error: current function is orientating main body */
+   /* Unable to orient secondary pointing vector exactly.
+  Angle of pointing vector to direction is 45.00000000000001, at anomaly 0.
+      Error number: 702 */
+;
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+LOAD_EXTERNAL_RESULTS (
+type = "TMD",
+file = "D:\Archivos_de_programa\ESATAN\Modelos_ESATAN\ESATAN-TMS_Models\TCCT_SAT\esatan\acase01\TCCT_SAT_ACASE01.TMD"
+);
+RADIATIVE_PRE_PROCESS_OVERLAY(source = "GEOMETRY",
+                              display = "MODEL_ONLY");
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+THERMAL_POST_PROCESS_OVERLAY(
+    record_type = "Thermal_Node",
+    time_step = 0.0,
+    fixed_scale = TRUE,
+    attribute = "Temperature",
+    radiative_case = SS
+)
+   /* Warning Error: current function is orientating main body */
+   /* Unable to orient secondary pointing vector exactly.
+  Angle of pointing vector to direction is 45.00000000000001, at anomaly 0.
+      Error number: 702 */
+;
+DEFINE_RANGE(
+    range = default_range,
+    min = -75.76384111732123,
+    max = 108.39554068234303,
+    type = "LINEAR"
+);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+LOAD_EXTERNAL_RESULTS (
+type = "TMD",
+file = "D:\Archivos_de_programa\ESATAN\Modelos_ESATAN\ESATAN-TMS_Models\TCCT_SAT\esatan\acase01\TCCT_SAT_ACASE01.TMD"
+);
+RADIATIVE_PRE_PROCESS_OVERLAY(source = "GEOMETRY",
+                              display = "MODEL_ONLY");
+CLEAR();
+
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Colour",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE);
+
+THERMAL_POST_PROCESS_OVERLAY(
+    record_type = "Thermal_Node",
+    time_step = 0.0,
+    fixed_scale = TRUE,
+    attribute = "Temperature",
+    radiative_case = SS
+)
+   /* Warning Error: current function is orientating main body */
+   /* Unable to orient secondary pointing vector exactly.
+  Angle of pointing vector to direction is 45.00000000000001, at anomaly 0.
+      Error number: 702 */
+;
+DEFINE_RANGE(
+    range = default_range,
+    min = -75.27192492845474,
+    max = 108.65652846656711,
+    type = "LINEAR"
+);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+DEFINE_RANGE(
+    range = default_range,
+    min = -62.25586894420369,
+    max = 82.7493309196611,
+    type = "LINEAR"
+);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+THERMAL_POST_PROCESS_OVERLAY(
+    record_type = "Thermal_Node",
+    time_step = 1635.92,
+    fixed_scale = TRUE,
+    attribute = "Temperature",
+    radiative_case = SS
+)
+   /* Warning Error: current function is orientating main body */
+   /* Unable to orient secondary pointing vector exactly.
+  Angle of pointing vector to direction is 17.46465863997332, at anomaly 108.0001782204009.
+      Error number: 702 */
+;
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+DEFINE_RANGE(
+    range = default_range,
+    min = -45.012734717781285,
+    max = -1.882557312885169,
+    type = "LINEAR"
+);
+
+CLEAR();
+
+KEY(shade = continuous_shade,
+    range = default_range,
+    x = 0.02,
+    y = 0.02);
+
+TCCT_SAT.RANGE = "default_range";
+TCCT_SAT.SHADE = "continuous_shade";
+TCCT_SAT.NODES = FALSE;
+
+ANNOTATE(string = "Thermal Node Attributes: Temperature",
+         x = 0.02,
+         y = 0.95);
+
+DISPLAY(p_and_o = [0.0,0.0,0.0,0.0,0.0,0.0],
+        time = vis_orbit_times[1],
+        scale = 1.0,
+        axes = TRUE,
+        asm_axes = TRUE,
+        points = FALSE,
+        assembly_p_and_o = vis_orbit_pos[1]);
+
+DEFINE_RANGE(
+    range = default_range,
+    min = -9.905648486403097,
+    max = -1.882557312885169,
+    type = "LINEAR"
+);
 
 CLEAR();
 

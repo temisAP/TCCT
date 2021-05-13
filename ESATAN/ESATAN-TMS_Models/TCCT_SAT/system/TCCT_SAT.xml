@@ -547,4 +547,234 @@
             <secondaryattributes/>
         </dualaxisviewmodel>
     </attributechart>
+    <attributechart>
+        <name>Attribute Chart 3</name>
+        <attributechartdata displaystyle="LINE_STYLE" timestep="0.0"/>
+        <commondata timeformat="SECONDS">
+            <datasources>
+                <acasetmd id="1">
+                    <casename>acase01</casename>
+                    <filename>TCCT_SAT_ACASE01.TMD</filename>
+                    <lastversion>13 May       2021 02:06:21 [11]</lastversion>
+                </acasetmd>
+            </datasources>
+            <attributes>
+                <attribute datasourcetype="TMD" datatype="DOUBLE" displaytype="SCALE_DISPLAY" id="2" name="Value" type="CONDUCTOR_ATTRIBUTE" visible="true"/>
+                <attribute datasourcetype="TMD" datatype="DOUBLE" displaytype="SCALE_DISPLAY" id="3" name="Average Temperature" type="CONTAINER_ATTRIBUTE" visible="true"/>
+                <attribute datasourcetype="TMD" datatype="DOUBLE" displaytype="SCALE_DISPLAY" id="4" name="Value" type="CONSTANT_ATTRIBUTE" visible="true"/>
+                <attribute datasourcetype="TMD" datatype="DOUBLE" displaytype="SCALE_DISPLAY" id="5" name="Temperature" type="ENTITY_ATTRIBUTE" visible="true"/>
+            </attributes>
+            <referencedelements>
+                <surface id="6" visible="true">
+                    <name>RDTR</name>
+                    <number>1</number>
+                </surface>
+                <surface id="7" visible="true">
+                    <name>TL_detector</name>
+                    <number>2</number>
+                </surface>
+                <surface id="8" visible="true">
+                    <name>TL_mirror</name>
+                    <number>2</number>
+                </surface>
+                <surface id="9" visible="true">
+                    <name>TL_mirror2</name>
+                    <number>2</number>
+                </surface>
+            </referencedelements>
+            <chartelements>
+                <element id="6"/>
+                <element id="7"/>
+                <element id="8"/>
+                <element id="9"/>
+            </chartelements>
+            <dataseriesmap>
+                <dataseries type="VALUE">
+                    <parts attribute="3" datasource="1" element="6"/>
+                    <dataseriesvalues>
+                        <dataseriesvalue domain="0.0" range="-61.52016194842037"/>
+                        <dataseriesvalue domain="545.3057861328125" range="-61.137648328819544"/>
+                        <dataseriesvalue domain="1090.611572265625" range="-60.936045826281656"/>
+                        <dataseriesvalue domain="1635.9173583984375" range="-61.02346672501553"/>
+                        <dataseriesvalue domain="2181.22314453125" range="-61.199118553585286"/>
+                        <dataseriesvalue domain="2726.5289306640625" range="-61.445841347552324"/>
+                        <dataseriesvalue domain="3271.834716796875" range="-61.68516305524883"/>
+                        <dataseriesvalue domain="3817.1405029296875" range="-61.91934595044716"/>
+                        <dataseriesvalue domain="4362.4462890625" range="-62.11768586544983"/>
+                        <dataseriesvalue domain="4907.7520751953125" range="-61.9951793587359"/>
+                        <dataseriesvalue domain="5453.0576171875" range="-61.520389589741306"/>
+                    </dataseriesvalues>
+                </dataseries>
+                <dataseries type="VALUE">
+                    <parts attribute="3" datasource="1" element="7"/>
+                    <dataseriesvalues>
+                        <dataseriesvalue domain="0.0" range="-47.726159723485665"/>
+                        <dataseriesvalue domain="545.3057861328125" range="-47.46880506421387"/>
+                        <dataseriesvalue domain="1090.611572265625" range="-47.2182462932486"/>
+                        <dataseriesvalue domain="1635.9173583984375" range="-47.08551771123013"/>
+                        <dataseriesvalue domain="2181.22314453125" range="-47.09271901156975"/>
+                        <dataseriesvalue domain="2726.5289306640625" range="-47.208599994509306"/>
+                        <dataseriesvalue domain="3271.834716796875" range="-47.375293175912034"/>
+                        <dataseriesvalue domain="3817.1405029296875" range="-47.55768278055564"/>
+                        <dataseriesvalue domain="4362.4462890625" range="-47.73446649999127"/>
+                        <dataseriesvalue domain="4907.7520751953125" range="-47.84231868300706"/>
+                        <dataseriesvalue domain="5453.0576171875" range="-47.7266804536208"/>
+                    </dataseriesvalues>
+                </dataseries>
+                <dataseries type="VALUE">
+                    <parts attribute="3" datasource="1" element="8"/>
+                    <dataseriesvalues>
+                        <dataseriesvalue domain="0.0" range="-17.259995776049198"/>
+                        <dataseriesvalue domain="545.3057861328125" range="-17.235188506233477"/>
+                        <dataseriesvalue domain="1090.611572265625" range="-17.223762784914737"/>
+                        <dataseriesvalue domain="1635.9173583984375" range="-17.222137612587677"/>
+                        <dataseriesvalue domain="2181.22314453125" range="-17.227420353556642"/>
+                        <dataseriesvalue domain="2726.5289306640625" range="-17.237131951813705"/>
+                        <dataseriesvalue domain="3271.834716796875" range="-17.249549846774997"/>
+                        <dataseriesvalue domain="3817.1405029296875" range="-17.264262338059595"/>
+                        <dataseriesvalue domain="4362.4462890625" range="-17.2784132906656"/>
+                        <dataseriesvalue domain="4907.7520751953125" range="-17.27929444809085"/>
+                        <dataseriesvalue domain="5453.0576171875" range="-17.261773032248076"/>
+                    </dataseriesvalues>
+                </dataseries>
+                <dataseries type="VALUE">
+                    <parts attribute="3" datasource="1" element="9"/>
+                    <dataseriesvalues>
+                        <dataseriesvalue domain="0.0" range="9.376931819798237"/>
+                        <dataseriesvalue domain="545.3057861328125" range="10.857116302637616"/>
+                        <dataseriesvalue domain="1090.611572265625" range="11.34660531297304"/>
+                        <dataseriesvalue domain="1635.9173583984375" range="11.215261117126657"/>
+                        <dataseriesvalue domain="2181.22314453125" range="10.881972312457943"/>
+                        <dataseriesvalue domain="2726.5289306640625" range="9.565769333344065"/>
+                        <dataseriesvalue domain="3271.834716796875" range="8.407520257520096"/>
+                        <dataseriesvalue domain="3817.1405029296875" range="7.391191739119371"/>
+                        <dataseriesvalue domain="4362.4462890625" range="7.994545274094207"/>
+                        <dataseriesvalue domain="4907.7520751953125" range="8.110205435071432"/>
+                        <dataseriesvalue domain="5453.0576171875" range="9.376724394008198"/>
+                    </dataseriesvalues>
+                </dataseries>
+            </dataseriesmap>
+        </commondata>
+        <dualaxisviewmodel>
+            <seriespropertiescollection>
+                <seriesproperties>
+                    <key>Value : acase01 : TMD : TCCT_SAT_ACASE01 : Average Temperature : RDTR:surface1</key>
+                    <label/>
+                    <legenddetail>LABEL_AND_DETAILS</legenddetail>
+                    <shapetype>1</shapetype>
+                    <shapecolor>6</shapecolor>
+                    <color>-2552929</color>
+                    <strokewidth>2.0</strokewidth>
+                    <dasharray/>
+                </seriesproperties>
+                <seriesproperties>
+                    <key>Value : acase01 : TMD : TCCT_SAT_ACASE01 : Average Temperature : TL_mirror:surface2</key>
+                    <label/>
+                    <legenddetail>LABEL_AND_DETAILS</legenddetail>
+                    <shapetype>3</shapetype>
+                    <shapecolor>6</shapecolor>
+                    <color>-14952181</color>
+                    <strokewidth>2.0</strokewidth>
+                    <dasharray/>
+                </seriesproperties>
+                <seriesproperties>
+                    <key>Value : acase01 : TMD : TCCT_SAT_ACASE01 : Average Temperature : TL_detector:surface2</key>
+                    <label/>
+                    <legenddetail>LABEL_AND_DETAILS</legenddetail>
+                    <shapetype>2</shapetype>
+                    <shapecolor>6</shapecolor>
+                    <color>-2816</color>
+                    <strokewidth>2.0</strokewidth>
+                    <dasharray/>
+                </seriesproperties>
+                <seriesproperties>
+                    <key>Value : acase01 : TMD : TCCT_SAT_ACASE01 : Average Temperature : TL_mirror2:surface2</key>
+                    <label/>
+                    <legenddetail>LABEL_AND_DETAILS</legenddetail>
+                    <shapetype>4</shapetype>
+                    <shapecolor>6</shapecolor>
+                    <color>-16719617</color>
+                    <strokewidth>2.0</strokewidth>
+                    <dasharray/>
+                </seriesproperties>
+            </seriespropertiescollection>
+            <titletext>Attribute Chart 3</titletext>
+            <viewport height="854" width="594"/>
+            <zoomselection2d x="0" y="0">
+                <domainzoom lower="0.0" upper="0.0"/>
+                <rangezoom lower="0.0" upper="0.0"/>
+            </zoomselection2d>
+            <rangelabel>Data</rangelabel>
+            <domainlabel>Time[s]</domainlabel>
+            <titlecolor>-16777216</titlecolor>
+            <rangecolor>-12566464</rangecolor>
+            <domaincolor>-12566464</domaincolor>
+            <backgroundpaint>-4144960</backgroundpaint>
+            <plotoutlinepaint>-8355712</plotoutlinepaint>
+            <drawlines>true</drawlines>
+            <showlegend>true</showlegend>
+            <drawmarkers>true</drawmarkers>
+            <rangetickmarks>true</rangetickmarks>
+            <domaintickmarks>true</domaintickmarks>
+            <rangeticklabels>true</rangeticklabels>
+            <domainticklabels>true</domainticklabels>
+            <autoadjustrangerange>true</autoadjustrangerange>
+            <autoadjustdomainrange>true</autoadjustdomainrange>
+            <autoselectrangetickunit>true</autoselectrangetickunit>
+            <autoselectdomaintickunit>true</autoselectdomaintickunit>
+            <minrangerange>0.0</minrangerange>
+            <maxrangerange>0.0</maxrangerange>
+            <mindomainrange>0.0</mindomainrange>
+            <maxdomainrange>0.0</maxdomainrange>
+            <rangetickunitvalue>0.1</rangetickunitvalue>
+            <domaintickunitvalue>0.1</domaintickunitvalue>
+            <titlefont>
+                <name>Tahoma</name>
+                <size>20</size>
+                <style>1</style>
+            </titlefont>
+            <rangefont>
+                <name>Tahoma</name>
+                <size>10</size>
+                <style>0</style>
+            </rangefont>
+            <domainfont>
+                <name>Tahoma</name>
+                <size>10</size>
+                <style>0</style>
+            </domainfont>
+            <rangeticklabelfont>
+                <name>Tahoma</name>
+                <size>10</size>
+                <style>0</style>
+            </rangeticklabelfont>
+            <domainticklabelfont>
+                <name>Tahoma</name>
+                <size>10</size>
+                <style>0</style>
+            </domainticklabelfont>
+            <plotorientation>PlotOrientation.VERTICAL</plotorientation>
+            <plotoutlinestrokewidth>1.0</plotoutlinestrokewidth>
+            <secondaryrangelabel>Data 2</secondaryrangelabel>
+            <secondaryrangecolor>-12566464</secondaryrangecolor>
+            <secondaryrangetickmarks>true</secondaryrangetickmarks>
+            <secondaryrangeticklabels>true</secondaryrangeticklabels>
+            <autoadjustsecondaryrangerange>true</autoadjustsecondaryrangerange>
+            <autoselectsecondaryrangetickunit>true</autoselectsecondaryrangetickunit>
+            <minsecondaryrangerange>0.0</minsecondaryrangerange>
+            <maxsecondaryrangerange>0.0</maxsecondaryrangerange>
+            <secondaryrangetickunitvalue>0.1</secondaryrangetickunitvalue>
+            <secondaryrangefont>
+                <name>Tahoma</name>
+                <size>10</size>
+                <style>0</style>
+            </secondaryrangefont>
+            <secondaryrangeticklabelfont>
+                <name>Tahoma</name>
+                <size>10</size>
+                <style>0</style>
+            </secondaryrangeticklabelfont>
+            <secondaryattributes/>
+        </dualaxisviewmodel>
+    </attributechart>
 </postprocessdatafile>
